@@ -1,0 +1,30 @@
+export const siteConfig = {
+  name: "CleverHub",
+  tagline: "AI-Powered Smart Home Automation",
+  description:
+    "CleverHub brings sub-1-second voice control to every room. 40 TOPS local AI processing with satellite nodes in every room. For homebuilders, Airbnb hosts, and apartment complexes in Houston, TX.",
+  url: "https://cleverhub.space",
+  ogImage: "/images/cleverhub-og.jpg",
+  contact: {
+    email: "hello@cleverhub.space",
+    phone: "(713) 555-0100",
+    address: "Houston, TX",
+  },
+  social: {
+    twitter: "https://twitter.com/cleverhubspace",
+    instagram: "https://instagram.com/cleverhubspace",
+    linkedin: "https://linkedin.com/company/cleverhub",
+  },
+  keywords: [
+    "smart home automation Houston",
+    "AI smart home hub",
+    "Airbnb smart home automation",
+    "builder smart home package",
+    "voice controlled smart home",
+    "smart home installation Houston TX",
+    "CleverHub",
+    "CleverHome",
+    "CleverHost",
+    "CleverBuilding",
+  ],
+} as const;
