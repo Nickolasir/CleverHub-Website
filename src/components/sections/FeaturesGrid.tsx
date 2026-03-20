@@ -75,17 +75,17 @@ const features = [
 
 export function FeaturesGrid() {
   const gridRef = useStaggerReveal<HTMLDivElement>(".feature-card", {
-    stagger: 0.1,
-    y: 30,
+    stagger: 0.06,
+    y: 16,
   });
 
   return (
-    <SectionWrapper id="features" className="bg-[#f5f5f7]">
+    <SectionWrapper id="features" className="bg-section-alt">
       <div className="text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           Capabilities
         </p>
-        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
           Everything Your Home Needs
         </h2>
       </div>
@@ -97,12 +97,12 @@ export function FeaturesGrid() {
         {features.map((feature) => (
           <div
             key={feature.title}
-            className="feature-card rounded-2xl border border-card-border bg-card p-6 transition-all hover:shadow-lg hover:-translate-y-0.5"
+            className="feature-card rounded-2xl bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)]"
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent">
+            <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-accent/8 text-accent">
               {feature.icon}
             </div>
-            <h3 className="mt-4 font-[var(--font-outfit)] text-lg font-bold">
+            <h3 className="mt-4 font-[var(--font-outfit)] text-base font-semibold">
               {feature.title}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { gsap } from "@/lib/gsap-register";
 import { useConsultationForm } from "@/hooks/useConsultationForm";
 import { DateTimePicker } from "@/components/ui/DateTimePicker";
@@ -39,6 +39,8 @@ export function HeroVideo() {
   const ctaRef = useRef<HTMLDivElement>(null);
   const formWrapRef = useRef<HTMLDivElement>(null);
   const convoStartedRef = useRef(false);
+  const timersRef = useRef<ReturnType<typeof setTimeout | typeof setInterval>[]>([]);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
 
   const [userChars, setUserChars] = useState(0);
   const [hubChars, setHubChars] = useState(0);
@@ -58,13 +60,26 @@ export function HeroVideo() {
     submit,
   } = useConsultationForm();
 
-  const selectedSlots = [
-    formData.preferredTime1,
-    formData.preferredTime2,
-    formData.preferredTime3,
-  ].filter(Boolean);
+  const selectedSlots = useMemo(
+    () =>
+      [
+        formData.preferredTime1,
+        formData.preferredTime2,
+        formData.preferredTime3,
+      ].filter(Boolean),
+    [formData.preferredTime1, formData.preferredTime2, formData.preferredTime3]
+  );
 
-  // Typewriter effect
+  // Track a timer so it can be cleaned up on unmount
+  const track = useCallback(
+    (id: ReturnType<typeof setTimeout | typeof setInterval>) => {
+      timersRef.current.push(id);
+      return id;
+    },
+    []
+  );
+
+  // Typewriter effect with cleanup support
   const typeText = useCallback(
     (
       setText: (n: number) => void,
@@ -73,23 +88,28 @@ export function HeroVideo() {
     ): Promise<void> => {
       return new Promise((resolve) => {
         let i = 0;
-        const interval = setInterval(() => {
-          i++;
-          setText(i);
-          if (i >= fullText.length) {
-            clearInterval(interval);
-            resolve();
-          }
-        }, speed);
+        const interval = track(
+          setInterval(() => {
+            i++;
+            setText(i);
+            if (i >= fullText.length) {
+              clearInterval(interval);
+              resolve();
+            }
+          }, speed)
+        );
       });
     },
-    []
+    [track]
   );
 
   // Start conversation when video reaches the last scene
   const startConversation = useCallback(() => {
     if (convoStartedRef.current) return;
     convoStartedRef.current = true;
+
+    // Kill the overlay timeline to prevent race conditions
+    tlRef.current?.kill();
 
     // Fade out any remaining overlay
     overlayRefs.current.forEach((el) => {
@@ -99,33 +119,39 @@ export function HeroVideo() {
     setPhase("conversation");
 
     // Fade in conversation container after a beat
-    setTimeout(() => {
-      if (convoRef.current) {
-        gsap.fromTo(
-          convoRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
-        );
-      }
+    track(
+      setTimeout(() => {
+        if (convoRef.current) {
+          gsap.fromTo(
+            convoRef.current,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+          );
+        }
 
-      typeText(setUserChars, userMessage, 40).then(() => {
-        setTimeout(() => {
-          typeText(setHubChars, hubResponse, 30).then(() => {
+        typeText(setUserChars, userMessage, 40).then(() => {
+          track(
             setTimeout(() => {
-              setPhase("cta");
-              if (ctaRef.current) {
-                gsap.fromTo(
-                  ctaRef.current,
-                  { opacity: 0, y: 20 },
-                  { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+              typeText(setHubChars, hubResponse, 30).then(() => {
+                track(
+                  setTimeout(() => {
+                    setPhase("cta");
+                    if (ctaRef.current) {
+                      gsap.fromTo(
+                        ctaRef.current,
+                        { opacity: 0, y: 20 },
+                        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+                      );
+                    }
+                  }, 600)
                 );
-              }
-            }, 600);
-          });
-        }, 500);
-      });
-    }, 300);
-  }, [typeText]);
+              });
+            }, 500)
+          );
+        });
+      }, 300)
+    );
+  }, [typeText, track]);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia(
@@ -141,6 +167,7 @@ export function HeroVideo() {
 
     // Sequence the text overlays on load
     const tl = gsap.timeline();
+    tlRef.current = tl;
     overlayRefs.current.forEach((el, i) => {
       if (!el) return;
       gsap.set(el, { opacity: 0, y: 30 });
@@ -152,24 +179,28 @@ export function HeroVideo() {
 
     // Listen for video reaching the last scene
     const video = videoRef.current;
-    if (video) {
-      const onTimeUpdate = () => {
-        if (!video.duration) return;
-        const progress = video.currentTime / video.duration;
-        if (progress >= LAST_SCENE_START) {
-          startConversation();
-          video.removeEventListener("timeupdate", onTimeUpdate);
-        }
-      };
-      video.addEventListener("timeupdate", onTimeUpdate);
-      return () => {
-        tl.kill();
+    const onTimeUpdate = () => {
+      if (!video || !video.duration) return;
+      const progress = video.currentTime / video.duration;
+      if (progress >= LAST_SCENE_START) {
+        startConversation();
         video.removeEventListener("timeupdate", onTimeUpdate);
-      };
+      }
+    };
+
+    if (video) {
+      video.addEventListener("timeupdate", onTimeUpdate);
     }
 
     return () => {
       tl.kill();
+      video?.removeEventListener("timeupdate", onTimeUpdate);
+      // Clean up all tracked timers
+      timersRef.current.forEach((id) => {
+        clearTimeout(id);
+        clearInterval(id);
+      });
+      timersRef.current = [];
     };
   }, [typeText, startConversation]);
 
@@ -208,6 +239,8 @@ export function HeroVideo() {
         muted
         playsInline
         preload="auto"
+        poster="/images/keyframe-01.png"
+        aria-label="CleverHub smart home product showcase"
       >
         <source src="/video/cleverhub-hero.mp4" type="video/mp4" />
       </video>
@@ -229,10 +262,10 @@ export function HeroVideo() {
             }`}
             style={{ opacity: 0 }}
           >
-            <h2 className="font-[var(--font-outfit)] text-4xl font-bold text-white drop-shadow-2xl md:text-6xl lg:text-7xl">
+            <h2 className="font-[var(--font-outfit)] text-4xl font-semibold tracking-tight text-white md:text-6xl lg:text-7xl">
               {overlay.text}
             </h2>
-            <p className="mt-4 max-w-lg text-lg text-white/70 drop-shadow-lg md:text-xl">
+            <p className="mt-5 max-w-lg text-lg font-light text-white/60 md:text-xl">
               {overlay.subtext}
             </p>
           </div>
@@ -243,13 +276,13 @@ export function HeroVideo() {
           <div className="w-full max-w-3xl">
             {/* Conversation */}
             <div ref={convoRef}>
-              <p className="mb-8 text-center text-sm font-semibold uppercase tracking-widest text-accent">
+              <p className="mb-8 text-center text-xs font-medium uppercase tracking-[0.2em] text-accent/80">
                 A Morning with CleverHub
               </p>
 
               {/* User message */}
               <div className="flex justify-start">
-                <div className="max-w-md rounded-3xl rounded-bl-lg bg-white/10 px-6 py-4 backdrop-blur-sm">
+                <div className="max-w-md rounded-2xl rounded-bl-md bg-white/10 px-5 py-4 backdrop-blur-md">
                   <p className="mb-2 text-xs font-medium text-white/40">You</p>
                   <p className="text-lg leading-relaxed text-white">
                     {userMessage.slice(0, userChars)}
@@ -266,7 +299,7 @@ export function HeroVideo() {
               {/* Hub response */}
               {userChars >= userMessage.length && (
                 <div className="mt-4 flex justify-end">
-                  <div className="max-w-md rounded-3xl rounded-br-lg bg-accent/20 px-6 py-4 backdrop-blur-sm">
+                  <div className="max-w-md rounded-2xl rounded-br-md bg-accent/15 px-5 py-4 backdrop-blur-md">
                     <p className="mb-2 text-xs font-medium text-accent/70">
                       CleverHub
                     </p>
@@ -288,7 +321,7 @@ export function HeroVideo() {
             {phase === "cta" && (
               <div ref={ctaRef} className="mt-10" style={{ opacity: 0 }}>
                 <div className="text-center">
-                  <h3 className="font-[var(--font-outfit)] text-2xl font-bold text-white md:text-3xl">
+                  <h3 className="font-[var(--font-outfit)] text-2xl font-semibold tracking-tight text-white md:text-3xl">
                     Ready to Make Your Space Intelligent?
                   </h3>
                   <p className="mx-auto mt-2 max-w-lg text-sm text-white/50">
@@ -321,7 +354,7 @@ export function HeroVideo() {
                     <>
                       <button
                         onClick={() => setShowForm(!showForm)}
-                        className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/25"
+                        className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-base font-medium text-white transition-all duration-300 hover:bg-accent-light"
                       >
                         Schedule My Consultation
                         <svg
@@ -350,7 +383,7 @@ export function HeroVideo() {
                             e.preventDefault();
                             submit();
                           }}
-                          className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-sm md:p-8"
+                          className="mt-6 rounded-2xl border border-white/8 bg-white/[0.03] p-6 text-left backdrop-blur-md md:p-8"
                         >
                           {submitError && (
                             <div className="mb-6 rounded-xl bg-red-500/10 px-4 py-3 text-sm text-red-400">
@@ -524,7 +557,7 @@ export function HeroVideo() {
                             <button
                               type="submit"
                               disabled={isSubmitting}
-                              className="inline-flex items-center gap-2 rounded-full bg-accent px-10 py-4 text-base font-semibold text-white transition-all hover:bg-accent-light hover:shadow-xl hover:shadow-accent/25 disabled:cursor-not-allowed disabled:opacity-50"
+                              className="inline-flex items-center gap-2 rounded-full bg-accent px-10 py-4 text-base font-medium text-white transition-all duration-300 hover:bg-accent-light disabled:cursor-not-allowed disabled:opacity-50"
                             >
                               {isSubmitting ? (
                                 <>

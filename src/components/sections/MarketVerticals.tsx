@@ -31,7 +31,7 @@ const otherVerticals = [
     href: "/cleverhost",
     description:
       "Automate the entire guest lifecycle — WiFi rotation, profile wipes, voice concierge, and energy management.",
-    highlight: "Starting at $29/mo",
+    highlight: "Starting at $99/mo",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-8 w-8">
         <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -63,17 +63,17 @@ const otherVerticals = [
 
 export function MarketVerticals() {
   const cardsRef = useStaggerReveal<HTMLDivElement>(".vertical-card", {
-    stagger: 0.18,
-    y: 50,
+    stagger: 0.1,
+    y: 20,
   });
 
   return (
     <SectionWrapper id="solutions">
       <div className="text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           Built for Your Market
         </p>
-        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
           One Platform. Every Market.
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
@@ -84,26 +84,24 @@ export function MarketVerticals() {
 
       <div ref={cardsRef} className="mt-16 space-y-8">
         {/* Main vertical — CleverHome (full card) */}
-        <div className="vertical-card group relative overflow-hidden rounded-3xl border border-card-border bg-card p-8 shadow-sm transition-all hover:shadow-xl md:p-10">
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent to-accent-light" />
-
+        <div className="vertical-card group relative overflow-hidden rounded-2xl bg-card p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] md:p-10">
           <div className="grid items-center gap-8 md:grid-cols-2">
             <div>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/8 text-accent">
                 {mainVertical.icon}
               </div>
               <div className="mt-6">
                 <p className="text-sm font-medium text-accent">
                   {mainVertical.tagline}
                 </p>
-                <h3 className="mt-1 font-[var(--font-outfit)] text-3xl font-bold">
+                <h3 className="mt-1 font-[var(--font-outfit)] text-3xl font-semibold">
                   {mainVertical.name}
                 </h3>
               </div>
               <p className="mt-4 text-base leading-relaxed text-muted">
                 {mainVertical.description}
               </p>
-              <div className="mt-4 inline-block rounded-full bg-accent/10 px-4 py-1.5 text-sm font-bold text-accent">
+              <div className="mt-4 inline-block rounded-full bg-accent/8 px-4 py-1 text-sm font-medium text-accent">
                 {mainVertical.highlight}
               </div>
             </div>
@@ -132,7 +130,7 @@ export function MarketVerticals() {
               </ul>
               <a
                 href="#consultation"
-                className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-accent hover:underline"
+                className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors duration-300 hover:text-accent-light"
               >
                 Schedule a consultation
                 <svg
@@ -157,17 +155,15 @@ export function MarketVerticals() {
             <Link
               key={v.name}
               href={v.href}
-              className="vertical-card group relative flex flex-col overflow-hidden rounded-3xl border border-card-border bg-card p-8 shadow-sm transition-all hover:shadow-xl hover:-translate-y-1"
+              className="vertical-card group relative flex flex-col overflow-hidden rounded-2xl bg-card p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)]"
             >
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent to-accent-light opacity-0 transition-opacity group-hover:opacity-100" />
-
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/8 text-accent">
                 {v.icon}
               </div>
 
               <div className="mt-6">
                 <p className="text-sm font-medium text-accent">{v.tagline}</p>
-                <h3 className="mt-1 font-[var(--font-outfit)] text-2xl font-bold">
+                <h3 className="mt-1 font-[var(--font-outfit)] text-xl font-semibold">
                   {v.name}
                 </h3>
               </div>
@@ -176,16 +172,16 @@ export function MarketVerticals() {
                 {v.description}
               </p>
 
-              <div className="mt-4 inline-block self-start rounded-full bg-accent/10 px-4 py-1.5 text-sm font-bold text-accent">
+              <div className="mt-4 inline-block self-start rounded-full bg-accent/8 px-4 py-1 text-sm font-medium text-accent">
                 {v.highlight}
               </div>
 
-              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-accent group-hover:underline">
+              <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent group-hover:text-accent-light">
                 Learn more
                 <svg
                   viewBox="0 0 20 20"
                   fill="currentColor"
-                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                 >
                   <path
                     fillRule="evenodd"

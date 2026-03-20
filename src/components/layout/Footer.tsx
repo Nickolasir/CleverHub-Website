@@ -3,9 +3,13 @@ import { siteConfig } from "@/config/site";
 const footerLinks = {
   Product: [
     { label: "CleverHome", href: "#solutions" },
-    { label: "CleverHost", href: "#solutions" },
-    { label: "CleverBuilding", href: "#solutions" },
+    { label: "CleverHost", href: "/cleverhost" },
+    { label: "CleverBuilding", href: "/cleverbuilding" },
     { label: "Features", href: "#features" },
+  ],
+  Partners: [
+    { label: "Affiliate Program", href: "/affiliate" },
+    { label: "Client Portal", href: "/portal" },
   ],
   Company: [
     { label: "About", href: "#product" },
@@ -17,14 +21,14 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="border-t border-card-border bg-warm-gray text-white">
-      <div className="mx-auto max-w-7xl px-6 py-16">
+    <footer className="bg-warm-gray text-white">
+      <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#333] to-[#555] ring-2 ring-accent/30" />
-              <span className="font-[var(--font-outfit)] text-xl font-bold tracking-tight">
+              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#333] to-[#555] ring-1 ring-white/10" />
+              <span className="font-[var(--font-outfit)] text-lg font-semibold tracking-tight">
                 CleverHub
               </span>
             </div>
@@ -35,7 +39,7 @@ export function Footer() {
               {siteConfig.contact.address} &middot;{" "}
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="hover:text-accent"
+                className="transition-colors duration-300 hover:text-accent"
               >
                 {siteConfig.contact.email}
               </a>
@@ -45,7 +49,7 @@ export function Footer() {
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-white/40">
+              <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-white/40">
                 {title}
               </h3>
               <ul className="mt-4 flex flex-col gap-3">
@@ -53,7 +57,7 @@ export function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-white/60 transition-colors hover:text-accent"
+                      className="text-sm text-white/60 transition-colors duration-300 hover:text-white"
                     >
                       {link.label}
                     </a>
@@ -64,7 +68,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-white/30">
+        <div className="mt-16 border-t border-white/8 pt-8 text-center text-sm text-white/30">
           &copy; {new Date().getFullYear()} CleverAutomations. All rights
           reserved.
         </div>

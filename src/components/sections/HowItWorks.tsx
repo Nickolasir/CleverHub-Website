@@ -45,17 +45,17 @@ const tiers = [
 
 export function HowItWorks() {
   const cardsRef = useStaggerReveal<HTMLDivElement>(".tier-card", {
-    stagger: 0.15,
-    y: 50,
+    stagger: 0.1,
+    y: 20,
   });
 
   return (
-    <SectionWrapper id="how-it-works" className="bg-[#f5f5f7]">
+    <SectionWrapper id="how-it-works" className="bg-section-alt">
       <div className="text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           Three-Tier Voice Intelligence
         </p>
-        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
           How It Works
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
@@ -68,23 +68,23 @@ export function HowItWorks() {
         {tiers.map((tier) => (
           <div
             key={tier.name}
-            className="tier-card group rounded-3xl border border-card-border bg-card p-8 shadow-sm transition-all hover:shadow-xl hover:-translate-y-1"
+            className="tier-card group rounded-2xl bg-card p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)]"
           >
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-white">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/8 text-accent">
               {tier.icon}
             </div>
             <div className="mt-6 flex items-center gap-3">
-              <h3 className="font-[var(--font-outfit)] text-2xl font-bold">
+              <h3 className="font-[var(--font-outfit)] text-xl font-semibold">
                 {tier.name}
               </h3>
-              <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+              <span className="rounded-full bg-accent/8 px-3 py-0.5 text-xs font-medium text-accent">
                 {tier.latency}
               </span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-muted">
               {tier.description}
             </p>
-            <p className="mt-4 text-xs font-medium uppercase tracking-wider text-accent/70">
+            <p className="mt-4 text-xs font-normal uppercase tracking-wider text-muted">
               {tier.badge}
             </p>
           </div>

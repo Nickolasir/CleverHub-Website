@@ -106,6 +106,7 @@ export function DateTimePicker({
                     onSlotsChange(selectedSlots.filter((s) => s !== slot))
                   }
                   className="ml-0.5 hover:text-red-500"
+                  aria-label="Remove time slot"
                 >
                   &times;
                 </button>
@@ -128,7 +129,7 @@ export function DateTimePicker({
               key={day.toISOString()}
               type="button"
               onClick={() => setSelectedDate(day)}
-              className={`rounded-xl px-3 py-2 text-xs font-medium transition-all ${
+              className={`rounded-lg px-3 py-2 text-xs font-medium transition-all duration-300 ${
                 isSelected
                   ? "bg-accent text-white shadow-md"
                   : isWeekend
@@ -144,7 +145,7 @@ export function DateTimePicker({
 
       {/* Time slots for selected date */}
       {selectedDate && (
-        <div className="rounded-2xl border border-card-border bg-card p-4">
+        <div className="rounded-xl bg-card p-4 shadow-[var(--shadow-card)]">
           <p className="mb-3 text-xs font-medium text-muted">
             Available times for {formatDate(selectedDate)}
           </p>

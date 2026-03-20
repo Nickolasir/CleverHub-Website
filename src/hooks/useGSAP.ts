@@ -13,19 +13,19 @@ export function useFadeIn<T extends HTMLElement = HTMLDivElement>(
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    gsap.set(el, { opacity: 0, y: options?.y ?? 40 });
+    gsap.set(el, { opacity: 0, y: options?.y ?? 20 });
 
     const trigger = ScrollTrigger.create({
       trigger: el,
-      start: "top 85%",
+      start: "top 88%",
       once: true,
       onEnter: () => {
         gsap.to(el, {
           opacity: 1,
           y: 0,
-          duration: options?.duration ?? 0.8,
+          duration: options?.duration ?? 0.9,
           delay: options?.delay ?? 0,
-          ease: "power3.out",
+          ease: "power2.out",
         });
       },
     });
@@ -48,19 +48,19 @@ export function useStaggerReveal<T extends HTMLElement = HTMLDivElement>(
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const children = el.querySelectorAll(childSelector);
-    gsap.set(children, { opacity: 0, y: options?.y ?? 40 });
+    gsap.set(children, { opacity: 0, y: options?.y ?? 20 });
 
     const trigger = ScrollTrigger.create({
       trigger: el,
-      start: "top 80%",
+      start: "top 85%",
       once: true,
       onEnter: () => {
         gsap.to(children, {
           opacity: 1,
           y: 0,
-          duration: 0.7,
-          stagger: options?.stagger ?? 0.12,
-          ease: "power3.out",
+          duration: 0.85,
+          stagger: options?.stagger ?? 0.08,
+          ease: "power2.out",
         });
       },
     });

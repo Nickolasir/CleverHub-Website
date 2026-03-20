@@ -16,17 +16,17 @@ export function SectionWrapper({
   className = "",
   dark = false,
 }: SectionWrapperProps) {
-  const ref = useFadeIn<HTMLElement>({ y: 30 });
+  const ref = useFadeIn<HTMLElement>({ y: 16 });
 
   return (
     <section
       id={id}
       ref={ref}
-      className={`px-6 py-24 md:py-32 ${
+      className={`px-6 py-28 md:py-40 ${
         dark ? "bg-warm-gray text-white" : "bg-background"
       } ${className}`}
     >
-      <div className="mx-auto max-w-7xl">{children}</div>
+      <div className="mx-auto max-w-6xl">{children}</div>
     </section>
   );
 }

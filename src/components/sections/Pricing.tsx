@@ -32,17 +32,17 @@ const satelliteFeatures = [
 
 export function Pricing() {
   const cardRef = useStaggerReveal<HTMLDivElement>(".pricing-item", {
-    stagger: 0.1,
-    y: 30,
+    stagger: 0.06,
+    y: 16,
   });
 
   return (
     <SectionWrapper id="pricing">
       <div className="text-center">
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           Pricing
         </p>
-        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-bold tracking-tight md:text-5xl">
+        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
           One System. Every Room.
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
@@ -55,19 +55,19 @@ export function Pricing() {
         {/* Main pricing card */}
         <div
           ref={cardRef}
-          className="relative overflow-hidden rounded-3xl border border-accent/20 bg-card shadow-xl"
+          className="relative overflow-hidden rounded-2xl bg-card shadow-[0_4px_24px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]"
         >
-          {/* Accent top bar */}
-          <div className="h-1.5 bg-gradient-to-r from-accent to-accent-light" />
+          {/* Subtle top line */}
+          <div className="h-px bg-card-border" />
 
-          <div className="p-8 md:p-12">
+          <div className="p-10 md:p-14">
             {/* Price */}
             <div className="text-center">
-              <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
                 CleverHub Standard System
               </p>
               <div className="mt-4 flex items-baseline justify-center gap-1">
-                <span className="font-[var(--font-outfit)] text-6xl font-bold tracking-tight md:text-7xl">
+                <span className="font-[var(--font-outfit)] text-6xl font-semibold tracking-tight md:text-7xl">
                   $2,500
                 </span>
               </div>
@@ -81,13 +81,13 @@ export function Pricing() {
             </div>
 
             {/* Divider */}
-            <div className="my-8 h-px bg-card-border" />
+            <div className="my-10 h-px bg-card-border" />
 
             {/* Two-column features */}
             <div className="grid gap-8 md:grid-cols-2">
               {/* Hub */}
               <div>
-                <h3 className="pricing-item font-[var(--font-outfit)] text-lg font-bold">
+                <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold">
                   Central Hub
                 </h3>
                 <ul className="mt-4 flex flex-col gap-2.5">
@@ -115,7 +115,7 @@ export function Pricing() {
 
               {/* Satellites */}
               <div>
-                <h3 className="pricing-item font-[var(--font-outfit)] text-lg font-bold">
+                <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold">
                   Satellite Nodes (x4)
                 </h3>
                 <ul className="mt-4 flex flex-col gap-2.5">
@@ -143,10 +143,10 @@ export function Pricing() {
             </div>
 
             {/* CTA */}
-            <div className="mt-10 text-center">
+            <div className="mt-12 text-center">
               <a
                 href="#consultation"
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/25"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-base font-medium text-white transition-all duration-300 hover:bg-accent-light"
               >
                 Schedule a Consultation
                 <svg
