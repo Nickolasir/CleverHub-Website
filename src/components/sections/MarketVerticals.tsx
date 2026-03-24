@@ -59,6 +59,19 @@ const otherVerticals = [
       </svg>
     ),
   },
+  {
+    name: "CleverAide",
+    tagline: "For Assisted Living",
+    href: "/cleveraide",
+    description:
+      "Medication management, wellness check-ins, fall detection, and caregiver alerts. Voice-first assistance for elderly and disabled family members.",
+    highlight: "Add-on Module",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-8 w-8">
+        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+      </svg>
+    ),
+  },
 ];
 
 export function MarketVerticals() {
@@ -77,8 +90,8 @@ export function MarketVerticals() {
           One Platform. Every Market.
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
-          Whether you build homes, host guests, or manage buildings — CleverHub
-          adapts to your business.
+          Whether you build homes, host guests, manage buildings, or care for
+          loved ones — CleverHub adapts to your needs.
         </p>
       </div>
 
@@ -128,29 +141,37 @@ export function MarketVerticals() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#consultation"
-                className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors duration-300 hover:text-accent-light"
-              >
-                Schedule a consultation
-                <svg
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  className="h-4 w-4"
+              <div className="mt-6 flex items-center gap-6">
+                <Link
+                  href="/cleverhome"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors duration-300 hover:text-accent-light"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </a>
+                  Learn more
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="h-4 w-4 transition-transform duration-300 hover:translate-x-1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </Link>
+                <a
+                  href="#consultation"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-muted transition-colors duration-300 hover:text-accent"
+                >
+                  Schedule a consultation
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Other verticals — linked cards */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-3">
           {otherVerticals.map((v) => (
             <Link
               key={v.name}

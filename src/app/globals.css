@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbfbfd;
-  --foreground: #1d1d1f;
-  --accent: #0071e3;
-  --accent-light: #2997ff;
-  --muted: #86868b;
+  --background: #FDF6E3;
+  --foreground: #1a1a1a;
+  --accent: #D4A843;
+  --accent-light: #E8B84B;
+  --muted: #78716c;
   --card: #ffffff;
-  --card-border: #d2d2d7;
-  --warm-gray: #1d1d1f;
-  --section-alt: #f5f5f7;
-  --shadow-card: 0 2px 12px rgba(0,0,0,0.04), 0 0.5px 1px rgba(0,0,0,0.03);
-  --shadow-card-hover: 0 8px 30px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.03);
+  --card-border: #E8E0D0;
+  --warm-gray: #1a1a1a;
+  --section-alt: #FFF8E1;
+  --shadow-card: 0 2px 12px rgba(139,109,42,0.06), 0 0.5px 1px rgba(139,109,42,0.03);
+  --shadow-card-hover: 0 8px 30px rgba(139,109,42,0.1), 0 2px 4px rgba(139,109,42,0.04);
 }
 
 @theme inline {
@@ -50,7 +50,7 @@ body {
 }
 
 ::selection {
-  background-color: rgba(0, 113, 227, 0.2);
+  background-color: rgba(212, 168, 67, 0.2);
   color: inherit;
 }
 

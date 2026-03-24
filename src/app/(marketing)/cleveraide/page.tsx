@@ -6,53 +6,48 @@ import Link from "next/link";
 
 const features = [
   {
-    title: "WiFi Credential Rotation",
+    title: "Medication Management",
     description:
-      "Automatically generate and rotate WiFi passwords between guest stays. Credentials are shared via your booking platform or NFC tap at the door.",
+      "Scheduled voice reminders with confirmation tracking. \"Did you take your morning pills?\" Tracks taken, skipped, and missed doses with automatic caregiver alerts and refill reminders.",
   },
   {
-    title: "6-Category Guest Profile Wipe",
+    title: "Wellness Check-Ins",
     description:
-      "Complete digital reset between stays: WiFi, streaming logins, voice history, smart home preferences, saved routines, and device pairings — all wiped automatically at checkout.",
+      "Three daily proactive conversations — morning, afternoon, and evening — assessing mood, pain levels, and needs. Trends are shared with caregivers so nothing gets missed.",
   },
   {
-    title: "Voice Concierge Mode",
+    title: "Fall Detection & Inactivity Alerts",
     description:
-      "Guests say \"Clever\" to get local restaurant recommendations, check-out instructions, house rules, and property-specific information — all without you lifting a finger.",
+      "mmWave sensors detect falls and prolonged inactivity during waking hours. Graduated response: verbal check-in first, then caregiver escalation if there's no answer.",
   },
   {
-    title: "Pre-Check-In Climate Control",
+    title: "Caregiver Alert System",
     description:
-      "CleverHub monitors your booking calendar and pre-cools or pre-heats the property before guest arrival. Saves energy when vacant, ensures comfort on arrival.",
+      "Multi-channel alerts via push notification, Telegram, and WhatsApp. Severity-based escalation ensures the right person is notified — from routine updates to critical emergencies.",
   },
   {
-    title: "Automated Check-In / Check-Out",
+    title: "Daily Structured Routines",
     description:
-      "Smart lock codes generated per reservation. Guests get a seamless keyless entry experience. Codes expire automatically at checkout time.",
+      "Step-by-step voice guidance through morning, afternoon, and evening routines. Gentle prompts keep the day on track without feeling clinical or intrusive.",
   },
   {
-    title: "Energy & Occupancy Intelligence",
+    title: "Emergency Response",
     description:
-      "mmWave presence sensors detect which rooms are occupied. Lights, HVAC, and devices adjust automatically — cutting energy costs by up to 30% between stays.",
+      "\"I fell\" or \"Help\" triggers an intelligent assessment flow. Medical info is read aloud to first responders. Caregivers and emergency contacts are notified automatically.",
   },
   {
-    title: "Air Quality Monitoring",
+    title: "Accessibility Adaptations",
     description:
-      "VOC and humidity sensors alert you to smoking, vaping, or moisture issues in real time. Protect your property and maintain guest health standards.",
+      "Voice-first interaction with large text, high-contrast displays, slower speaking pace, and louder volume. Designed from the ground up for hearing and vision impairments.",
   },
   {
-    title: "Multi-Property Dashboard",
+    title: "Activity Monitoring",
     description:
-      "Manage all your properties from a single interface. See occupancy, energy usage, maintenance alerts, and guest feedback across your entire portfolio.",
-  },
-  {
-    title: "WhatsApp Guest Communication",
-    description:
-      "Communicate with guests via WhatsApp Business API. Automated check-in instructions, house rules, and real-time support — all without giving out your personal number.",
+      "Motion sensors, door events, and appliance usage tracked passively. Caregivers see daily activity summaries without intrusive cameras — privacy with peace of mind.",
   },
 ];
 
-export default function CleverHostPage() {
+export default function CleverAidePage() {
   const cardsRef = useStaggerReveal<HTMLDivElement>(".feature-card", {
     stagger: 0.12,
     y: 40,
@@ -91,26 +86,25 @@ export default function CleverHostPage() {
                 strokeWidth="2"
                 className="h-8 w-8"
               >
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0110 0v4" />
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
               </svg>
             </div>
           </div>
 
           <p className="mt-4 text-sm font-semibold uppercase tracking-widest text-accent">
-            For Airbnb & STR Hosts
+            For Assisted Living
           </p>
           <h1 className="mt-3 font-[var(--font-outfit)] text-4xl font-bold text-white md:text-6xl">
-            CleverHost
+            CleverAide
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/60">
-            Automate the entire guest lifecycle. From WiFi rotation to profile
-            wipes, voice concierge to energy management — CleverHost turns your
-            rental into a self-managing property.
+            Voice-first care for your loved ones. Medication reminders, wellness
+            check-ins, fall detection, and caregiver alerts — all powered by the
+            same AI that runs your smart home.
           </p>
 
           <div className="mt-8 inline-block rounded-full bg-accent/10 px-6 py-2 text-lg font-bold text-accent">
-            Starting at $99/mo
+            Add-on Module
           </div>
         </div>
       </section>
@@ -119,11 +113,11 @@ export default function CleverHostPage() {
       <SectionWrapper>
         <div className="text-center">
           <h2 className="font-[var(--font-outfit)] text-3xl font-bold tracking-tight md:text-4xl">
-            Everything Your Rental Needs
+            Care That Never Sleeps
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
-            Every feature designed to save you time, protect your property, and
-            delight your guests.
+            Every feature designed to keep your loved one safe, independent, and
+            connected — while giving caregivers peace of mind.
           </p>
         </div>
 
@@ -151,11 +145,11 @@ export default function CleverHostPage() {
       <section className="bg-warm-gray px-6 py-24 text-center">
         <div className="mx-auto max-w-2xl">
           <h2 className="font-[var(--font-outfit)] text-3xl font-bold text-white md:text-4xl">
-            Ready to Automate Your Rental?
+            Ready to Care for Your Loved One?
           </h2>
           <p className="mt-4 text-lg text-white/60">
-            Schedule a free consultation and we&apos;ll design a CleverHost
-            setup for your property.
+            Schedule a free consultation and we&apos;ll design a CleverAide
+            setup for your family.
           </p>
           <a
             href="/#consultation"

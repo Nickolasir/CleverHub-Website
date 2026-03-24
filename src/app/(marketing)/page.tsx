@@ -1,7 +1,9 @@
 import { HeroVideo } from "@/components/hero/HeroVideo";
 import { ProductOverview } from "@/components/sections/ProductOverview";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { FamilyIntelligence } from "@/components/sections/FamilyIntelligence";
 import { MarketVerticals } from "@/components/sections/MarketVerticals";
+import { MobileApp } from "@/components/sections/MobileApp";
 import { Pricing } from "@/components/sections/Pricing";
 import { KitchenHub } from "@/components/sections/KitchenHub";
 import { FeaturesGrid } from "@/components/sections/FeaturesGrid";
@@ -26,7 +28,9 @@ export default function Home() {
 
       <ProductOverview />
       <HowItWorks />
+      <FamilyIntelligence />
       <MarketVerticals />
+      <MobileApp />
       <Pricing />
       <KitchenHub />
       <FeaturesGrid />

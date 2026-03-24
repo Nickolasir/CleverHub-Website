@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "CleverHub",
   tagline: "AI-Powered Smart Home Automation",
   description:
-    "CleverHub brings sub-1-second voice control to every room. 40 TOPS local AI processing with satellite nodes in every room. For homebuilders, Airbnb hosts, and apartment complexes in Houston, TX.",
+    "CleverHub brings sub-1-second voice control to every room. 40 TOPS local AI processing with satellite nodes in every room. For homebuilders, Airbnb hosts, apartment complexes, and assisted living in Houston, TX.",
   url: "https://cleverhub.space",
   ogImage: "/images/cleverhub-og.jpg",
   contact: {
@@ -26,5 +26,10 @@ export const siteConfig = {
     "CleverHome",
     "CleverHost",
     "CleverBuilding",
+    "CleverAide",
+    "assisted living smart home",
+    "family smart home AI",
+    "elderly care smart home",
+    "mobile smart home app",
   ],
 } as const;

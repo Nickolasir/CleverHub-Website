@@ -102,7 +102,7 @@ export async function sendAffiliateApprovedEmail(data: { name: string; email: st
           Share this link with anyone interested in smart home automation. When they become a paying customer, you earn $500.
         </p>
         <p style="margin-top:24px">
-          <a href="https://cleverhub.space/portal/affiliates" style="background:#0071e3;color:white;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:500">
+          <a href="https://cleverhub.space/portal/affiliates" style="background:#D4A843;color:white;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:500">
             View Your Dashboard
           </a>
         </p>
@@ -129,7 +129,7 @@ export async function sendReferralNotification(data: { affiliateName: string; af
           <strong>${escapeHtml(data.referredName)}</strong> just used your referral link. We'll keep you updated as they move through the process.
         </p>
         <p style="margin-top:24px">
-          <a href="https://cleverhub.space/portal/affiliates" style="color:#0071e3;font-weight:500">Track your referrals &rarr;</a>
+          <a href="https://cleverhub.space/portal/affiliates" style="color:#D4A843;font-weight:500">Track your referrals &rarr;</a>
         </p>
       </div>
     `,

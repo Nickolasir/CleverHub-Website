@@ -2,9 +2,10 @@ import { siteConfig } from "@/config/site";
 
 const footerLinks = {
   Product: [
-    { label: "CleverHome", href: "#solutions" },
+    { label: "CleverHome", href: "/cleverhome" },
     { label: "CleverHost", href: "/cleverhost" },
     { label: "CleverBuilding", href: "/cleverbuilding" },
+    { label: "CleverAide", href: "/cleveraide" },
     { label: "Features", href: "#features" },
   ],
   Partners: [

@@ -71,6 +71,75 @@ const features = [
       </svg>
     ),
   },
+  {
+    title: "Family Agents",
+    description:
+      "Every family member gets their own named AI with a custom wake word. Age-appropriate permissions keep kids safe and parents in control.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 00-3-3.87" />
+        <path d="M16 3.13a4 4 0 010 7.75" />
+      </svg>
+    ),
+  },
+  {
+    title: "Assisted Living",
+    description:
+      "Medication reminders, wellness check-ins, fall detection, and caregiver alerts for elderly family members — all voice-first.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Mobile App",
+    description:
+      "Full device control, family management, and voice commands from your phone. Available on iOS and Android.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+        <line x1="12" y1="18" x2="12" y2="18.01" />
+      </svg>
+    ),
+  },
+  {
+    title: "Smart Notifications",
+    description:
+      "Telegram, WhatsApp, and push alerts for caregiver needs, parental controls, guest arrivals, and security events.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+        <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+        <path d="M13.73 21a2 2 0 01-3.46 0" />
+      </svg>
+    ),
+  },
+  {
+    title: "Security & Audit",
+    description:
+      "Every device command logged with user, timestamp, and room. 19 tracked audit actions with role-based access and automated security testing.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0110 0v4" />
+      </svg>
+    ),
+  },
+  {
+    title: "Satellite Nodes",
+    description:
+      "ESP32-S3 nodes at $8 per room. Voice, sensors, and presence detection with on-device wake word recognition in under 10ms.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+        <path d="M5 12.55a11 11 0 0114.08 0" />
+        <path d="M1.42 9a16 16 0 0121.16 0" />
+        <path d="M8.53 16.11a6 6 0 016.95 0" />
+        <line x1="12" y1="20" x2="12" y2="20.01" />
+      </svg>
+    ),
+  },
 ];
 
 export function FeaturesGrid() {
@@ -92,7 +161,7 @@ export function FeaturesGrid() {
 
       <div
         ref={gridRef}
-        className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
         {features.map((feature) => (
           <div
