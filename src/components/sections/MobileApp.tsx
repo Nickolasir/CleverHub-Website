@@ -69,7 +69,7 @@ const highlights = [
 const badges = [
   { label: "17+ Screens", value: "17+" },
   { label: "Real-Time Updates", value: "Live" },
-  { label: "iOS & Android", value: "Both" },
+  { label: "iOS & Android", value: "Soon" },
 ];
 
 export function MobileApp() {
@@ -88,8 +88,15 @@ export function MobileApp() {
         <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
           Your Home in Your Pocket
         </h2>
+        <div className="mx-auto mt-4 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+          </span>
+          <span className="text-sm font-semibold text-accent">Coming Soon</span>
+        </div>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
-          The CleverHub mobile app puts full control on iOS and Android. Voice
+          The CleverHub mobile app is coming soon to iOS and Android. Voice
           commands, device control, family management, and CleverAide — all from
           your phone.
         </p>
