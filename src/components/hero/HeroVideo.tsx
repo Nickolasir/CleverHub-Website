@@ -20,7 +20,7 @@ const overlays = [
   },
   {
     text: "Your Home, Intelligent.",
-    subtext: "Sub-1-second voice control that just works.",
+    subtext: "Near-instant voice control that just works.",
   },
 ];
 
