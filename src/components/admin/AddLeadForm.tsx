@@ -62,28 +62,28 @@ export function AddLeadForm({ onSuccess, onCancel }: AddLeadFormProps) {
       )}
 
       <div>
-        <label className={labelClass}>Name *</label>
-        <input name="name" required className={inputClass} placeholder="John Smith" />
+        <label htmlFor="lead-name" className={labelClass}>Name *</label>
+        <input id="lead-name" name="name" required className={inputClass} placeholder="John Smith" />
       </div>
 
       <div>
-        <label className={labelClass}>Email *</label>
-        <input name="email" type="email" required className={inputClass} placeholder="john@example.com" />
+        <label htmlFor="lead-email" className={labelClass}>Email *</label>
+        <input id="lead-email" name="email" type="email" required className={inputClass} placeholder="john@example.com" />
       </div>
 
       <div>
-        <label className={labelClass}>Phone</label>
-        <input name="phone" type="tel" className={inputClass} placeholder="(555) 000-0000" />
+        <label htmlFor="lead-phone" className={labelClass}>Phone</label>
+        <input id="lead-phone" name="phone" type="tel" className={inputClass} placeholder="(555) 000-0000" />
       </div>
 
       <div>
-        <label className={labelClass}>Company</label>
-        <input name="company" className={inputClass} placeholder="Company name" />
+        <label htmlFor="lead-company" className={labelClass}>Company</label>
+        <input id="lead-company" name="company" className={inputClass} placeholder="Company name" />
       </div>
 
       <div>
-        <label className={labelClass}>Vertical</label>
-        <select name="vertical" className={inputClass}>
+        <label htmlFor="lead-vertical" className={labelClass}>Vertical</label>
+        <select id="lead-vertical" name="vertical" className={inputClass}>
           {verticals.map((v) => (
             <option key={v.value} value={v.value}>{v.label}</option>
           ))}
@@ -91,8 +91,8 @@ export function AddLeadForm({ onSuccess, onCancel }: AddLeadFormProps) {
       </div>
 
       <div>
-        <label className={labelClass}>Message / Notes</label>
-        <textarea name="message" rows={3} className={inputClass} placeholder="Any initial notes..." />
+        <label htmlFor="lead-message" className={labelClass}>Message / Notes</label>
+        <textarea id="lead-message" name="message" rows={3} className={inputClass} placeholder="Any initial notes..." />
       </div>
 
       <div className="flex gap-3 pt-2">

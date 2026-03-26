@@ -86,7 +86,7 @@ export function KitchenHub() {
   return (
     <SectionWrapper id="kitchen-hub">
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
           Kitchen Intelligence
         </p>
         <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">

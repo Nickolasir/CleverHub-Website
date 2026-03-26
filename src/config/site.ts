@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "CleverHub",
   tagline: "AI-Powered Smart Home Automation",
   description:
-    "CleverHub brings sub-1-second voice control to every room. 40 TOPS local AI processing with satellite nodes in every room. For homebuilders, Airbnb hosts, apartment complexes, and assisted living in Houston, TX.",
+    "AI-powered smart home automation in Houston, TX. Sub-1-second voice control, 40 TOPS local processing, and satellite nodes in every room.",
   url: "https://cleverhub.space",
   ogImage: "/images/cleverhub-og.jpg",
   contact: {

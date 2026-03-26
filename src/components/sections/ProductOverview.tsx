@@ -45,7 +45,7 @@ export function ProductOverview() {
 
         {/* Copy */}
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
             The CleverHub System
           </p>
           <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold leading-[1.1] tracking-tight md:text-5xl">

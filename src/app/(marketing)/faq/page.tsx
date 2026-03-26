@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import AffiliateContent from "./Content";
+import FaqContent from "./Content";
 import { faqs } from "./faq-data";
 
 export const metadata: Metadata = {
-  title: "Affiliate Program - Earn $500 Per Referral",
+  title: "FAQ - Frequently Asked Questions",
   description:
-    "Join the CleverHub affiliate program. Earn $500 for every referral that becomes a customer. Open to real estate agents, contractors, and property managers in Houston, TX.",
-  alternates: { canonical: "/affiliate" },
+    "Common questions about CleverHub smart home automation in Houston, TX. Learn about installation, pricing, voice control, privacy, and compatibility.",
+  alternates: { canonical: "/faq" },
 };
 
 const faqJsonLd = {
@@ -19,14 +19,14 @@ const faqJsonLd = {
   })),
 };
 
-export default function AffiliatePage() {
+export default function FaqPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <AffiliateContent />
+      <FaqContent />
     </>
   );
 }

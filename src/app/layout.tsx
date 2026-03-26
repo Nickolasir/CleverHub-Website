@@ -57,6 +57,9 @@ export const metadata: Metadata = {
     ],
     apple: "/images/cleverhub-logo.png",
   },
+  alternates: {
+    canonical: "/",
+  },
   robots: {
     index: true,
     follow: true,

@@ -5,7 +5,8 @@
   --foreground: #1a1a1a;
   --accent: #D4A843;
   --accent-light: #E8B84B;
-  --muted: #78716c;
+  --accent-text: #9B7A2D;
+  --muted: #645C56;
   --card: #ffffff;
   --card-border: #E8E0D0;
   --warm-gray: #1a1a1a;
@@ -19,6 +20,7 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
+  --color-accent-text: var(--accent-text);
   --color-muted: var(--muted);
   --color-card: var(--card);
   --color-card-border: var(--card-border);

@@ -61,28 +61,28 @@ export function AddAffiliateForm({ onSuccess, onCancel }: AddAffiliateFormProps)
       )}
 
       <div>
-        <label className={labelClass}>Name *</label>
-        <input name="name" required className={inputClass} placeholder="Jane Doe" />
+        <label htmlFor="aff-admin-name" className={labelClass}>Name *</label>
+        <input id="aff-admin-name" name="name" required className={inputClass} placeholder="Jane Doe" />
       </div>
 
       <div>
-        <label className={labelClass}>Email *</label>
-        <input name="email" type="email" required className={inputClass} placeholder="jane@example.com" />
+        <label htmlFor="aff-admin-email" className={labelClass}>Email *</label>
+        <input id="aff-admin-email" name="email" type="email" required className={inputClass} placeholder="jane@example.com" />
       </div>
 
       <div>
-        <label className={labelClass}>Phone</label>
-        <input name="phone" type="tel" className={inputClass} placeholder="(555) 000-0000" />
+        <label htmlFor="aff-admin-phone" className={labelClass}>Phone</label>
+        <input id="aff-admin-phone" name="phone" type="tel" className={inputClass} placeholder="(555) 000-0000" />
       </div>
 
       <div>
-        <label className={labelClass}>Company</label>
-        <input name="company" className={inputClass} placeholder="Company name" />
+        <label htmlFor="aff-admin-company" className={labelClass}>Company</label>
+        <input id="aff-admin-company" name="company" className={inputClass} placeholder="Company name" />
       </div>
 
       <div>
-        <label className={labelClass}>Profession *</label>
-        <select name="profession" required className={inputClass}>
+        <label htmlFor="aff-admin-profession" className={labelClass}>Profession *</label>
+        <select id="aff-admin-profession" name="profession" required className={inputClass}>
           {professions.map((p) => (
             <option key={p.value} value={p.value}>{p.label}</option>
           ))}

@@ -181,6 +181,11 @@ export function HeroVideo() {
 
   return (
     <div ref={heroRef} className="relative h-screen bg-black">
+      {/* SEO: single H1 for the page, visually hidden */}
+      <h1 className="sr-only">
+        AI-Powered Smart Home Automation in Houston, TX
+      </h1>
+
       {/* Video background */}
       <video
         ref={videoRef}
@@ -189,7 +194,7 @@ export function HeroVideo() {
         muted
         playsInline
         preload="auto"
-        poster="/images/keyframe-01.png"
+        poster="/images/keyframe-01.webp"
         aria-label="CleverHub smart home product showcase"
       >
         <source src="/video/cleverhub-hero.mp4" type="video/mp4" />

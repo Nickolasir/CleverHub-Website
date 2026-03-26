@@ -29,7 +29,7 @@ export function FamilyIntelligence() {
       <div className="grid items-center gap-12 lg:grid-cols-2">
         {/* Left — Copy */}
         <div ref={textRef}>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
             Family Intelligence
           </p>
           <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">

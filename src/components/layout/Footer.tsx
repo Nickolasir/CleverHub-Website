@@ -15,6 +15,7 @@ const footerLinks = {
   ],
   Company: [
     { label: "About", href: "#product" },
+    { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "#consultation" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
@@ -41,7 +42,7 @@ export function Footer() {
               {siteConfig.contact.address} &middot;{" "}
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="transition-colors duration-300 hover:text-accent"
+                className="underline decoration-white/20 underline-offset-2 transition-all duration-300 hover:text-accent hover:decoration-accent/40"
               >
                 {siteConfig.contact.email}
               </a>
@@ -59,7 +60,7 @@ export function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-white/60 transition-colors duration-300 hover:text-white"
+                      className="text-sm text-white/60 underline decoration-white/20 underline-offset-2 transition-all duration-300 hover:text-white hover:decoration-white/60"
                     >
                       {link.label}
                     </a>
