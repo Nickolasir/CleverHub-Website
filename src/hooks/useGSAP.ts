@@ -17,13 +17,13 @@ export function useFadeIn<T extends HTMLElement = HTMLDivElement>(
 
     const trigger = ScrollTrigger.create({
       trigger: el,
-      start: "top 88%",
+      start: "top 92%",
       once: true,
       onEnter: () => {
         gsap.to(el, {
           opacity: 1,
           y: 0,
-          duration: options?.duration ?? 0.9,
+          duration: options?.duration ?? 0.5,
           delay: options?.delay ?? 0,
           ease: "power2.out",
         });
@@ -52,14 +52,14 @@ export function useStaggerReveal<T extends HTMLElement = HTMLDivElement>(
 
     const trigger = ScrollTrigger.create({
       trigger: el,
-      start: "top 85%",
+      start: "top 92%",
       once: true,
       onEnter: () => {
         gsap.to(children, {
           opacity: 1,
           y: 0,
-          duration: 0.85,
-          stagger: options?.stagger ?? 0.08,
+          duration: 0.45,
+          stagger: options?.stagger ?? 0.05,
           ease: "power2.out",
         });
       },

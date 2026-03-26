@@ -80,3 +80,47 @@ export async function PATCH(request: NextRequest) {
 
   return NextResponse.json({ lead: data });
 }
+
+export async function POST(request: NextRequest) {
+  const supabase = await createServerClient();
+  const user = await verifyCrmAdmin(supabase);
+  if (!user) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
+  const body = await request.json();
+  const { name, email, phone, company, vertical, source_type, message } = body;
+
+  if (!email || !name) {
+    return NextResponse.json({ error: "Name and email are required" }, { status: 400 });
+  }
+
+  const { data, error } = await supabase
+    .schema("web")
+    .from("leads")
+    .insert({
+      name,
+      email,
+      phone: phone || "",
+      company: company || "",
+      vertical: vertical || null,
+      source_type: source_type || "manual",
+      source: "admin",
+      message: message || "",
+      status: "new",
+    })
+    .select()
+    .single();
+
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  await supabase.schema("web").from("crm_activities").insert({
+    entity_type: "lead",
+    entity_id: data.id,
+    actor_id: user.id,
+    action: "lead_created",
+    details: { source: "admin_manual" },
+  });
+
+  return NextResponse.json({ lead: data }, { status: 201 });
+}

@@ -161,6 +161,7 @@ export function MarketVerticals() {
                 </Link>
                 <a
                   href="#consultation"
+                  data-track="cta_vertical_consultation"
                   className="inline-flex items-center gap-1 text-sm font-medium text-muted transition-colors duration-300 hover:text-accent"
                 >
                   Schedule a consultation

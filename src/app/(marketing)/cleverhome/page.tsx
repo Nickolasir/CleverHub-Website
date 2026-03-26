@@ -41,6 +41,11 @@ const features = [
       "ePantry inventory tracking, smart shopping lists, receipt scanning, and expiry alerts. The kitchen manages itself — from what's in the fridge to what needs to be bought.",
   },
   {
+    title: "TV Dashboard",
+    description:
+      "Your living room TV becomes an always-on smart home command center. Device status, scene controls, and activity feed — all navigable with the TV remote. Launch it from your phone with one tap via Wake-on-LAN.",
+  },
+  {
     title: "Local-First Privacy",
     description:
       "All voice processing happens on-device with the 40 TOPS AI accelerator. No audio ever leaves the home. Complete privacy by design — not by policy.",

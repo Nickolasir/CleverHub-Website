@@ -108,7 +108,7 @@ export async function sendAffiliateApprovedEmail(data: { name: string; email: st
         </p>
         <hr style="border:none;border-top:1px solid #eee;margin:32px 0" />
         <p style="color:#999;font-size:13px">
-          CleverHub by CleverAutomations &middot; Houston, TX<br>
+          CleverHub &middot; Houston, TX<br>
           <a href="https://cleverhub.space" style="color:#0066ff">cleverhub.space</a>
         </p>
       </div>
@@ -160,7 +160,7 @@ export async function sendConsultationConfirmation(data: ConsultationEmailData) 
         <p style="color:#555">${escapeHtml(data.address)}<br>${data.bedrooms} bedrooms${data.hasOffice ? " + home office" : ""}</p>
         <hr style="border:none;border-top:1px solid #eee;margin:32px 0" />
         <p style="color:#999;font-size:13px">
-          CleverHub by CleverAutomations &middot; Houston, TX<br>
+          CleverHub &middot; Houston, TX<br>
           <a href="https://cleverhub.space" style="color:#0066ff">cleverhub.space</a>
         </p>
       </div>

@@ -63,6 +63,11 @@ body {
   scrollbar-width: none;
 }
 
+/* Offset anchored sections below the fixed navbar */
+#consultation {
+  scroll-margin-top: 80px;
+}
+
 /* Typewriter cursor blink */
 @keyframes blink {
   0%, 50% { opacity: 1; }

@@ -1,4 +1,5 @@
 import { siteConfig } from "@/config/site";
+import { LogoIcon } from "@/components/brand/Logo";
 
 const footerLinks = {
   Product: [
@@ -27,12 +28,12 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#333] to-[#555] ring-1 ring-white/10" />
+            <a href="/" className="flex items-center gap-2.5">
+              <LogoIcon size={32} />
               <span className="font-[var(--font-outfit)] text-lg font-semibold tracking-tight">
-                CleverHub
+                Clever<span className="text-[#D4A017]">Hub</span>
               </span>
-            </div>
+            </a>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/60">
               {siteConfig.description}
             </p>
@@ -70,8 +71,15 @@ export function Footer() {
         </div>
 
         <div className="mt-16 border-t border-white/8 pt-8 text-center text-sm text-white/30">
-          &copy; {new Date().getFullYear()} CleverAutomations. All rights
+          &copy; {new Date().getFullYear()} CleverHub. All rights
           reserved.
+          <span className="mx-2 text-white/10">&middot;</span>
+          <a
+            href="/login?redirect=/admin/crm"
+            className="text-white/15 transition-colors duration-300 hover:text-white/30"
+          >
+            Manage
+          </a>
         </div>
       </div>
     </footer>

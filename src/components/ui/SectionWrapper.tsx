@@ -22,7 +22,7 @@ export function SectionWrapper({
     <section
       id={id}
       ref={ref}
-      className={`px-6 py-28 md:py-40 ${
+      className={`px-6 py-12 md:py-16 ${
         dark ? "bg-warm-gray text-white" : "bg-background"
       } ${className}`}
     >

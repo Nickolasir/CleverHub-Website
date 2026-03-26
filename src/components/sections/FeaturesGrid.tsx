@@ -128,9 +128,20 @@ const features = [
     ),
   },
   {
+    title: "TV Dashboard",
+    description:
+      "Your TV becomes an always-on command center. Device status, scene controls, and activity feed — all navigable with your TV remote.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <path d="M12 17v4M7 21h10" />
+      </svg>
+    ),
+  },
+  {
     title: "Satellite Nodes",
     description:
-      "ESP32-S3 nodes at $8 per room. Voice, sensors, and presence detection with on-device wake word recognition in under 10ms.",
+      "ESP32-S3 satellite nodes in every room. Voice, sensors, and presence detection with on-device wake word recognition in under 10ms.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
         <path d="M5 12.55a11 11 0 0114.08 0" />

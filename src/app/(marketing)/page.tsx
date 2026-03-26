@@ -4,9 +4,11 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { FamilyIntelligence } from "@/components/sections/FamilyIntelligence";
 import { MarketVerticals } from "@/components/sections/MarketVerticals";
 import { MobileApp } from "@/components/sections/MobileApp";
+import { TVDashboard } from "@/components/sections/TVDashboard";
 import { Pricing } from "@/components/sections/Pricing";
 import { KitchenHub } from "@/components/sections/KitchenHub";
 import { FeaturesGrid } from "@/components/sections/FeaturesGrid";
+import { ConsultationSection } from "@/components/sections/ConsultationSection";
 
 export default function Home() {
   return (
@@ -14,7 +16,7 @@ export default function Home() {
       <HeroVideo />
 
       {/* CTA band between hero and product */}
-      <section className="bg-section-alt px-6 py-20 text-center md:py-28">
+      <section className="bg-section-alt px-6 py-10 text-center md:py-14">
         <p className="mb-6 font-[var(--font-outfit)] text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
           Ready to get started?
         </p>
@@ -31,9 +33,11 @@ export default function Home() {
       <FamilyIntelligence />
       <MarketVerticals />
       <MobileApp />
+      <TVDashboard />
       <Pricing />
       <KitchenHub />
       <FeaturesGrid />
+      <ConsultationSection />
     </>
   );
 }

@@ -47,10 +47,10 @@ export function FamilyIntelligence() {
             reign. And every interaction is logged for complete transparency.
           </p>
           <Link
-            href="/cleverhome"
+            href="#features"
             className="mt-8 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors duration-300 hover:text-accent-light"
           >
-            Learn more about CleverHome
+            Explore all features
             <svg
               viewBox="0 0 20 20"
               fill="currentColor"

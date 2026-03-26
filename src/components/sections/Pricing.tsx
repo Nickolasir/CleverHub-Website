@@ -146,6 +146,7 @@ export function Pricing() {
             <div className="mt-12 text-center">
               <a
                 href="#consultation"
+                data-track="cta_pricing_consultation"
                 className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-base font-medium text-white transition-all duration-300 hover:bg-accent-light"
               >
                 Schedule a Consultation

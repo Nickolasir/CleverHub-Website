@@ -97,7 +97,8 @@ export async function updateSession(
 
   // Redirect authenticated users away from login
   if (isLoginRoute && user) {
-    return NextResponse.redirect(new URL("/portal", request.url));
+    const redirectTo = request.nextUrl.searchParams.get("redirect") || "/portal";
+    return NextResponse.redirect(new URL(redirectTo, request.url));
   }
 
   return response;

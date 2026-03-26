@@ -3,6 +3,7 @@
 import { useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
+import { LogoIcon } from "@/components/brand/Logo";
 
 
 type AuthTab = "password" | "magic-link";
@@ -88,10 +89,10 @@ export default function LoginPage() {
     <div className="w-full max-w-md">
       {/* Logo */}
       <div className="mb-8 text-center">
-        <a href="/" className="inline-flex items-center gap-2">
-          <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#0a0a0a] to-[#333] shadow-lg ring-1 ring-accent/20" />
+        <a href="/" className="inline-flex items-center gap-2.5">
+          <LogoIcon size={40} />
           <span className="font-[var(--font-outfit)] text-2xl font-semibold tracking-tight text-foreground">
-            CleverHub
+            Clever<span className="text-[#D4A017]">Hub</span>
           </span>
         </a>
       </div>

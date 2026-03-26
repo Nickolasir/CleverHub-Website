@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import { AuthProvider } from "@/components/providers/AuthProvider";
+import { AnalyticsProvider } from "@/components/providers/AnalyticsProvider";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -25,8 +26,8 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
-  authors: [{ name: "CleverAutomations" }],
-  creator: "CleverAutomations",
+  authors: [{ name: "CleverHub" }],
+  creator: "CleverHub",
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: "website",
@@ -50,6 +51,12 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
+  icons: {
+    icon: [
+      { url: "/images/cleverhub-icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/images/cleverhub-logo.png",
+  },
   robots: {
     index: true,
     follow: true,
@@ -68,7 +75,7 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      name: "CleverAutomations",
+      name: "CleverHub",
       url: siteConfig.url,
       logo: `${siteConfig.url}/images/cleverhub-logo.png`,
       contactPoint: {
@@ -84,7 +91,7 @@ const jsonLd = {
       name: "CleverHub",
       description:
         "AI-powered smart home hub with sub-1-second voice control, 40 TOPS local AI processing, and satellite nodes in every room.",
-      brand: { "@type": "Brand", name: "CleverAutomations" },
+      brand: { "@type": "Brand", name: "CleverHub" },
       offers: {
         "@type": "Offer",
         price: "2500",
@@ -93,7 +100,7 @@ const jsonLd = {
     },
     {
       "@type": "LocalBusiness",
-      name: "CleverAutomations",
+      name: "CleverHub",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Houston",
@@ -120,7 +127,9 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${outfit.variable} antialiased`}>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <AnalyticsProvider>{children}</AnalyticsProvider>
+        </AuthProvider>
       </body>
     </html>
   );

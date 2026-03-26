@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
+import { LogoIcon } from "@/components/brand/Logo";
 
 const portalLinks = [
   { label: "Dashboard", href: "/portal", icon: "grid" },
@@ -44,10 +45,10 @@ export function PortalSidebar() {
     <aside className="flex h-full w-64 flex-col border-r border-card-border bg-card">
       {/* Logo */}
       <div className="flex items-center gap-2 border-b border-card-border px-6 py-5">
-        <Link href="/portal" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#0a0a0a] to-[#333] shadow-lg ring-1 ring-accent/20" />
+        <Link href="/" className="flex items-center gap-2.5">
+          <LogoIcon size={32} />
           <span className="font-[var(--font-outfit)] text-lg font-semibold tracking-tight text-foreground">
-            CleverHub
+            Clever<span className="text-[#D4A017]">Hub</span>
           </span>
         </Link>
       </div>
