@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "AI-Powered Smart Home Automation",
   description:
     "AI-powered smart home automation in Houston, TX. Sub-1-second voice control, 40 TOPS local processing, and satellite nodes in every room.",
-  url: "https://cleverhub.space",
+  url: "https://www.cleverhub.space",
   ogImage: "/images/cleverhub-og.jpg",
   contact: {
     email: "nickolasir@msn.com",

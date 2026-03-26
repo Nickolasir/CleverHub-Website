@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   description:
     "Common questions about CleverHub smart home automation in Houston, TX. Learn about installation, pricing, voice control, privacy, and compatibility.",
   alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "FAQ - Frequently Asked Questions | CleverHub",
+    description:
+      "Common questions about CleverHub smart home automation in Houston, TX. Learn about installation, pricing, voice control, privacy, and compatibility.",
+    url: "/faq",
+  },
 };
 
 const faqJsonLd = {
