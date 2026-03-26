@@ -141,7 +141,7 @@ export default function AffiliatePortalPage() {
           Affiliate Account {affiliate.status === "rejected" ? "Not Approved" : "Suspended"}
         </h1>
         <p className="text-sm text-muted">
-          Please contact us at hello@cleverhub.space for more information.
+          Please contact us at nickolasir@msn.com for more information.
         </p>
       </div>
     );
