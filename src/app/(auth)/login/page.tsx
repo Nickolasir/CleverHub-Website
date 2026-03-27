@@ -26,18 +26,29 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
 
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      if (!supabase) {
+        setError("Authentication service is unavailable. Please try again later.");
+        setLoading(false);
+        return;
+      }
 
-    if (authError) {
-      setError(authError.message);
+      const { error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (authError) {
+        setError(authError.message);
+        setLoading(false);
+        return;
+      }
+
+      router.push(redirectTo);
+    } catch {
+      setError("Something went wrong. Please try again.");
       setLoading(false);
-      return;
     }
-
-    router.push(redirectTo);
   }
 
   async function handleMagicLink(e: React.FormEvent) {
@@ -45,21 +56,32 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
 
-    const { error: authError } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`,
-      },
-    });
+    try {
+      if (!supabase) {
+        setError("Authentication service is unavailable. Please try again later.");
+        setLoading(false);
+        return;
+      }
 
-    if (authError) {
-      setError(authError.message);
+      const { error: authError } = await supabase.auth.signInWithOtp({
+        email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`,
+        },
+      });
+
+      if (authError) {
+        setError(authError.message);
+        setLoading(false);
+        return;
+      }
+
+      setMagicLinkSent(true);
       setLoading(false);
-      return;
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setLoading(false);
     }
-
-    setMagicLinkSent(true);
-    setLoading(false);
   }
 
   async function handleSignUp(e: React.FormEvent) {
@@ -67,22 +89,33 @@ export default function LoginPage() {
     setError("");
     setLoading(true);
 
-    const { error: authError } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`,
-      },
-    });
+    try {
+      if (!supabase) {
+        setError("Authentication service is unavailable. Please try again later.");
+        setLoading(false);
+        return;
+      }
 
-    if (authError) {
-      setError(authError.message);
+      const { error: authError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback?redirect=${encodeURIComponent(redirectTo)}`,
+        },
+      });
+
+      if (authError) {
+        setError(authError.message);
+        setLoading(false);
+        return;
+      }
+
+      setMagicLinkSent(true);
       setLoading(false);
-      return;
+    } catch {
+      setError("Something went wrong. Please try again.");
+      setLoading(false);
     }
-
-    setMagicLinkSent(true);
-    setLoading(false);
   }
 
   return (
