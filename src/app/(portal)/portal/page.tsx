@@ -124,7 +124,7 @@ export default function PortalDashboard() {
             Account {affiliate.status === "rejected" ? "Not Approved" : "Suspended"}
           </h2>
           <p className="text-sm text-muted">
-            Please contact us at nickolasir@msn.com for more information.
+            Please contact us through our consultation form for more information.
           </p>
         </div>
       ) : (

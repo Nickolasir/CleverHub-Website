@@ -58,12 +58,12 @@ export default function TermsPage() {
               4. Contact Us
             </h2>
             <p className="mt-3">
-              If you have questions about these terms, please contact us at{" "}
+              If you have questions about these terms, please use our{" "}
               <a
-                href="mailto:nickolasir@msn.com"
+                href="/#consultation"
                 className="text-accent underline underline-offset-2 hover:text-accent-light"
               >
-                nickolasir@msn.com
+                consultation form
               </a>
               .
             </p>

@@ -6,7 +6,7 @@ export const siteConfig = {
   url: "https://www.cleverhub.space",
   ogImage: "/images/cleverhub-og.jpg",
   contact: {
-    email: "nickolasir@msn.com",
+    email: "contact@cleverhub.space",
     phone: "(713) 555-0100",
     address: "Houston, TX",
   },
