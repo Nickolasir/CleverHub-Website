@@ -36,7 +36,7 @@ export const faqs = [
   // Installation & Pricing
   {
     q: "How much does CleverHub cost?",
-    a: "The standard CleverHub system — one hub plus four satellite nodes with all built-in sensors — starts at $2,500. This includes the hardware and initial setup. Optional cloud subscriptions for advanced AI features are available but not required for core functionality.",
+    a: "CleverHub offers two tiers: the Apartment system (one hub plus one satellite node) starts at $1,899, and the Standard system (one hub plus four satellite nodes) is $2,999. Both include all built-in sensors and initial setup. Additional satellite nodes can be added for $650 each. Optional cloud subscriptions for advanced AI features are available at $100/month but not required for core functionality.",
     category: "pricing",
   },
   {

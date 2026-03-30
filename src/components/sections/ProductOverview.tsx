@@ -6,7 +6,7 @@ import { useStaggerReveal } from "@/hooks/useGSAP";
 const stats = [
   { value: "40 TOPS", label: "AI Processing" },
   { value: "<1s", label: "Voice Response" },
-  { value: "$2,500", label: "Standard System" },
+  { value: "From $1,899", label: "Complete System" },
 ];
 
 export function ProductOverview() {

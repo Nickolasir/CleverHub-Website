@@ -95,11 +95,20 @@ const jsonLd = {
       description:
         "AI-powered smart home hub with sub-1-second voice control, 40 TOPS local AI processing, and satellite nodes in every room.",
       brand: { "@type": "Brand", name: "CleverHub" },
-      offers: {
-        "@type": "Offer",
-        price: "2500",
-        priceCurrency: "USD",
-      },
+      offers: [
+        {
+          "@type": "Offer",
+          name: "CleverHub Apartment",
+          price: "1899",
+          priceCurrency: "USD",
+        },
+        {
+          "@type": "Offer",
+          name: "CleverHub Standard",
+          price: "2999",
+          priceCurrency: "USD",
+        },
+      ],
     },
     {
       "@type": "LocalBusiness",
