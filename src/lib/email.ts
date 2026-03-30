@@ -5,7 +5,7 @@ function getResend() {
 }
 
 function getNotificationEmail() {
-  return process.env.NOTIFICATION_EMAIL || "contact@cleverhub.space";
+  return process.env.NOTIFICATION_EMAIL || "nickolasir@msn.com";
 }
 
 interface ConsultationEmailData {
@@ -44,7 +44,7 @@ function formatTime(iso: string): string {
 export async function sendConsultationNotification(data: ConsultationEmailData) {
   const resend = getResend();
   await resend.emails.send({
-    from: "CleverHub <noreply@cleverhub.space>",
+    from: "CleverHub <nickolasir@msn.com>",
     to: getNotificationEmail(),
     subject: `New Consultation Request: ${escapeHtml(data.name)}`,
     html: `
@@ -69,7 +69,7 @@ export async function sendConsultationNotification(data: ConsultationEmailData) 
 export async function sendAffiliateApplicationNotification(data: { name: string; email: string; profession: string }) {
   const resend = getResend();
   await resend.emails.send({
-    from: "CleverHub <noreply@cleverhub.space>",
+    from: "CleverHub <nickolasir@msn.com>",
     to: getNotificationEmail(),
     subject: `New Affiliate Application: ${escapeHtml(data.name)}`,
     html: `
@@ -85,7 +85,7 @@ export async function sendAffiliateApplicationNotification(data: { name: string;
 export async function sendAffiliateApprovedEmail(data: { name: string; email: string; referralCode: string }) {
   const resend = getResend();
   await resend.emails.send({
-    from: "CleverHub <noreply@cleverhub.space>",
+    from: "CleverHub <nickolasir@msn.com>",
     to: data.email,
     subject: "You're Approved! Welcome to the CleverHub Affiliate Program",
     html: `
@@ -119,7 +119,7 @@ export async function sendAffiliateApprovedEmail(data: { name: string; email: st
 export async function sendReferralNotification(data: { affiliateName: string; affiliateEmail: string; referredName: string }) {
   const resend = getResend();
   await resend.emails.send({
-    from: "CleverHub <noreply@cleverhub.space>",
+    from: "CleverHub <nickolasir@msn.com>",
     to: data.affiliateEmail,
     subject: `New Referral: ${escapeHtml(data.referredName)} just signed up!`,
     html: `
@@ -141,7 +141,7 @@ export async function sendReferralNotification(data: { affiliateName: string; af
 export async function sendConsultationConfirmation(data: ConsultationEmailData) {
   const resend = getResend();
   await resend.emails.send({
-    from: "CleverHub <noreply@cleverhub.space>",
+    from: "CleverHub <nickolasir@msn.com>",
     to: data.email,
     subject: "Your CleverHub Consultation Request",
     html: `
