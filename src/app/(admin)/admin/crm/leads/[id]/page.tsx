@@ -3,7 +3,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import { StatusBadge } from "@/components/portal/StatusBadge";
-import type { Lead, LeadStatus, CrmNote, CrmActivity } from "@/types/crm";
+import { ContactLogSection } from "@/components/admin/ContactLog";
+import type { Lead, LeadStatus, CrmNote, CrmActivity, ContactLog } from "@/types/crm";
 import { useAuth } from "@/hooks/useAuth";
 
 const statusPipeline: LeadStatus[] = ["new", "contacted", "qualified", "converted", "closed"];
@@ -13,13 +14,14 @@ export default function LeadDetailPage() {
   const { supabase } = useAuth();
   const [lead, setLead] = useState<Lead | null>(null);
   const [notes, setNotes] = useState<CrmNote[]>([]);
+  const [contacts, setContacts] = useState<ContactLog[]>([]);
   const [activities, setActivities] = useState<CrmActivity[]>([]);
   const [newNote, setNewNote] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
   const loadData = useCallback(async () => {
-    const [leadRes, notesRes, activitiesRes] = await Promise.all([
+    const [leadRes, notesRes, contactsRes, activitiesRes] = await Promise.all([
       supabase.schema("web").from("leads").select("*").eq("id", id).single(),
       supabase
         .schema("web")
@@ -28,6 +30,13 @@ export default function LeadDetailPage() {
         .eq("entity_type", "lead")
         .eq("entity_id", id)
         .order("created_at", { ascending: false }),
+      supabase
+        .schema("web")
+        .from("crm_contact_log")
+        .select("*")
+        .eq("entity_type", "lead")
+        .eq("entity_id", id)
+        .order("contacted_at", { ascending: false }),
       supabase
         .schema("web")
         .from("crm_activities")
@@ -39,6 +48,7 @@ export default function LeadDetailPage() {
 
     setLead(leadRes.data);
     setNotes(notesRes.data ?? []);
+    setContacts(contactsRes.data ?? []);
     setActivities(activitiesRes.data ?? []);
     setLoading(false);
   }, [id, supabase]);
@@ -126,6 +136,14 @@ export default function LeadDetailPage() {
               ))}
             </div>
           </div>
+
+          {/* Contact Log */}
+          <ContactLogSection
+            entityType="lead"
+            entityId={id!}
+            contacts={contacts}
+            onRefresh={loadData}
+          />
 
           {/* Notes */}
           <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">

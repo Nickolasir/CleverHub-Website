@@ -2,6 +2,31 @@ export type LeadStatus = "new" | "contacted" | "qualified" | "converted" | "clos
 export type LeadSourceType = "consultation" | "contact_form" | "affiliate" | "manual";
 export type CrmEntityType = "lead" | "affiliate" | "order" | "customer";
 
+export type ContactMethod = "text" | "email" | "call" | "house_visit";
+export type ContactDisposition =
+  | "no_answer"
+  | "left_voicemail"
+  | "spoke_with"
+  | "sent_message"
+  | "scheduled_callback"
+  | "interested"
+  | "not_interested"
+  | "follow_up_needed"
+  | "completed_visit"
+  | "no_show";
+
+export interface ContactLog {
+  id: string;
+  entity_type: CrmEntityType;
+  entity_id: string;
+  contact_method: ContactMethod;
+  disposition: ContactDisposition;
+  notes: string | null;
+  contacted_at: string;
+  created_by: string;
+  created_at: string;
+}
+
 export interface Lead {
   id: string;
   email: string;

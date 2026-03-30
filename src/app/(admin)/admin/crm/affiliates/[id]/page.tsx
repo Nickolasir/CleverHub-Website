@@ -4,8 +4,9 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { StatusBadge } from "@/components/portal/StatusBadge";
+import { ContactLogSection } from "@/components/admin/ContactLog";
 import type { Affiliate, Referral } from "@/types/affiliate";
-import type { CrmNote, CrmActivity } from "@/types/crm";
+import type { CrmNote, CrmActivity, ContactLog } from "@/types/crm";
 
 export default function AffiliateDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -13,22 +14,25 @@ export default function AffiliateDetailPage() {
   const [affiliate, setAffiliate] = useState<Affiliate | null>(null);
   const [referrals, setReferrals] = useState<Referral[]>([]);
   const [notes, setNotes] = useState<CrmNote[]>([]);
+  const [contacts, setContacts] = useState<ContactLog[]>([]);
   const [activities, setActivities] = useState<CrmActivity[]>([]);
   const [newNote, setNewNote] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
   const loadData = useCallback(async () => {
-    const [affRes, refsRes, notesRes, actRes] = await Promise.all([
+    const [affRes, refsRes, notesRes, contactsRes, actRes] = await Promise.all([
       supabase.schema("web").from("affiliates").select("*").eq("id", id).single(),
       supabase.schema("web").from("referrals").select("*").eq("affiliate_id", id).order("created_at", { ascending: false }),
       supabase.schema("web").from("crm_notes").select("*").eq("entity_type", "affiliate").eq("entity_id", id).order("created_at", { ascending: false }),
+      supabase.schema("web").from("crm_contact_log").select("*").eq("entity_type", "affiliate").eq("entity_id", id).order("contacted_at", { ascending: false }),
       supabase.schema("web").from("crm_activities").select("*").eq("entity_type", "affiliate").eq("entity_id", id).order("created_at", { ascending: false }),
     ]);
 
     setAffiliate(affRes.data);
     setReferrals(refsRes.data ?? []);
     setNotes(notesRes.data ?? []);
+    setContacts(contactsRes.data ?? []);
     setActivities(actRes.data ?? []);
     setLoading(false);
   }, [id, supabase]);
@@ -169,6 +173,14 @@ export default function AffiliateDetailPage() {
               </div>
             )}
           </div>
+
+          {/* Contact Log */}
+          <ContactLogSection
+            entityType="affiliate"
+            entityId={id!}
+            contacts={contacts}
+            onRefresh={loadData}
+          />
 
           {/* Notes */}
           <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
