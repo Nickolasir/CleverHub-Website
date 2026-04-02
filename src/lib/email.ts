@@ -136,6 +136,31 @@ export async function sendReferralNotification(data: { affiliateName: string; af
   });
 }
 
+// ── Contact Form Emails ──
+
+export async function sendContactFormNotification(data: { name: string; email: string; phone?: string; message: string }) {
+  const resend = getResend();
+  await resend.emails.send({
+    from: "CleverHub <nickolasir@msn.com>",
+    to: getNotificationEmail(),
+    subject: `New Message from ${escapeHtml(data.name)}`,
+    html: `
+      <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto">
+        <h2 style="color:#0a0a0a">New Contact Form Message</h2>
+        <table style="border-collapse:collapse;width:100%">
+          <tr><td style="padding:8px;font-weight:bold">Name</td><td style="padding:8px">${escapeHtml(data.name)}</td></tr>
+          <tr><td style="padding:8px;font-weight:bold">Email</td><td style="padding:8px"><a href="mailto:${encodeURIComponent(data.email)}">${escapeHtml(data.email)}</a></td></tr>
+          ${data.phone ? `<tr><td style="padding:8px;font-weight:bold">Phone</td><td style="padding:8px"><a href="tel:${encodeURIComponent(data.phone)}">${escapeHtml(data.phone)}</a></td></tr>` : ""}
+        </table>
+        <div style="margin-top:16px;padding:16px;background:#f5f5f7;border-radius:8px">
+          <p style="margin:0;color:#333;line-height:1.6;white-space:pre-wrap">${escapeHtml(data.message)}</p>
+        </div>
+        <p style="margin-top:16px"><a href="https://cleverhub.space/admin/crm/leads">View in CRM &rarr;</a></p>
+      </div>
+    `,
+  });
+}
+
 // ── Consultation Emails ──
 
 export async function sendConsultationConfirmation(data: ConsultationEmailData) {

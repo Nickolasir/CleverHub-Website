@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { getServiceSupabase } from "@/lib/supabase-service";
+import { sendContactFormNotification } from "@/lib/email";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -69,6 +70,18 @@ export async function POST(request: NextRequest) {
           status: "lead",
         });
       }
+    }
+
+    // Send email notification
+    try {
+      await sendContactFormNotification({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || undefined,
+        message: data.message,
+      });
+    } catch (emailErr) {
+      console.error("Contact email notification failed:", emailErr);
     }
 
     return NextResponse.json({
