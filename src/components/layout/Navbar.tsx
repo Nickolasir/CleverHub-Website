@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { LogoIcon } from "@/components/brand/Logo";
 
 const navLinks = [
   { label: "Product", href: "#product" },
@@ -34,11 +35,7 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
-          <div
-            className={`h-8 w-8 rounded-full bg-gradient-to-br from-[#0a0a0a] to-[#333] shadow-lg ring-1 ${
-              scrolled ? "ring-accent/20" : "ring-white/15"
-            }`}
-          />
+          <LogoIcon size={32} />
           <span
             className={`font-[var(--font-outfit)] text-lg font-semibold tracking-tight transition-colors ${
               scrolled ? "text-foreground" : "text-white"
