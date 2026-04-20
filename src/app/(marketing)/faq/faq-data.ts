@@ -36,7 +36,7 @@ export const faqs = [
   // Installation & Pricing
   {
     q: "How much does CleverHub cost?",
-    a: "CleverHub offers two tiers: the Apartment system (one hub plus one satellite node) starts at $1,899, and the Standard system (one hub plus four satellite nodes) is $2,999. Both include all built-in sensors and initial setup. Additional satellite nodes can be added for $650 each. Optional cloud subscriptions for advanced AI features are available at $100/month but not required for core functionality.",
+    a: "CleverHub offers two tiers: the Apartment system (one hub plus one satellite node) starts at $1,899 — the hub runs on a Raspberry Pi Zero 2W compute core, making it compact and efficient for smaller spaces. The Standard system (one hub plus four satellite nodes) is $2,999 and uses a Raspberry Pi 5 (8GB) for higher-performance local AI processing. Both include all built-in sensors and initial setup. Additional satellite nodes can be added for $650 each. Optional cloud subscriptions for advanced AI features are available at $100/month but not required for core functionality.",
     category: "pricing",
   },
   {
