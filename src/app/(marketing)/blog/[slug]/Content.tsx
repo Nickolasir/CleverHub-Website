@@ -2,6 +2,7 @@
 
 import { useFadeIn } from "@/hooks/useGSAP";
 import type { BlogPost } from "@/lib/blog";
+import { PageHero } from "@/components/ui/PageHero";
 
 const categoryBadge: Record<string, string> = {
   "Family Living": "bg-[#FFF3D4] text-[#9B7A2D]",
@@ -18,7 +19,7 @@ export default function PostContent({ post }: { post: BlogPost }) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-warm-gray px-6 pb-20 pt-40 text-white md:pb-28 md:pt-52">
+      <PageHero className="pb-20 pt-40 md:pb-28 md:pt-52">
         <div ref={headerRef} className="mx-auto max-w-2xl">
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <span className={`rounded-full px-3 py-1 text-xs font-semibold tracking-wide ${badgeClass}`}>
@@ -35,7 +36,7 @@ export default function PostContent({ post }: { post: BlogPost }) {
             {post.subtitle}
           </p>
         </div>
-      </section>
+      </PageHero>
 
       {/* Article body */}
       <section className="bg-background px-6 py-20 md:py-28">

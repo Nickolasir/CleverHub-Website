@@ -3,6 +3,7 @@
 import { useFadeIn, useStaggerReveal } from "@/hooks/useGSAP";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { getAllPosts } from "@/lib/blog";
+import { PageHero } from "@/components/ui/PageHero";
 
 const posts = getAllPosts();
 const [featured, ...rest] = posts;
@@ -18,7 +19,7 @@ export default function BlogContent() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-warm-gray px-6 pb-24 pt-40 text-white md:pb-28 md:pt-52">
+      <PageHero className="pb-24 pt-40 md:pb-28 md:pt-52">
         <div ref={heroRef} className="mx-auto max-w-3xl text-center">
           <span className="mb-5 inline-block rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium tracking-widest text-white/50 uppercase">
             Insights &amp; Guides
@@ -31,7 +32,7 @@ export default function BlogContent() {
             technology can improve everyday life — for every kind of household.
           </p>
         </div>
-      </section>
+      </PageHero>
 
       {/* Posts */}
       <section className="bg-background px-6 py-24 md:py-32">
