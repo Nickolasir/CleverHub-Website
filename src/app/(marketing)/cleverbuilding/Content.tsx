@@ -33,7 +33,7 @@ const features = [
   {
     title: "Presence-Aware Efficiency",
     description:
-      "mmWave sensors in common areas detect real occupancy — not just motion. Lights and climate adjust in real time, cutting energy waste in unoccupied spaces.",
+      "Precision presence sensors in common areas detect real occupancy — not just motion. Lights and climate adjust in real time, cutting energy waste in unoccupied spaces.",
   },
   {
     title: "Tenant Onboarding & Offboarding",

@@ -18,7 +18,7 @@ const features = [
   {
     title: "Fall Detection & Inactivity Alerts",
     description:
-      "mmWave sensors detect falls and prolonged inactivity during waking hours. Graduated response: verbal check-in first, then caregiver escalation if there's no answer.",
+      "Precision presence sensors detect falls and prolonged inactivity during waking hours. Graduated response: verbal check-in first, then caregiver escalation if there's no answer.",
   },
   {
     title: "Caregiver Alert System",

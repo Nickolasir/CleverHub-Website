@@ -141,7 +141,7 @@ const features = [
   {
     title: "Satellite Nodes",
     description:
-      "ESP32-S3 satellite nodes in every room. Voice, sensors, and presence detection with on-device wake word recognition in under 10ms.",
+      "Smart satellite nodes in every room. Voice, sensors, and precision presence detection with on-device wake word recognition in under 10ms.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
         <path d="M5 12.55a11 11 0 0114.08 0" />

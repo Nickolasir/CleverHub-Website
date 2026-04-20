@@ -33,7 +33,7 @@ const features = [
   {
     title: "Energy & Occupancy Intelligence",
     description:
-      "mmWave presence sensors detect which rooms are occupied. Lights, HVAC, and devices adjust automatically — cutting energy costs by up to 30% between stays.",
+      "Precision presence sensors detect which rooms are occupied. Lights, HVAC, and devices adjust automatically — cutting energy costs by up to 30% between stays.",
   },
   {
     title: "Air Quality Monitoring",

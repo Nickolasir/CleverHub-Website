@@ -4,13 +4,13 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { useStaggerReveal } from "@/hooks/useGSAP";
 
 const hubFeatures = [
-  "40 TOPS AI accelerator (Hailo-10H)",
-  "Raspberry Pi 5 (8GB) compute core (Pi Zero 2W on Apartment tier)",
+  "Dedicated on-device AI accelerator",
+  "High-performance compute core",
   "Sub-1-second local voice processing",
-  "MEMS microphone + 3W speaker",
+  "High-sensitivity microphone + 3W speaker",
   "Temperature & humidity sensor",
   "Ambient light sensor",
-  "mmWave presence detection",
+  "Precision presence detection",
   "Air quality / VOC monitoring",
   "NFC reader for tap automations",
   "IR blaster for legacy device control",
@@ -20,11 +20,11 @@ const hubFeatures = [
 
 const satelliteFeatures = [
   "4x satellite nodes included",
-  "ESP32 with WiFi + Bluetooth",
+  "Low-power wireless compute with WiFi + Bluetooth",
   "Voice mic + speaker per room",
   "Temperature & humidity per room",
   "Ambient light sensing",
-  "mmWave human presence detection",
+  "Precision human presence detection",
   "Air quality / VOC monitoring",
   "IR blaster for legacy devices",
   "RGB status LED",

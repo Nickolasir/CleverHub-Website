@@ -17,7 +17,7 @@ export const faqs = [
   },
   {
     q: "What are satellite nodes?",
-    a: "Satellite nodes are small ESP32-based devices placed in each room. Every node includes a microphone, speaker, temperature and humidity sensor, ambient light sensor, mmWave presence detection, air quality monitoring, IR blaster, and RGB status LED. The standard system includes 4 satellite nodes.",
+    a: "Satellite nodes are compact wireless devices placed in each room. Every node includes a microphone, speaker, temperature and humidity sensor, ambient light sensor, precision presence detection, air quality monitoring, IR blaster, and RGB status LED. The standard system includes 4 satellite nodes.",
     category: "product",
   },
 
@@ -36,7 +36,7 @@ export const faqs = [
   // Installation & Pricing
   {
     q: "How much does CleverHub cost?",
-    a: "CleverHub offers two tiers: the Apartment system (one hub plus one satellite node) starts at $1,899 — the hub runs on a Raspberry Pi Zero 2W compute core, making it compact and efficient for smaller spaces. The Standard system (one hub plus four satellite nodes) is $2,999 and uses a Raspberry Pi 5 (8GB) for higher-performance local AI processing. Both include all built-in sensors and initial setup. Additional satellite nodes can be added for $650 each. Optional cloud subscriptions for advanced AI features are available at $100/month but not required for core functionality.",
+    a: "CleverHub offers two tiers: the Apartment system (one hub plus one satellite node) starts at $1,899 — designed for smaller spaces with an efficient, compact compute core. The Standard system (one hub plus four satellite nodes) is $2,999 and uses a higher-performance compute core for demanding local AI workloads. Both include all built-in sensors and initial setup. Additional satellite nodes can be added for $650 each. Optional cloud subscriptions for advanced AI features are available at $100/month but not required for core functionality.",
     category: "pricing",
   },
   {
@@ -63,7 +63,7 @@ export const faqs = [
   },
   {
     q: "What is CleverAide?",
-    a: "CleverAide is an add-on module for assisted living care. It provides medication reminders with confirmation tracking, three daily wellness check-ins, fall detection via mmWave sensors, and multi-channel caregiver alerts via push, Telegram, and WhatsApp. It's designed for elderly or disabled family members who benefit from voice-first assistance.",
+    a: "CleverAide is an add-on module for assisted living care. It provides medication reminders with confirmation tracking, three daily wellness check-ins, fall detection via precision presence sensors, and multi-channel caregiver alerts via push, Telegram, and WhatsApp. It's designed for elderly or disabled family members who benefit from voice-first assistance.",
     category: "features",
   },
 
