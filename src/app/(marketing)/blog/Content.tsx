@@ -5,9 +5,11 @@ import { BlogCard } from "@/components/blog/BlogCard";
 import { getAllPosts } from "@/lib/blog";
 
 const posts = getAllPosts();
+const [featured, ...rest] = posts;
 
 export default function BlogContent() {
   const heroRef = useFadeIn<HTMLDivElement>({ y: 24 });
+  const featuredRef = useFadeIn<HTMLDivElement>({ y: 20, delay: 0.12 });
   const gridRef = useStaggerReveal<HTMLDivElement>(".blog-card", {
     stagger: 0.14,
     y: 20,
@@ -16,7 +18,7 @@ export default function BlogContent() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-warm-gray px-6 pb-28 pt-40 text-white md:pb-32 md:pt-52">
+      <section className="bg-warm-gray px-6 pb-24 pt-40 text-white md:pb-28 md:pt-52">
         <div ref={heroRef} className="mx-auto max-w-3xl text-center">
           <span className="mb-5 inline-block rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium tracking-widest text-white/50 uppercase">
             Insights &amp; Guides
@@ -31,17 +33,42 @@ export default function BlogContent() {
         </div>
       </section>
 
-      {/* Post grid */}
+      {/* Posts */}
       <section className="bg-background px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-6xl">
-          <div
-            ref={gridRef}
-            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {posts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
+        <div className="mx-auto max-w-5xl">
+
+          {/* Featured post */}
+          {featured && (
+            <div ref={featuredRef} className="mb-16">
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+                Featured
+              </p>
+              <BlogCard post={featured} featured />
+            </div>
+          )}
+
+          {/* Remaining posts */}
+          {rest.length > 0 && (
+            <>
+              {posts.length > 1 && (
+                <div className="mb-8 flex items-center gap-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--muted)]/60">
+                    All Articles
+                  </p>
+                  <div className="h-px flex-1 bg-[var(--card-border)]" />
+                </div>
+              )}
+              <div ref={gridRef} className="grid gap-8 sm:grid-cols-2">
+                {rest.map((post) => (
+                  <BlogCard key={post.slug} post={post} />
+                ))}
+              </div>
+            </>
+          )}
+
+          {posts.length === 0 && (
+            <p className="text-center text-[var(--muted)]">No posts yet — check back soon.</p>
+          )}
         </div>
       </section>
 
