@@ -30,7 +30,7 @@ export function PageHero({ children, className = "" }: PageHeroProps) {
 
       {/* Dot grid overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        className="pointer-events-none absolute inset-0 opacity-[0.18]"
         style={{
           backgroundImage:
             "radial-gradient(circle, #D4A843 1px, transparent 1px)",
