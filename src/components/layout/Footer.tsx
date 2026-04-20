@@ -14,6 +14,7 @@ const footerLinks = {
     { label: "Client Portal", href: "/portal" },
   ],
   Company: [
+    { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact Us", href: "/contact" },
     { label: "Privacy Policy", href: "/privacy" },

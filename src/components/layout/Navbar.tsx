@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
-import { LogoIcon } from "@/components/brand/Logo";
 
 const navLinks = [
   { label: "Product", href: "#product" },
@@ -10,6 +9,7 @@ const navLinks = [
   { label: "Solutions", href: "#solutions" },
   { label: "Pricing", href: "#pricing" },
   { label: "Features", href: "#features" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export function Navbar() {
@@ -33,14 +33,18 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5">
-          <LogoIcon size={32} />
+        <a href="#" className="flex items-center gap-2">
+          <div
+            className={`h-8 w-8 rounded-full bg-gradient-to-br from-[#0a0a0a] to-[#333] shadow-lg ring-1 ${
+              scrolled ? "ring-accent/20" : "ring-white/15"
+            }`}
+          />
           <span
             className={`font-[var(--font-outfit)] text-lg font-semibold tracking-tight transition-colors ${
               scrolled ? "text-foreground" : "text-white"
             }`}
           >
-            Clever<span className="text-[#D4A017]">Hub</span>
+            CleverHub
           </span>
         </a>
 
@@ -73,7 +77,6 @@ export function Navbar() {
           )}
           <a
             href="#consultation"
-            data-track="cta_get_started_nav"
             className="rounded-full bg-accent px-5 py-2 text-xs font-medium tracking-wide text-white transition-all duration-300 hover:bg-accent-light"
           >
             Get Started
@@ -131,7 +134,6 @@ export function Navbar() {
             <a
               href="#consultation"
               onClick={() => setMobileOpen(false)}
-              data-track="cta_get_started_mobile_nav"
               className="mt-2 rounded-full bg-accent px-5 py-2.5 text-center text-xs font-medium tracking-wide text-white"
             >
               Get Started
