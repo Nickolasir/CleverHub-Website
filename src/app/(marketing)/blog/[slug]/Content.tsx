@@ -11,7 +11,7 @@ const categoryBadge: Record<string, string> = {
 
 function SectionOrnament() {
   return (
-    <div className="my-14 flex items-center justify-center gap-2.5" aria-hidden="true">
+    <div className="my-8 flex items-center justify-center gap-2.5" aria-hidden="true">
       <div className="h-px w-12 bg-[var(--card-border)]" />
       <div className="h-1 w-1 rounded-full bg-[var(--accent)]/30" />
       <div className="h-[5px] w-[5px] rounded-full bg-[var(--accent)]/55" />
@@ -64,7 +64,7 @@ export default function PostContent({ post }: { post: BlogPost }) {
           </div>
 
           {/* Intro — drop cap */}
-          <p className="mb-16 text-lg leading-[1.85] text-foreground/80 md:text-[1.2rem]">
+          <p className="mb-10 text-justify text-lg leading-[1.85] text-foreground/80 md:text-[1.2rem]">
             <span
               className="float-left mr-3 mt-1 font-[var(--font-outfit)] text-[5rem] font-bold leading-[0.75] text-[var(--accent)]"
               aria-hidden="true"
@@ -95,7 +95,7 @@ export default function PostContent({ post }: { post: BlogPost }) {
                 </div>
 
                 {/* Body */}
-                <p className="mt-5 text-base leading-[1.95] text-[var(--muted)]">
+                <p className="mt-5 text-justify text-base leading-[1.95] text-[var(--muted)]">
                   {section.body}
                 </p>
               </div>
