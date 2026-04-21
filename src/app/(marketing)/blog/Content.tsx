@@ -9,16 +9,13 @@ const posts = getAllPosts();
 const [featured, ...rest] = posts;
 
 export default function BlogContent() {
-  const heroRef = useFadeIn<HTMLDivElement>({ y: 24 });
+  const heroRef    = useFadeIn<HTMLDivElement>({ y: 24 });
   const featuredRef = useFadeIn<HTMLDivElement>({ y: 20, delay: 0.12 });
-  const gridRef = useStaggerReveal<HTMLDivElement>(".blog-card", {
-    stagger: 0.14,
-    y: 20,
-  });
+  const gridRef    = useStaggerReveal<HTMLDivElement>(".blog-card", { stagger: 0.14, y: 20 });
 
   return (
     <>
-      {/* Hero */}
+      {/* ── Hero ── */}
       <PageHero className="pb-24 pt-40 md:pb-28 md:pt-52">
         <div ref={heroRef} className="mx-auto max-w-3xl text-center">
           <span className="mb-5 inline-block rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium tracking-widest text-white/50 uppercase">
@@ -34,37 +31,55 @@ export default function BlogContent() {
         </div>
       </PageHero>
 
-      {/* Posts */}
-      <section className="bg-background px-6 py-24 md:py-32">
-        <div className="mx-auto max-w-5xl">
+      {/* ── Posts ── */}
+      <section className="relative overflow-hidden bg-background px-6 pb-28 pt-20 md:pb-36 md:pt-28">
 
-          {/* Featured post */}
+        {/* Giant faded editorial word — background texture */}
+        <div
+          className="pointer-events-none absolute -top-4 left-0 right-0 select-none text-center"
+          aria-hidden="true"
+        >
+          <span className="font-[var(--font-outfit)] text-[9rem] font-black uppercase leading-none tracking-tighter text-[#D4A843]/[0.045] md:text-[15rem]">
+            Stories
+          </span>
+        </div>
+
+        <div className="relative mx-auto max-w-5xl">
+
+          {/* ── Cover story ── */}
           {featured && (
-            <div ref={featuredRef} className="mb-16">
-              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
-                Featured
-              </p>
+            <div ref={featuredRef} className="mb-24">
+              {/* Masthead label */}
+              <div className="mb-7 flex items-center gap-4">
+                <div className="h-px w-10 bg-[var(--accent)]" />
+                <span className="font-[var(--font-outfit)] text-[0.65rem] font-bold uppercase tracking-[0.3em] text-[var(--accent)]">
+                  Cover Story
+                </span>
+                <div className="h-px flex-1 bg-[var(--card-border)]" />
+              </div>
               <BlogCard post={featured} featured />
             </div>
           )}
 
-          {/* Remaining posts */}
+          {/* ── More stories ── */}
           {rest.length > 0 && (
-            <>
-              {posts.length > 1 && (
-                <div className="mb-8 flex items-center gap-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--muted)]/60">
-                    All Articles
-                  </p>
-                  <div className="h-px flex-1 bg-[var(--card-border)]" />
-                </div>
-              )}
+            <div>
+              {/* Section break — bold editorial rule */}
+              <div className="mb-10 flex items-end justify-between border-b-[2px] border-foreground pb-3">
+                <h2 className="font-[var(--font-outfit)] text-xl font-semibold tracking-tight text-foreground md:text-2xl">
+                  More Stories
+                </h2>
+                <span className="mb-0.5 font-[var(--font-outfit)] text-xs tabular-nums text-[var(--muted)]/40">
+                  {rest.length} article{rest.length !== 1 ? "s" : ""}
+                </span>
+              </div>
+
               <div ref={gridRef} className="grid gap-8 sm:grid-cols-2">
                 {rest.map((post) => (
                   <BlogCard key={post.slug} post={post} />
                 ))}
               </div>
-            </>
+            </div>
           )}
 
           {posts.length === 0 && (
@@ -73,7 +88,7 @@ export default function BlogContent() {
         </div>
       </section>
 
-      {/* CTA strip */}
+      {/* ── CTA strip ── */}
       <section className="bg-[var(--section-alt)] px-6 py-20">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-[var(--font-outfit)] text-2xl font-semibold text-foreground md:text-3xl">
