@@ -5,11 +5,11 @@ import { useAuth } from "@/hooks/useAuth";
 import { LogoIcon } from "@/components/brand/Logo";
 
 const navLinks = [
-  { label: "Product", href: "#product" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Features", href: "#features" },
+  { label: "Product", href: "/#product" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Features", href: "/#features" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -34,7 +34,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
+        <a href="/" className="flex items-center gap-2">
           <LogoIcon size={32} />
           <span
             className={`font-[var(--font-outfit)] text-lg font-semibold tracking-tight transition-colors ${
@@ -73,7 +73,7 @@ export function Navbar() {
             </a>
           )}
           <a
-            href="#consultation"
+            href="/#consultation"
             className="rounded-full bg-accent px-5 py-2 text-xs font-medium tracking-wide text-white transition-all duration-300 hover:bg-accent-light"
           >
             Get Started
@@ -129,7 +129,7 @@ export function Navbar() {
               </a>
             )}
             <a
-              href="#consultation"
+              href="/#consultation"
               onClick={() => setMobileOpen(false)}
               className="mt-2 rounded-full bg-accent px-5 py-2.5 text-center text-xs font-medium tracking-wide text-white"
             >
