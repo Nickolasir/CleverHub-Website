@@ -3,7 +3,21 @@
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { useStaggerReveal } from "@/hooks/useGSAP";
 
-const hubFeatures = [
+const apartmentHubFeatures = [
+  "Compact efficient compute core",
+  "Cloud-powered AI voice processing",
+  "High-sensitivity microphone + 2W speaker",
+  "Temperature & humidity sensor",
+  "Ambient light sensor",
+  "Precision presence detection",
+  "Air quality / VOC monitoring",
+  "NFC reader for tap automations",
+  "IR blaster for legacy device control",
+  "RGB status LED",
+  "WiFi 4 + Bluetooth 4.2/BLE",
+];
+
+const standardHubFeatures = [
   "Dedicated on-device AI accelerator",
   "High-performance compute core",
   "Sub-1-second local voice processing",
@@ -113,7 +127,7 @@ export function Pricing() {
                 Central Hub
               </h3>
               <ul className="mt-4 flex flex-col gap-2.5">
-                {hubFeatures.map((f) => (
+                {apartmentHubFeatures.map((f) => (
                   <li
                     key={f}
                     className="pricing-item flex items-start gap-2 text-sm text-muted"
@@ -205,7 +219,7 @@ export function Pricing() {
                 Central Hub
               </h3>
               <ul className="mt-4 flex flex-col gap-2.5">
-                {hubFeatures.map((f) => (
+                {standardHubFeatures.map((f) => (
                   <li
                     key={f}
                     className="pricing-item flex items-start gap-2 text-sm text-muted"
