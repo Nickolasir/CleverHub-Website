@@ -1,32 +1,31 @@
 import type { Metadata } from "next";
-import AffiliateContent from "./Content";
-import { faqs } from "./faq-data";
+import { Fraunces } from "next/font/google";
+import { AffiliateClient } from "./AffiliateClient";
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
-  title: "Affiliate Program - Earn $500 Per Referral",
+  title: "Affiliate Program — $250 or 10% per referral",
   description:
-    "Join the CleverHub affiliate program. Earn $500 for every referral that becomes a customer. Open to real estate agents, contractors, and property managers in Houston, TX.",
+    "Refer homebuilders, designers, agents, and property managers to CleverHub. Earn $250 or 10% of the sale — whichever is greater — for every referral that converts. No cap, 30-day cookie, paid by Stripe or check.",
   alternates: { canonical: "/affiliate" },
-};
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
+  openGraph: {
+    title: "CleverHub Affiliate Program — $250 or 10%, whichever is greater",
+    description:
+      "A commission of $250 or 10% of the sale, whichever is greater, for every referral that becomes a CleverHub customer. Open to real estate agents, designers, contractors, and property managers.",
+    url: "/affiliate",
+  },
 };
 
 export default function AffiliatePage() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <AffiliateContent />
-    </>
+    <div className={fraunces.variable}>
+      <AffiliateClient />
+    </div>
   );
 }
