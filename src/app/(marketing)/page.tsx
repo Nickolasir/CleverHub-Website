@@ -8,6 +8,7 @@ import { MobileApp } from "@/components/sections/MobileApp";
 import { TVDashboard } from "@/components/sections/TVDashboard";
 import { Pricing } from "@/components/sections/Pricing";
 import { KitchenHub } from "@/components/sections/KitchenHub";
+import { CleverPetsSection } from "@/components/sections/CleverPetsSection";
 import { FeaturesGrid } from "@/components/sections/FeaturesGrid";
 import { ConsultationSection } from "@/components/sections/ConsultationSection";
 
@@ -57,6 +58,7 @@ export default function Home() {
       <TVDashboard />
       <Pricing />
       <KitchenHub />
+      <CleverPetsSection />
       <FeaturesGrid />
       <ConsultationSection />
     </>
