@@ -7,6 +7,7 @@ const footerLinks = {
     { label: "CleverHost", href: "/cleverhost" },
     { label: "CleverBuilding", href: "/cleverbuilding" },
     { label: "CleverAide", href: "/cleveraide" },
+    { label: "CleverPets", href: "/cleverpets" },
     { label: "Features", href: "#features" },
   ],
   Partners: [

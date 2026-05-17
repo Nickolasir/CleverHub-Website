@@ -72,6 +72,23 @@ const otherVerticals = [
       </svg>
     ),
   },
+  {
+    name: "CleverPets",
+    tagline: "For Pet Households",
+    href: "/cleverpets",
+    description:
+      "Medication reminders, feeding logs, vet records, AI symptom triage, and food-recall alerts. Voice-first pet care that lives alongside your family agents.",
+    highlight: "Add-on Module",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-8 w-8" aria-hidden>
+        <ellipse cx="5.5" cy="10" rx="1.7" ry="2.3" />
+        <ellipse cx="9.5" cy="6.4" rx="1.7" ry="2.5" />
+        <ellipse cx="14.5" cy="6.4" rx="1.7" ry="2.5" />
+        <ellipse cx="18.5" cy="10" rx="1.7" ry="2.3" />
+        <path d="M12 12.2c-3 0-5.5 2.4-5.5 5 0 1.5 1.2 2.7 2.7 2.7 1 0 2-.6 2.8-.6.8 0 1.8.6 2.8.6 1.5 0 2.7-1.2 2.7-2.7 0-2.6-2.5-5-5.5-5z" />
+      </svg>
+    ),
+  },
 ];
 
 export function MarketVerticals() {
@@ -172,7 +189,7 @@ export function MarketVerticals() {
         </div>
 
         {/* Other verticals — linked cards */}
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {otherVerticals.map((v) => (
             <Link
               key={v.name}
