@@ -92,14 +92,14 @@ export async function sendAffiliateApprovedEmail(data: { name: string; email: st
       <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto">
         <h2 style="color:#0a0a0a">Welcome to the team, ${escapeHtml(data.name)}!</h2>
         <p style="color:#555;line-height:1.6">
-          Your affiliate application has been approved. You can now start earning $500 for every client you refer to CleverHub.
+          Your affiliate application has been approved. You can now start earning $250 or 10% of the sale — whichever is greater — for every client you refer to CleverHub.
         </p>
         <h3 style="color:#0a0a0a;margin-top:24px">Your Referral Link:</h3>
         <p style="background:#f5f5f7;padding:12px 16px;border-radius:8px;font-family:monospace;font-size:14px">
           https://cleverhub.space?ref=${escapeHtml(data.referralCode)}
         </p>
         <p style="color:#555;line-height:1.6;margin-top:16px">
-          Share this link with anyone interested in smart home automation. When they become a paying customer, you earn $500.
+          Share this link with anyone interested in smart home automation. When they become a paying customer, you earn the greater of $250 or 10% of the sale.
         </p>
         <p style="margin-top:24px">
           <a href="https://cleverhub.space/portal/affiliates" style="background:#D4A843;color:white;padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:500">

@@ -98,7 +98,8 @@ export default function PortalDashboard() {
             Join the Affiliate Program
           </h2>
           <p className="mb-6 text-sm text-muted">
-            Earn $500 for every client you refer to CleverHub.
+            Earn $250 or 10% of the sale — whichever is greater — for every
+            client you refer to CleverHub.
           </p>
           <a
             href="/affiliate"

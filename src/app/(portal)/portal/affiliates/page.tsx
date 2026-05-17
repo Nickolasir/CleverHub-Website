@@ -105,7 +105,8 @@ export default function AffiliatePortalPage() {
           Affiliate Program
         </h1>
         <p className="mb-6 text-sm text-muted">
-          Earn $500 for every client you refer to CleverHub.
+          Earn $250 or 10% of the sale — whichever is greater — for every
+          client you refer to CleverHub.
         </p>
         <a
           href="/affiliate"
@@ -156,7 +157,7 @@ export default function AffiliatePortalPage() {
         Affiliate Dashboard
       </h1>
       <p className="mb-8 text-sm text-muted">
-        Share your link, track referrals, and earn $500 per conversion.
+        Share your link, track referrals, and earn $250 or 10% of the sale per conversion.
       </p>
 
       {/* Referral Link */}
