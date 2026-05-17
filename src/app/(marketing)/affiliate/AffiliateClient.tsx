@@ -102,27 +102,39 @@ function ChapterHead({
   numeral,
   title,
   kicker,
+  dark = false,
 }: {
   numeral: string;
   title: string;
   kicker?: string;
+  dark?: boolean;
 }) {
   return (
     <div className="flex items-end gap-6 md:gap-10">
       <span
         aria-hidden
-        className="font-fraunces text-[5.5rem] leading-none font-light italic text-[var(--accent)] md:text-[8rem]"
+        className={`font-fraunces text-[5.5rem] leading-none font-light italic md:text-[8rem] ${
+          dark ? "text-[var(--accent-light)]" : "text-[var(--accent)]"
+        }`}
         style={{ fontFeatureSettings: "'ss01'", fontVariationSettings: "'opsz' 144, 'SOFT' 100" }}
       >
         §{numeral}
       </span>
       <div className="pb-3 md:pb-5">
         {kicker ? (
-          <p className="mb-2 text-[0.68rem] font-medium uppercase tracking-[0.32em] text-[var(--accent-text)]">
+          <p
+            className={`mb-2 text-[0.68rem] font-medium uppercase tracking-[0.32em] ${
+              dark ? "text-[var(--accent-light)]" : "text-[var(--accent-text)]"
+            }`}
+          >
             {kicker}
           </p>
         ) : null}
-        <h2 className="font-fraunces text-3xl font-medium leading-[1.05] tracking-tight text-foreground md:text-5xl">
+        <h2
+          className={`font-fraunces text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl ${
+            dark ? "text-white" : "text-foreground"
+          }`}
+        >
           {title}
         </h2>
       </div>
@@ -253,9 +265,9 @@ export function AffiliateClient() {
           padding-right: 1.25rem;
           cursor: pointer;
         }
-        .faq-list > li:last-child { border-bottom: 1px solid var(--card-border); }
+        .faq-list > li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.10); }
         @media (min-width: 768px) {
-          .faq-list > li:nth-last-child(2):not(:last-child) { border-bottom: 1px solid var(--card-border); }
+          .faq-list > li:nth-last-child(2):not(:last-child) { border-bottom: 1px solid rgba(255, 255, 255, 0.10); }
         }
       `,
         }}
@@ -266,7 +278,7 @@ export function AffiliateClient() {
       {/* ─────────────── § COVER ─────────────── */}
       <section
         ref={heroRef}
-        className="relative isolate z-10 overflow-hidden bg-[var(--background)] px-6 pb-28 pt-36 md:pb-40 md:pt-44"
+        className="relative isolate z-10 overflow-hidden bg-[var(--section-alt)] px-6 pb-28 pt-36 md:pb-40 md:pt-44"
       >
         {/* Marginalia — Issue masthead */}
         <div className="mx-auto mb-12 flex max-w-7xl flex-col items-start justify-between gap-2 md:flex-row md:items-end">
@@ -354,25 +366,26 @@ export function AffiliateClient() {
       <section
         ref={premiseRef}
         id="program"
-        className="relative z-10 bg-[var(--background)] px-6 py-24 md:py-32"
+        className="relative z-10 bg-[var(--warm-gray)] px-6 py-24 md:py-32"
       >
         <div className="mx-auto max-w-7xl">
           <ChapterHead
             kicker="Article I"
             numeral="I"
             title="The Premise."
+            dark
           />
 
           <div className="mt-16 grid grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-7">
-              <p className="font-fraunces text-2xl font-light leading-[1.5] text-foreground md:text-[1.7rem]">
-                <span className="font-fraunces text-5xl font-light italic text-[var(--accent)]">C</span>
+              <p className="font-fraunces text-2xl font-light leading-[1.5] text-white md:text-[1.7rem]">
+                <span className="font-fraunces text-5xl font-light italic text-[var(--accent-light)]">C</span>
                 leverHub is the AI smart-home system Houston has been waiting on — a
                 glossy black sphere on the counter, four satellites in the rooms,
                 voice you don&apos;t have to repeat. We&apos;d rather pay the people who
                 already know our buyer than spend it on cold ads.
               </p>
-              <p className="mt-6 max-w-2xl text-base leading-[1.75] text-[var(--muted)]">
+              <p className="mt-6 max-w-2xl text-base leading-[1.75] text-white/60">
                 If you sell, design, build, or manage homes, every conversation you
                 have already touches our customer. Refer them in — we close, install,
                 and support; you take the greater of $250 or ten percent of the
@@ -381,9 +394,9 @@ export function AffiliateClient() {
               </p>
             </div>
 
-            {/* Ledger sidebar */}
+            {/* Ledger sidebar — yellow card inset on dark, a deliberate accent */}
             <aside className="md:col-span-5">
-              <div className="rounded-none border border-[var(--card-border)] bg-[var(--section-alt)] p-8 shadow-[var(--shadow-card)]">
+              <div className="rounded-none border border-[var(--accent)]/40 bg-[var(--section-alt)] p-8 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)]">
                 <p className="font-fraunces text-sm italic text-[var(--accent-text)]">
                   — The Ledger —
                 </p>
@@ -456,15 +469,16 @@ export function AffiliateClient() {
       </section>
 
       {/* ─────────────── § III — SPECIALISTS ─────────────── */}
-      <section className="relative z-10 bg-[var(--background)] px-6 py-24 md:py-32">
+      <section className="relative z-10 bg-[var(--warm-gray)] px-6 py-24 md:py-32">
         <div className="mx-auto max-w-7xl">
           <ChapterHead
             kicker="Article III"
             numeral="III"
             title="Built for specialists."
+            dark
           />
 
-          <p className="mt-8 max-w-2xl font-fraunces text-lg italic text-[var(--muted)] md:text-xl">
+          <p className="mt-8 max-w-2xl font-fraunces text-lg italic text-white/65 md:text-xl">
             We don&apos;t pay influencers. We pay the people whose work brings
             CleverHub into rooms it would otherwise never reach.
           </p>
@@ -473,23 +487,23 @@ export function AffiliateClient() {
             {specialists.map((s, i) => (
               <div
                 key={s.pro}
-                className="specialist-row grid grid-cols-12 items-baseline gap-x-6 gap-y-3 border-t border-[var(--card-border)] py-8 md:py-10"
+                className="specialist-row grid grid-cols-12 items-baseline gap-x-6 gap-y-3 border-t border-white/10 py-8 md:py-10"
               >
                 <p
                   aria-hidden
-                  className="ledger-num col-span-2 font-fraunces text-lg font-light italic text-[var(--accent-text)] md:text-2xl"
+                  className="ledger-num col-span-2 font-fraunces text-lg font-light italic text-[var(--accent-light)] md:text-2xl"
                 >
                   No. {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="col-span-10 font-fraunces text-3xl font-medium leading-tight text-foreground md:col-span-4 md:text-[2.5rem]">
+                <h3 className="col-span-10 font-fraunces text-3xl font-medium leading-tight text-white md:col-span-4 md:text-[2.5rem]">
                   {s.pro}
                 </h3>
-                <p className="col-span-12 max-w-xl text-base leading-[1.7] text-[var(--muted)] md:col-span-6">
+                <p className="col-span-12 max-w-xl text-base leading-[1.7] text-white/60 md:col-span-6">
                   {s.body}
                 </p>
               </div>
             ))}
-            <div className="border-t border-[var(--card-border)]" />
+            <div className="border-t border-white/10" />
           </div>
         </div>
       </section>
@@ -687,12 +701,13 @@ export function AffiliateClient() {
       </section>
 
       {/* ─────────────── § V — INQUIRIES ─────────────── */}
-      <section className="relative z-10 bg-[var(--background)] px-6 py-24 md:py-32">
+      <section className="relative z-10 bg-[var(--warm-gray)] px-6 py-24 md:py-32">
         <div className="mx-auto max-w-7xl">
           <ChapterHead
             kicker="Article V"
             numeral="V"
             title="Common inquiries."
+            dark
           />
 
           <ul className="faq-list mt-16 grid grid-cols-1 gap-x-12 md:grid-cols-2">
@@ -701,7 +716,7 @@ export function AffiliateClient() {
               return (
                 <li
                   key={i}
-                  className="border-t border-[var(--card-border)]"
+                  className="border-t border-white/10"
                 >
                   <button
                     type="button"
@@ -709,13 +724,13 @@ export function AffiliateClient() {
                     className="flex w-full items-start justify-between gap-6 py-7 text-left transition-colors group"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-fraunces text-xl font-medium leading-snug text-foreground transition-colors group-hover:text-[var(--accent-text)] md:text-[1.4rem]">
+                    <span className="font-fraunces text-xl font-medium leading-snug text-white transition-colors group-hover:text-[var(--accent-light)] md:text-[1.4rem]">
                       {faq.q}
                     </span>
                     <span
                       aria-hidden
-                      className={`mt-1.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[var(--accent)]/50 font-fraunces text-base text-[var(--accent-text)] transition-transform duration-300 ${
-                        isOpen ? "rotate-45 bg-[var(--accent)] text-[var(--background)]" : ""
+                      className={`mt-1.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[var(--accent)]/60 font-fraunces text-base text-[var(--accent-light)] transition-transform duration-300 ${
+                        isOpen ? "rotate-45 bg-[var(--accent)] text-[var(--warm-gray)]" : ""
                       }`}
                     >
                       +
@@ -726,7 +741,7 @@ export function AffiliateClient() {
                       isOpen ? "max-h-64 pb-7 opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="max-w-md font-fraunces text-base italic leading-[1.75] text-[var(--muted)]">
+                    <p className="max-w-md font-fraunces text-base italic leading-[1.75] text-white/60">
                       {faq.a}
                     </p>
                   </div>
@@ -740,7 +755,7 @@ export function AffiliateClient() {
       {/* ─────────────── § CODA ─────────────── */}
       <section
         ref={codaRef}
-        className="relative z-10 overflow-hidden bg-[var(--warm-gray)] px-6 py-28 text-white md:py-36"
+        className="relative z-10 overflow-hidden bg-[var(--section-alt)] px-6 py-28 text-foreground md:py-36"
       >
         {/* Foil rule */}
         <div
@@ -753,23 +768,23 @@ export function AffiliateClient() {
         />
 
         <div className="mx-auto max-w-4xl text-center">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-[var(--accent-light)]">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-[var(--accent-text)]">
             Coda
           </p>
           <h2 className="mt-6 font-fraunces text-5xl font-light leading-[1.05] tracking-tight md:text-7xl">
             Begin the
             <br />
-            <span className="italic" style={{ color: "var(--accent-light)" }}>
+            <span className="italic" style={{ color: "var(--accent-text)" }}>
               correspondence.
             </span>
           </h2>
-          <p className="mx-auto mt-8 max-w-md font-fraunces text-lg italic text-white/55 md:text-xl">
+          <p className="mx-auto mt-8 max-w-md font-fraunces text-lg italic text-muted md:text-xl">
             Apply once. Refer for as long as it pays you.
           </p>
 
           <a
             href="#apply"
-            className="group mt-12 inline-flex items-center gap-4 rounded-none border-b border-[var(--accent-light)] pb-2 font-fraunces text-2xl italic text-[var(--accent-light)] transition-all hover:gap-6 hover:text-white md:text-3xl"
+            className="group mt-12 inline-flex items-center gap-4 rounded-none border-b border-[var(--accent)] pb-2 font-fraunces text-2xl italic text-[var(--accent-text)] transition-all hover:gap-6 hover:text-foreground md:text-3xl"
           >
             Sign &amp; submit
             <span aria-hidden>→</span>

@@ -160,9 +160,9 @@ export function FeaturesGrid() {
   });
 
   return (
-    <SectionWrapper id="features" className="bg-section-alt">
+    <SectionWrapper id="features" dark>
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           Capabilities
         </p>
         <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
@@ -177,15 +177,15 @@ export function FeaturesGrid() {
         {features.map((feature) => (
           <div
             key={feature.title}
-            className="feature-card rounded-2xl bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)]"
+            className="feature-card rounded-2xl border border-white/10 bg-white/[0.04] p-7 backdrop-blur-sm transition-all duration-300 hover:border-accent/30 hover:bg-white/[0.06]"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-accent/8 text-accent">
+            <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-accent/15 text-accent">
               {feature.icon}
             </div>
-            <h3 className="mt-4 font-[var(--font-outfit)] text-base font-semibold">
+            <h3 className="mt-4 font-[var(--font-outfit)] text-base font-semibold text-white">
               {feature.title}
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <p className="mt-2 text-sm leading-relaxed text-white/60">
               {feature.description}
             </p>
           </div>

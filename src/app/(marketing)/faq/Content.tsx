@@ -49,7 +49,7 @@ export default function FaqContent() {
       </section>
 
       {/* Filter + FAQ List */}
-      <section className="px-6 py-16 md:py-24">
+      <section className="bg-section-alt px-6 py-16 md:py-24">
         <div className="mx-auto max-w-3xl">
           {/* Category Filter */}
           <div className="mb-12 flex flex-wrap justify-center gap-2">
@@ -63,7 +63,7 @@ export default function FaqContent() {
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   activeCategory === cat.key
                     ? "bg-accent text-white"
-                    : "bg-section-alt text-muted hover:bg-card-border hover:text-foreground"
+                    : "border border-card-border bg-card text-muted hover:border-accent/30 hover:text-foreground"
                 }`}
               >
                 {cat.label}

@@ -80,9 +80,9 @@ export function MobileApp() {
   const phoneRef = useFadeIn<HTMLDivElement>({ y: 30 });
 
   return (
-    <SectionWrapper id="mobile-app" className="bg-section-alt">
+    <SectionWrapper id="mobile-app" dark>
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           Control Everywhere
         </p>
         <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
@@ -95,7 +95,7 @@ export function MobileApp() {
           </span>
           <span className="text-sm font-semibold text-accent">Coming Soon</span>
         </div>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/60">
           The CleverHub mobile app is coming soon to iOS and Android. Voice
           commands, device control, family management, and CleverAide — all from
           your phone.
@@ -114,7 +114,7 @@ export function MobileApp() {
                 <h3 className="font-[var(--font-outfit)] text-sm font-semibold">
                   {h.title}
                 </h3>
-                <p className="mt-1 text-sm text-muted">{h.description}</p>
+                <p className="mt-1 text-sm text-white/55">{h.description}</p>
               </div>
             </div>
           ))}
@@ -188,7 +188,7 @@ export function MobileApp() {
                 <h3 className="font-[var(--font-outfit)] text-sm font-semibold">
                   {h.title}
                 </h3>
-                <p className="mt-1 text-sm text-muted">{h.description}</p>
+                <p className="mt-1 text-sm text-white/55">{h.description}</p>
               </div>
             </div>
           ))}
@@ -200,12 +200,12 @@ export function MobileApp() {
         {badges.map((b) => (
           <div
             key={b.label}
-            className="flex items-center gap-2 rounded-full bg-card px-5 py-2.5 shadow-sm"
+            className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-5 py-2.5 backdrop-blur-sm"
           >
             <span className="font-[var(--font-outfit)] text-sm font-bold text-accent">
               {b.value}
             </span>
-            <span className="text-sm text-muted">{b.label}</span>
+            <span className="text-sm text-white/60">{b.label}</span>
           </div>
         ))}
       </div>

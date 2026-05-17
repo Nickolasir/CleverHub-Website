@@ -53,7 +53,7 @@ export default function PostContent({ post }: { post: BlogPost }) {
       </PageHero>
 
       {/* ── Article body ── */}
-      <section className="bg-background px-6 py-20 md:py-28">
+      <section className="bg-section-alt px-6 py-20 md:py-28">
         <article ref={bodyRef} className="mx-auto max-w-[680px]">
 
           {/* Article open rule */}

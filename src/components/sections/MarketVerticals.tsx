@@ -81,7 +81,7 @@ export function MarketVerticals() {
   });
 
   return (
-    <SectionWrapper id="solutions">
+    <SectionWrapper id="solutions" className="bg-section-alt">
       <div className="text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
           Built for Your Market

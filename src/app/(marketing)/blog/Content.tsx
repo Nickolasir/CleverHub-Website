@@ -32,7 +32,7 @@ export default function BlogContent() {
       </PageHero>
 
       {/* ── Posts ── */}
-      <section className="relative overflow-hidden bg-background px-6 pb-28 pt-20 md:pb-36 md:pt-28">
+      <section className="relative overflow-hidden bg-section-alt px-6 pb-28 pt-20 md:pb-36 md:pt-28">
 
         {/* Giant faded editorial word — background texture */}
         <div
@@ -89,12 +89,12 @@ export default function BlogContent() {
       </section>
 
       {/* ── CTA strip ── */}
-      <section className="bg-[var(--section-alt)] px-6 py-20">
+      <section className="bg-[var(--warm-gray)] px-6 py-20">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-[var(--font-outfit)] text-2xl font-semibold text-foreground md:text-3xl">
+          <h2 className="font-[var(--font-outfit)] text-2xl font-semibold text-white md:text-3xl">
             See what CleverHub can do for your home
           </h2>
-          <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
+          <p className="mt-4 text-sm leading-relaxed text-white/60">
             Every home is different. Book a free consultation and we'll design
             a system that fits your household perfectly.
           </p>

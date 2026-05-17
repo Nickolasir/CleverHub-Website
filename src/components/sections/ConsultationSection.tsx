@@ -58,15 +58,15 @@ export function ConsultationSection() {
   );
 
   return (
-    <SectionWrapper id="consultation" dark>
+    <SectionWrapper id="consultation" className="bg-section-alt">
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
           Let&apos;s Talk
         </p>
-        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight text-white md:text-5xl">
+        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
           Schedule Your Free Consultation
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/50">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
           Tell us about your property and pick three times that work for you.
           We&apos;ll design a CleverHub setup tailored to your space.
         </p>
@@ -75,21 +75,21 @@ export function ConsultationSection() {
       <div className="mx-auto mt-14 max-w-2xl">
         {isSuccess ? (
           <div className="text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/20">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-600/15">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                className="h-8 w-8 text-green-400"
+                className="h-8 w-8 text-green-600"
               >
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <p className="text-lg font-semibold text-white">
+            <p className="text-lg font-semibold">
               We&apos;ll Be in Touch!
             </p>
-            <p className="mt-2 text-sm text-white/50">
+            <p className="mt-2 text-sm text-muted">
               We&apos;ll confirm your consultation time within 24 hours.
             </p>
           </div>
@@ -101,17 +101,17 @@ export function ConsultationSection() {
               submit();
             }}
             onFocus={handleFieldFocus}
-            className="rounded-2xl border border-white/8 bg-white/[0.03] p-6 backdrop-blur-md md:p-8"
+            className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)] md:p-8"
           >
             {submitError && (
-              <div className="mb-6 rounded-xl bg-red-500/10 px-4 py-3 text-sm text-red-400">
+              <div className="mb-6 rounded-xl bg-red-500/10 px-4 py-3 text-sm text-red-600">
                 {submitError}
               </div>
             )}
 
             <div className="grid gap-5 md:grid-cols-2">
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-white/80">
+                <label className="mb-1.5 block text-sm font-medium text-foreground">
                   Full Name *
                 </label>
                 <input
@@ -119,17 +119,17 @@ export function ConsultationSection() {
                   value={formData.name}
                   onChange={(e) => updateField("name", e.target.value)}
                   placeholder="John Smith"
-                  className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-accent ${
-                    errors.name ? "border-red-500/50" : "border-white/10"
+                  className={`w-full rounded-xl border bg-section-alt px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent ${
+                    errors.name ? "border-red-500/60" : "border-card-border"
                   }`}
                 />
                 {errors.name && (
-                  <p className="mt-1 text-xs text-red-400">{errors.name}</p>
+                  <p className="mt-1 text-xs text-red-600">{errors.name}</p>
                 )}
               </div>
 
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-white/80">
+                <label className="mb-1.5 block text-sm font-medium text-foreground">
                   Email *
                 </label>
                 <input
@@ -137,17 +137,17 @@ export function ConsultationSection() {
                   value={formData.email}
                   onChange={(e) => updateField("email", e.target.value)}
                   placeholder="john@example.com"
-                  className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-accent ${
-                    errors.email ? "border-red-500/50" : "border-white/10"
+                  className={`w-full rounded-xl border bg-section-alt px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent ${
+                    errors.email ? "border-red-500/60" : "border-card-border"
                   }`}
                 />
                 {errors.email && (
-                  <p className="mt-1 text-xs text-red-400">{errors.email}</p>
+                  <p className="mt-1 text-xs text-red-600">{errors.email}</p>
                 )}
               </div>
 
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-white/80">
+                <label className="mb-1.5 block text-sm font-medium text-foreground">
                   Phone Number *
                 </label>
                 <input
@@ -155,17 +155,17 @@ export function ConsultationSection() {
                   value={formData.phone}
                   onChange={(e) => updateField("phone", e.target.value)}
                   placeholder="(713) 555-0100"
-                  className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-accent ${
-                    errors.phone ? "border-red-500/50" : "border-white/10"
+                  className={`w-full rounded-xl border bg-section-alt px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent ${
+                    errors.phone ? "border-red-500/60" : "border-card-border"
                   }`}
                 />
                 {errors.phone && (
-                  <p className="mt-1 text-xs text-red-400">{errors.phone}</p>
+                  <p className="mt-1 text-xs text-red-600">{errors.phone}</p>
                 )}
               </div>
 
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-white/80">
+                <label className="mb-1.5 block text-sm font-medium text-foreground">
                   Property Address *
                 </label>
                 <input
@@ -173,17 +173,17 @@ export function ConsultationSection() {
                   value={formData.address}
                   onChange={(e) => updateField("address", e.target.value)}
                   placeholder="123 Main St, Houston, TX 77001"
-                  className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-accent ${
-                    errors.address ? "border-red-500/50" : "border-white/10"
+                  className={`w-full rounded-xl border bg-section-alt px-4 py-3 text-sm text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent ${
+                    errors.address ? "border-red-500/60" : "border-card-border"
                   }`}
                 />
                 {errors.address && (
-                  <p className="mt-1 text-xs text-red-400">{errors.address}</p>
+                  <p className="mt-1 text-xs text-red-600">{errors.address}</p>
                 )}
               </div>
 
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-white/80">
+                <label className="mb-1.5 block text-sm font-medium text-foreground">
                   Number of Bedrooms *
                 </label>
                 <select
@@ -191,12 +191,12 @@ export function ConsultationSection() {
                   onChange={(e) =>
                     updateField("bedrooms", parseInt(e.target.value))
                   }
-                  className={`w-full rounded-xl border bg-white/5 px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-accent ${
-                    errors.bedrooms ? "border-red-500/50" : "border-white/10"
+                  className={`w-full rounded-xl border bg-section-alt px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent ${
+                    errors.bedrooms ? "border-red-500/60" : "border-card-border"
                   }`}
                 >
                   {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
-                    <option key={n} value={n} className="bg-[#1a1a1a]">
+                    <option key={n} value={n} className="bg-card">
                       {n} {n === 1 ? "bedroom" : "bedrooms"}
                     </option>
                   ))}
@@ -211,9 +211,9 @@ export function ConsultationSection() {
                     onChange={(e) =>
                       updateField("hasOffice", e.target.checked)
                     }
-                    className="h-5 w-5 rounded border-white/20 bg-white/5 text-accent focus:ring-accent"
+                    className="h-5 w-5 rounded border-card-border bg-section-alt text-accent focus:ring-accent"
                   />
-                  <span className="text-sm font-medium text-white/80">
+                  <span className="text-sm font-medium text-foreground">
                     Property has a home office
                   </span>
                 </label>
@@ -221,16 +221,14 @@ export function ConsultationSection() {
             </div>
 
             <div className="mt-6">
-              <div className="[&_p]:text-white/80 [&_span]:text-white/50 [&_button]:border-white/10 [&_.text-foreground]:text-white [&_.text-muted]:text-white/50 [&_.bg-card]:bg-white/5 [&_.border-card-border]:border-white/10 [&_.bg-background]:bg-white/5">
-                <DateTimePicker
-                  selectedSlots={selectedSlots}
-                  onSlotsChange={updateTimeSlots}
-                />
-              </div>
+              <DateTimePicker
+                selectedSlots={selectedSlots}
+                onSlotsChange={updateTimeSlots}
+              />
               {(errors.preferredTime1 ||
                 errors.preferredTime2 ||
                 errors.preferredTime3) && (
-                <p className="mt-2 text-xs text-red-400">
+                <p className="mt-2 text-xs text-red-600">
                   Please select 3 preferred consultation times
                 </p>
               )}
@@ -269,7 +267,7 @@ export function ConsultationSection() {
                   "Schedule My Consultation"
                 )}
               </button>
-              <p className="mt-3 text-xs text-white/30">
+              <p className="mt-3 text-xs text-muted/70">
                 We&apos;ll confirm your time within 24 hours. No spam, ever.
               </p>
             </div>

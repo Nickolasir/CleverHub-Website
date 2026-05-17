@@ -25,23 +25,23 @@ export function FamilyIntelligence() {
   const textRef = useFadeIn<HTMLDivElement>({ y: 24 });
 
   return (
-    <SectionWrapper id="family">
+    <SectionWrapper id="family" dark>
       <div className="grid items-center gap-12 lg:grid-cols-2">
         {/* Left — Copy */}
         <div ref={textRef}>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             Family Intelligence
           </p>
           <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
             Every Family Member.{" "}
             <span className="text-accent">Their Own AI.</span>
           </h2>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted">
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70">
             Each person gets a named AI agent with age-appropriate behavior,
             custom wake words, and granular permissions — all managed by parents
             from the dashboard or mobile app.
           </p>
-          <p className="mt-4 max-w-lg text-base leading-relaxed text-muted">
+          <p className="mt-4 max-w-lg text-base leading-relaxed text-white/60">
             Toddlers get a friendly companion with zero device access. Teenagers
             get near-adult privileges minus security controls. Adults get full
             reign. And every interaction is logged for complete transparency.
@@ -70,7 +70,7 @@ export function FamilyIntelligence() {
           {familyMembers.map((member) => (
             <div
               key={member.name}
-              className="family-card rounded-2xl border border-card-border bg-card p-5 shadow-sm"
+              className="family-card rounded-2xl border border-white/10 bg-white/[0.04] p-5 shadow-sm backdrop-blur-sm"
             >
               <div className="flex items-center gap-3">
                 <div
@@ -82,19 +82,19 @@ export function FamilyIntelligence() {
                   <p className="font-[var(--font-outfit)] text-sm font-semibold">
                     {member.name}
                   </p>
-                  <p className="text-xs text-muted">
+                  <p className="text-xs text-white/50">
                     &ldquo;Hey {member.agent}&rdquo;
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-muted">Tier</span>
-                  <span className="text-xs font-medium">{member.tier}</span>
+                  <span className="text-xs text-white/45">Tier</span>
+                  <span className="text-xs font-medium text-white/85">{member.tier}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-muted">Access</span>
-                  <span className="text-xs font-medium">{member.access}</span>
+                  <span className="text-xs text-white/45">Access</span>
+                  <span className="text-xs font-medium text-white/85">{member.access}</span>
                 </div>
               </div>
             </div>
@@ -103,13 +103,13 @@ export function FamilyIntelligence() {
       </div>
 
       {/* Stats Row */}
-      <div className="mt-16 grid grid-cols-3 gap-6 border-t border-card-border pt-12">
+      <div className="mt-16 grid grid-cols-3 gap-6 border-t border-white/10 pt-12">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
             <p className="font-[var(--font-outfit)] text-2xl font-bold text-accent md:text-3xl">
               {stat.value}
             </p>
-            <p className="mt-1 text-sm text-muted">{stat.label}</p>
+            <p className="mt-1 text-sm text-white/60">{stat.label}</p>
           </div>
         ))}
       </div>

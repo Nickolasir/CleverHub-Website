@@ -116,7 +116,7 @@ export default function CleverHomeContent() {
       </section>
 
       {/* Features */}
-      <SectionWrapper>
+      <SectionWrapper className="bg-section-alt">
         <div className="text-center">
           <h2 className="font-[var(--font-outfit)] text-3xl font-bold tracking-tight md:text-4xl">
             Intelligence That Sells Homes

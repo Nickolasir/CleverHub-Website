@@ -79,7 +79,7 @@ export function Pricing() {
   });
 
   return (
-    <SectionWrapper id="pricing">
+    <SectionWrapper id="pricing" dark>
       <div className="text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           Pricing
@@ -87,7 +87,7 @@ export function Pricing() {
         <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
           One System. Every Room.
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/60">
           Everything you need to make your home intelligent — choose the system
           that fits your space.
         </p>
@@ -98,8 +98,8 @@ export function Pricing() {
         className="mx-auto mt-16 grid max-w-5xl gap-8 lg:grid-cols-2"
       >
         {/* Apartment Tier */}
-        <div className="relative overflow-hidden rounded-2xl bg-card shadow-[0_4px_24px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)]">
-          <div className="h-px bg-card-border" />
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.25)]">
+          <div className="h-px bg-white/10" />
           <div className="p-10 md:p-12">
             {/* Price */}
             <div className="text-center">
@@ -111,26 +111,26 @@ export function Pricing() {
                   $1,899
                 </span>
               </div>
-              <p className="mt-2 text-sm text-muted">
+              <p className="mt-2 text-sm text-white/60">
                 One-time purchase. Hub + 1 satellite node + all sensors.
               </p>
-              <p className="mt-1 text-xs text-muted/50">
+              <p className="mt-1 text-xs text-white/35">
                 Cloud AI features available for $100/mo
               </p>
             </div>
 
-            <div className="my-8 h-px bg-card-border" />
+            <div className="my-8 h-px bg-white/10" />
 
             {/* Hub features */}
             <div>
-              <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold">
+              <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold text-white">
                 Central Hub
               </h3>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {apartmentHubFeatures.map((f) => (
                   <li
                     key={f}
-                    className="pricing-item flex items-start gap-2 text-sm text-muted"
+                    className="pricing-item flex items-start gap-2 text-sm text-white/65"
                   >
                     <CheckIcon />
                     {f}
@@ -139,18 +139,18 @@ export function Pricing() {
               </ul>
             </div>
 
-            <div className="my-6 h-px bg-card-border" />
+            <div className="my-6 h-px bg-white/10" />
 
             {/* Satellite features */}
             <div>
-              <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold">
+              <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold text-white">
                 Satellite Node (x1)
               </h3>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {apartmentSatelliteFeatures.map((f) => (
                   <li
                     key={f}
-                    className="pricing-item flex items-start gap-2 text-sm text-muted"
+                    className="pricing-item flex items-start gap-2 text-sm text-white/65"
                   >
                     <CheckIcon />
                     {f}
@@ -184,14 +184,14 @@ export function Pricing() {
         </div>
 
         {/* Standard Tier */}
-        <div className="relative overflow-hidden rounded-2xl bg-card shadow-[0_4px_24px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] ring-2 ring-accent/20">
+        <div className="relative overflow-hidden rounded-2xl border border-accent/30 bg-white/[0.05] backdrop-blur-sm shadow-[0_4px_28px_rgba(212,168,67,0.12)] ring-1 ring-accent/30">
           {/* Popular badge */}
           <div className="absolute right-6 top-6">
-            <span className="pricing-item rounded-full bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+            <span className="pricing-item rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
               Most Popular
             </span>
           </div>
-          <div className="h-px bg-accent/30" />
+          <div className="h-px bg-accent/40" />
           <div className="p-10 md:p-12">
             {/* Price */}
             <div className="text-center">
@@ -203,26 +203,26 @@ export function Pricing() {
                   $2,500
                 </span>
               </div>
-              <p className="mt-2 text-sm text-muted">
+              <p className="mt-2 text-sm text-white/60">
                 One-time purchase. Hub + 4 satellite nodes + all sensors.
               </p>
-              <p className="mt-1 text-xs text-muted/50">
+              <p className="mt-1 text-xs text-white/35">
                 Cloud AI features available for $100/mo
               </p>
             </div>
 
-            <div className="my-8 h-px bg-card-border" />
+            <div className="my-8 h-px bg-white/10" />
 
             {/* Hub features */}
             <div>
-              <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold">
+              <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold text-white">
                 Central Hub
               </h3>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {standardHubFeatures.map((f) => (
                   <li
                     key={f}
-                    className="pricing-item flex items-start gap-2 text-sm text-muted"
+                    className="pricing-item flex items-start gap-2 text-sm text-white/65"
                   >
                     <CheckIcon />
                     {f}
@@ -231,18 +231,18 @@ export function Pricing() {
               </ul>
             </div>
 
-            <div className="my-6 h-px bg-card-border" />
+            <div className="my-6 h-px bg-white/10" />
 
             {/* Satellite features */}
             <div>
-              <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold">
+              <h3 className="pricing-item font-[var(--font-outfit)] text-base font-semibold text-white">
                 Satellite Nodes (x4)
               </h3>
               <ul className="mt-4 flex flex-col gap-2.5">
                 {standardSatelliteFeatures.map((f) => (
                   <li
                     key={f}
-                    className="pricing-item flex items-start gap-2 text-sm text-muted"
+                    className="pricing-item flex items-start gap-2 text-sm text-white/65"
                   >
                     <CheckIcon />
                     {f}
@@ -277,9 +277,9 @@ export function Pricing() {
       </div>
 
       {/* Additional satellites note */}
-      <p className="mx-auto mt-8 max-w-5xl text-center text-sm text-muted">
+      <p className="mx-auto mt-8 max-w-5xl text-center text-sm text-white/60">
         Need more coverage? Additional satellite nodes available for{" "}
-        <span className="font-semibold text-foreground">$650 each</span>.
+        <span className="font-semibold text-white">$650 each</span>.
       </p>
     </SectionWrapper>
   );

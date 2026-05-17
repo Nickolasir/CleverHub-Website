@@ -78,15 +78,15 @@ export function TVDashboard() {
   const tvRef = useFadeIn<HTMLDivElement>({ y: 30 });
 
   return (
-    <SectionWrapper id="tv-dashboard" dark>
+    <SectionWrapper id="tv-dashboard" className="bg-section-alt">
       <div className="text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-text">
           Big Screen Control
         </p>
-        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight text-white md:text-5xl">
+        <h2 className="mt-3 font-[var(--font-outfit)] text-4xl font-semibold tracking-tight md:text-5xl">
           Your Home on the Big Screen
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-white/60">
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted">
           Turn your living room TV into an always-on smart home command center.
           Device status, scene controls, and activity feed — all optimized for
           your TV remote.
@@ -99,7 +99,7 @@ export function TVDashboard() {
         <div ref={tvRef} className="flex justify-center">
           <div className="w-full max-w-[520px]">
             {/* TV frame */}
-            <div className="rounded-xl border-[3px] border-white/10 bg-[#1a1a1a] p-4 shadow-2xl">
+            <div className="rounded-xl border-[3px] border-[#0a0a0a]/80 bg-[#1a1a1a] p-4 shadow-[0_24px_60px_-12px_rgba(26,26,26,0.45),0_8px_20px_-6px_rgba(155,122,45,0.25)]">
               {/* Screen content */}
               <div className="rounded-lg bg-[#1a1a1a] p-5">
                 {/* Nav bar */}
@@ -193,8 +193,8 @@ export function TVDashboard() {
               </div>
             </div>
             {/* TV stand */}
-            <div className="mx-auto mt-1 h-4 w-32 rounded-b-lg bg-white/5" />
-            <div className="mx-auto h-1 w-48 rounded-b bg-white/3" />
+            <div className="mx-auto mt-1 h-4 w-32 rounded-b-lg bg-[#1a1a1a]/15" />
+            <div className="mx-auto h-1 w-48 rounded-b bg-[#1a1a1a]/8" />
           </div>
         </div>
 
@@ -202,14 +202,14 @@ export function TVDashboard() {
         <div ref={gridRef} className="grid gap-6 sm:grid-cols-2">
           {highlights.map((h) => (
             <div key={h.title} className="tv-card flex items-start gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/15 text-accent">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
                 {h.icon}
               </div>
               <div>
-                <h3 className="font-[var(--font-outfit)] text-sm font-semibold text-white">
+                <h3 className="font-[var(--font-outfit)] text-sm font-semibold">
                   {h.title}
                 </h3>
-                <p className="mt-1 text-sm text-white/50">{h.description}</p>
+                <p className="mt-1 text-sm text-muted">{h.description}</p>
               </div>
             </div>
           ))}
@@ -226,10 +226,10 @@ export function TVDashboard() {
         ].map((b) => (
           <div
             key={b.label}
-            className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5"
+            className="flex items-center gap-2 rounded-full border border-card-border bg-card px-5 py-2.5 shadow-sm"
           >
             <span>{b.icon}</span>
-            <span className="text-sm text-white/60">{b.label}</span>
+            <span className="text-sm text-muted">{b.label}</span>
           </div>
         ))}
       </div>
