@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { useFadeIn, useStaggerReveal } from "@/hooks/useGSAP";
 
 /* ─────────────────────────── ICONS ─────────────────────────── */
@@ -103,9 +102,8 @@ const DOSSIER_RULE_STYLE: React.CSSProperties = {
     "linear-gradient(90deg, transparent 0%, rgba(212,168,67,0.55) 20%, rgba(244,210,122,0.85) 50%, rgba(212,168,67,0.55) 80%, transparent 100%)",
 };
 
-/* Reusable Profile №01 card — also referenced from homepage section.
-   Renders Max the Golden Retriever — the same imaginary household pet
-   appears across the page so the system feels like one continuous record. */
+/* Reusable Profile №01 card.
+   `tone="dark"` is used on light-yellow hero so the card pops as an inset. */
 function ProfileCard({ tone = "light" }: { tone?: "light" | "dark" }) {
   const darkMode = tone === "dark";
   return (
@@ -116,15 +114,13 @@ function ProfileCard({ tone = "light" }: { tone?: "light" | "dark" }) {
           : "border border-card-border bg-card"
       }`}
     >
-      {/* Foil corner mark */}
       <div className="absolute right-5 top-5 flex items-center gap-2">
         <PawGlyph className={`h-3.5 w-3.5 ${darkMode ? "text-accent-light" : "text-accent/70"}`} />
-        <span className="font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.32em] text-accent">
+        <span className={`font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.32em] ${darkMode ? "text-accent-light" : "text-accent"}`}>
           Profile № 01
         </span>
       </div>
 
-      {/* Pet identity */}
       <div className="mt-1">
         <h3
           className={`font-[var(--font-outfit)] text-[2.5rem] font-bold leading-none tracking-tight ${
@@ -133,25 +129,16 @@ function ProfileCard({ tone = "light" }: { tone?: "light" | "dark" }) {
         >
           Max
         </h3>
-        <p
-          className={`mt-2 font-serif text-base italic leading-snug ${
-            darkMode ? "text-white/70" : "text-muted"
-          }`}
-        >
+        <p className={`mt-2 font-serif text-base italic leading-snug ${darkMode ? "text-white/70" : "text-muted"}`}>
           Golden Retriever &middot; Male &middot; 4 yrs
         </p>
-        <p
-          className={`mt-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] ${
-            darkMode ? "text-white/35" : "text-muted/60"
-          }`}
-        >
+        <p className={`mt-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] ${darkMode ? "text-white/35" : "text-muted/60"}`}>
           Microchip 985&nbsp;121&nbsp;003
         </p>
       </div>
 
-      {/* Active meds */}
       <div className={`mt-6 border-t pt-4 ${darkMode ? "border-white/10" : "border-card-border"}`}>
-        <p className="font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em] text-accent-text">
+        <p className={`font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em] ${darkMode ? "text-accent-light" : "text-accent-text"}`}>
           Active Meds
         </p>
         <ul className="mt-2.5 flex flex-col gap-2">
@@ -160,18 +147,10 @@ function ProfileCard({ tone = "light" }: { tone?: "light" | "dark" }) {
             { drug: "Cosequin DS", schedule: "2× daily" },
           ].map((m) => (
             <li key={m.drug} className="flex items-baseline justify-between gap-2">
-              <span
-                className={`text-sm font-medium ${
-                  darkMode ? "text-white/90" : "text-foreground"
-                }`}
-              >
+              <span className={`text-sm font-medium ${darkMode ? "text-white/90" : "text-foreground"}`}>
                 {m.drug}
               </span>
-              <span
-                className={`font-mono text-[0.65rem] tracking-wide ${
-                  darkMode ? "text-white/45" : "text-muted"
-                }`}
-              >
+              <span className={`font-mono text-[0.65rem] tracking-wide ${darkMode ? "text-white/45" : "text-muted"}`}>
                 {m.schedule}
               </span>
             </li>
@@ -179,47 +158,26 @@ function ProfileCard({ tone = "light" }: { tone?: "light" | "dark" }) {
         </ul>
       </div>
 
-      {/* Footer grid */}
       <div className={`mt-5 grid grid-cols-2 gap-4 border-t pt-4 ${darkMode ? "border-white/10" : "border-card-border"}`}>
         <div>
-          <p
-            className={`text-[0.58rem] font-semibold uppercase tracking-[0.22em] ${
-              darkMode ? "text-white/40" : "text-muted"
-            }`}
-          >
+          <p className={`text-[0.58rem] font-semibold uppercase tracking-[0.22em] ${darkMode ? "text-white/40" : "text-muted"}`}>
             Weight
           </p>
-          <p
-            className={`mt-0.5 font-[var(--font-outfit)] text-lg font-semibold ${
-              darkMode ? "text-white" : "text-foreground"
-            }`}
-          >
+          <p className={`mt-0.5 font-[var(--font-outfit)] text-lg font-semibold ${darkMode ? "text-white" : "text-foreground"}`}>
             31.4 kg
           </p>
-          <p
-            className={`text-[0.62rem] ${darkMode ? "text-emerald-300/70" : "text-emerald-700/80"}`}
-          >
+          <p className={`text-[0.62rem] ${darkMode ? "text-emerald-300/85" : "text-emerald-700/80"}`}>
             BCS 5/9 &middot; Ideal
           </p>
         </div>
         <div>
-          <p
-            className={`text-[0.58rem] font-semibold uppercase tracking-[0.22em] ${
-              darkMode ? "text-white/40" : "text-muted"
-            }`}
-          >
+          <p className={`text-[0.58rem] font-semibold uppercase tracking-[0.22em] ${darkMode ? "text-white/40" : "text-muted"}`}>
             Next Vet
           </p>
-          <p
-            className={`mt-0.5 font-[var(--font-outfit)] text-lg font-semibold ${
-              darkMode ? "text-white" : "text-foreground"
-            }`}
-          >
+          <p className={`mt-0.5 font-[var(--font-outfit)] text-lg font-semibold ${darkMode ? "text-white" : "text-foreground"}`}>
             Mar 21
           </p>
-          <p
-            className={`text-[0.62rem] ${darkMode ? "text-white/45" : "text-muted"}`}
-          >
+          <p className={`text-[0.62rem] ${darkMode ? "text-white/50" : "text-muted"}`}>
             Bellaire Vet
           </p>
         </div>
@@ -266,23 +224,19 @@ const bentoSmalls = [
 const voiceTurns = [
   {
     user: "Did Max get his pill?",
-    assistant:
-      "Yes — Apoquel administered at 7:42 AM by Sarah. Next dose at 7:00 PM.",
+    assistant: "Yes — Apoquel administered at 7:42 AM by Sarah. Next dose at 7:00 PM.",
   },
   {
     user: "The cat threw up.",
-    assistant:
-      "Logging for Luna. Severity 1–5? When was her last meal? Anything unusual eaten today?",
+    assistant: "Logging for Luna. Severity 1–5? When was her last meal? Anything unusual eaten today?",
   },
   {
     user: "Order more kibble.",
-    assistant:
-      "Adding Royal Canin Medium Adult to the shopping list — you're 4 days from running out.",
+    assistant: "Adding Royal Canin Medium Adult to the shopping list — you're 4 days from running out.",
   },
   {
     user: "Schedule Max's vet visit.",
-    assistant:
-      "Bellaire Vet has Mar 21 at 10:00 AM open. Want me to book it for the annual?",
+    assistant: "Bellaire Vet has Mar 21 at 10:00 AM open. Want me to book it for the annual?",
   },
 ];
 
@@ -313,31 +267,30 @@ export default function CleverPetsContent() {
 
   return (
     <>
-      {/* ──────────── § COVER — THE DOSSIER ──────────── */}
-      <section className="relative isolate overflow-hidden bg-warm-gray px-6 pb-28 pt-32 md:pt-44">
-        {/* Atmospheric gold radial behind the title */}
+      {/* ──────────── § COVER (LIGHT) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-section-alt px-6 pb-28 pt-32 md:pt-44">
+        {/* Soft gold radial */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0 opacity-90"
           style={{
             background:
               "radial-gradient(ellipse 60% 40% at 25% 35%, rgba(212,168,67,0.18) 0%, transparent 70%)",
           }}
         />
-        {/* Giant marginalia paw — bleeds off the right edge */}
+        {/* Marginalia paw */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 -top-8 select-none text-accent/5 md:-right-10"
+          className="pointer-events-none absolute -right-20 -top-8 select-none text-accent/[0.08] md:-right-10"
         >
           <PawGlyph className="h-[480px] w-[480px]" />
         </div>
 
         <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-x-16 gap-y-12 md:grid-cols-12">
-          {/* Left — copy */}
           <div ref={heroRef} className="md:col-span-7">
             <Link
               href="/"
-              className="mb-8 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent-light"
+              className="mb-8 inline-flex items-center gap-1 text-sm font-medium text-accent-text transition-colors hover:text-accent"
             >
               <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 rotate-180">
                 <path
@@ -349,26 +302,25 @@ export default function CleverPetsContent() {
               Back to Solutions
             </Link>
 
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
               For Pet Households &middot; Article I
             </p>
-            <h1 className="mt-5 font-[var(--font-outfit)] text-[3.5rem] font-bold leading-[0.95] tracking-tight text-white md:text-[5.5rem]">
-              Clever<span className="font-serif italic font-light text-accent-light">Pets</span>
+            <h1 className="mt-5 font-[var(--font-outfit)] text-[3.5rem] font-bold leading-[0.95] tracking-tight text-foreground md:text-[5.5rem]">
+              Clever<span className="font-serif italic font-light text-accent-text">Pets</span>
             </h1>
-            <p className="mt-7 max-w-xl font-serif text-xl italic leading-snug text-white/65 md:text-2xl">
+            <p className="mt-7 max-w-xl font-serif text-xl italic leading-snug text-muted md:text-2xl">
               A living dossier for every member of the household —
               meds, meals, vets, and worry, all kept by the same
               assistant that runs the rest of your home.
             </p>
 
-            {/* Inline mini-stats */}
-            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-6">
+            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-card-border pt-6">
               {heroStats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-[var(--font-outfit)] text-2xl font-semibold text-accent-light md:text-3xl">
+                  <dt className="font-[var(--font-outfit)] text-2xl font-semibold text-accent-text md:text-3xl">
                     {s.value}
                   </dt>
-                  <dd className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-white/45">
+                  <dd className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-muted">
                     {s.label}
                   </dd>
                 </div>
@@ -391,55 +343,57 @@ export default function CleverPetsContent() {
               </a>
               <a
                 href="#capabilities"
-                className="text-sm font-medium uppercase tracking-[0.2em] text-white/45 transition-colors hover:text-white"
+                className="text-sm font-medium uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground"
               >
                 Read the dossier ↓
               </a>
             </div>
           </div>
 
-          {/* Right — profile card */}
+          {/* Right — profile card (dark variant pops on yellow) */}
           <div
             ref={profileRef}
             className="relative flex justify-center md:col-span-5 md:justify-end"
           >
             <div className="relative">
-              <ProfileCard tone="light" />
-              {/* Subtle accent ring behind the card */}
+              <ProfileCard tone="dark" />
               <div
                 aria-hidden
                 className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl"
                 style={{
                   background:
-                    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,168,67,0.12) 0%, transparent 70%)",
+                    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,168,67,0.18) 0%, transparent 70%)",
                 }}
               />
             </div>
           </div>
         </div>
 
-        {/* Foil rule */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-px"
-          style={DOSSIER_RULE_STYLE}
-        />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={DOSSIER_RULE_STYLE} />
       </section>
 
-      {/* ──────────── § MANIFESTO ──────────── */}
-      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36">
+      {/* ──────────── § MANIFESTO (DARK) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(212,168,67,0.14) 0%, transparent 70%)",
+          }}
+        />
         <div ref={manifestoRef} className="relative mx-auto max-w-4xl text-center">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-light">
             Article II &middot; The Promise
           </p>
-          <h2 className="mt-6 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-6xl">
+          <h2 className="mt-6 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-white md:text-6xl">
             Six species.{" "}
-            <span className="font-serif italic font-light text-accent-text">
+            <span className="font-serif italic font-light text-accent-light">
               One assistant.
             </span>{" "}
             Everything they need.
           </h2>
-          <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-muted md:text-xl">
+          <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-white/65 md:text-xl">
             Pet care isn&apos;t a separate app — it&apos;s a domain of the same
             household orchestrator. The voice that turns off the lights also
             knows when Max&apos;s heartworm pill is due, when Luna&apos;s last
@@ -447,17 +401,13 @@ export default function CleverPetsContent() {
             recalled.
           </p>
 
-          {/* Species pictograms row */}
           <div className="mt-14 flex flex-wrap items-end justify-center gap-x-10 gap-y-4">
             {speciesPictograms.map((s) => (
               <div key={s.label} className="text-center">
-                <span
-                  className="block text-3xl text-accent-text md:text-4xl"
-                  aria-hidden
-                >
+                <span className="block text-3xl text-accent-light md:text-4xl" aria-hidden>
                   {s.glyph}
                 </span>
-                <span className="mt-2 block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted/70">
+                <span className="mt-2 block font-mono text-[0.6rem] uppercase tracking-[0.22em] text-white/45">
                   {s.label}
                 </span>
               </div>
@@ -466,19 +416,18 @@ export default function CleverPetsContent() {
         </div>
       </section>
 
-      {/* ──────────── § CAPABILITIES BENTO ──────────── */}
+      {/* ──────────── § CAPABILITIES BENTO (LIGHT) ──────────── */}
       <section
         id="capabilities"
-        className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36"
+        className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36"
       >
-        {/* Section opener */}
         <div className="mx-auto mb-16 max-w-6xl">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
             Article III &middot; Capabilities
           </p>
-          <h2 className="mt-5 max-w-3xl font-[var(--font-outfit)] text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-5xl">
+          <h2 className="mt-5 max-w-3xl font-[var(--font-outfit)] text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-5xl">
             What it{" "}
-            <span className="font-serif italic font-light text-accent-light">
+            <span className="font-serif italic font-light text-accent-text">
               actually does
             </span>{" "}
             for the household.
@@ -489,30 +438,29 @@ export default function CleverPetsContent() {
           ref={bentoRef}
           className="mx-auto grid max-w-6xl grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-4 md:grid-rows-[auto_auto_auto]"
         >
-          {/* HERO CARD A — Medication with schedule */}
-          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#23211e] p-7 transition-colors duration-300 hover:border-accent/40 md:col-span-2 md:row-span-2">
-            <div className="flex items-center gap-2 text-accent-light">
+          {/* HERO CARD A — Medication */}
+          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)] md:col-span-2 md:row-span-2">
+            <div className="flex items-center gap-2 text-accent-text">
               <PillIcon className="h-5 w-5" />
               <span className="font-[var(--font-outfit)] text-[0.6rem] font-semibold uppercase tracking-[0.32em]">
                 Medication
               </span>
             </div>
-            <h3 className="mt-4 font-[var(--font-outfit)] text-2xl font-semibold leading-tight text-white md:text-3xl">
+            <h3 className="mt-4 font-[var(--font-outfit)] text-2xl font-semibold leading-tight text-foreground md:text-3xl">
               Every dose, accounted for.
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-white/65">
+            <p className="mt-3 text-sm leading-relaxed text-muted">
               Eight administration routes, every standard frequency, refills
               tracked, prescribing vet on file. Doses are logged the moment
               they&apos;re given — by anyone in the household.
             </p>
 
-            {/* Schedule mockup */}
-            <div className="mt-7 rounded-xl border border-white/10 bg-black/30 p-4">
+            <div className="mt-7 rounded-xl border border-card-border bg-section-alt/70 p-4">
               <div className="mb-3 flex items-baseline justify-between">
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                   Today &middot; Mar 14
                 </p>
-                <p className="font-mono text-[0.6rem] tracking-wide text-white/40">
+                <p className="font-mono text-[0.6rem] tracking-wide text-muted">
                   2/3 administered
                 </p>
               </div>
@@ -528,15 +476,15 @@ export default function CleverPetsContent() {
                     style={{
                       borderColor:
                         d.state === "done"
-                          ? "rgba(110,200,140,0.6)"
-                          : "rgba(212,168,67,0.55)",
+                          ? "rgba(34,140,80,0.55)"
+                          : "rgba(212,168,67,0.65)",
                     }}
                   >
-                    <span className="font-mono text-xs text-white/45">{d.time}</span>
-                    <span className="flex-1 text-white/85">{d.drug}</span>
+                    <span className="font-mono text-xs text-muted">{d.time}</span>
+                    <span className="flex-1 text-foreground">{d.drug}</span>
                     <span
                       className={`font-mono text-[0.62rem] tracking-wider ${
-                        d.state === "done" ? "text-emerald-300/85" : "text-accent-light"
+                        d.state === "done" ? "text-emerald-700" : "text-accent-text"
                       }`}
                     >
                       {d.state === "done" ? `✓ ${d.who}` : "○ Pending"}
@@ -547,77 +495,75 @@ export default function CleverPetsContent() {
             </div>
           </article>
 
-          {/* HERO CARD B — Triage with conversation */}
-          <article className="bento-card group relative overflow-hidden rounded-2xl border border-white/10 bg-[#23211e] p-7 transition-colors duration-300 hover:border-accent/40 md:col-span-2">
-            <div className="flex items-center gap-2 text-accent-light">
+          {/* HERO CARD B — Triage */}
+          <article className="bento-card group relative overflow-hidden rounded-2xl border border-card-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)] md:col-span-2">
+            <div className="flex items-center gap-2 text-accent-text">
               <StethoscopeIcon className="h-5 w-5" />
               <span className="font-[var(--font-outfit)] text-[0.6rem] font-semibold uppercase tracking-[0.32em]">
                 AI Symptom Triage
               </span>
             </div>
-            <h3 className="mt-4 font-[var(--font-outfit)] text-2xl font-semibold leading-tight text-white">
+            <h3 className="mt-4 font-[var(--font-outfit)] text-2xl font-semibold leading-tight text-foreground">
               Severity. Within seconds.
             </h3>
 
-            {/* Conversation mockup */}
             <div className="mt-5 space-y-3 font-serif italic">
-              <div className="ml-auto max-w-[80%] rounded-2xl rounded-tr-md bg-accent/20 px-4 py-2.5 text-sm text-white/85">
+              <div className="ml-auto max-w-[80%] rounded-2xl rounded-tr-md bg-accent/20 px-4 py-2.5 text-sm text-foreground">
                 &ldquo;The cat threw up.&rdquo;
               </div>
-              <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-white/[0.06] px-4 py-2.5 text-sm text-white/75">
+              <div className="max-w-[88%] rounded-2xl rounded-tl-md border border-card-border bg-section-alt/70 px-4 py-2.5 text-sm text-muted">
                 Severity 1–5? When was Luna&apos;s last meal? Anything unusual
                 eaten today?
               </div>
             </div>
 
-            {/* Triage badges */}
             <div className="mt-5 flex flex-wrap gap-2 not-italic">
-              <span className="rounded-full border border-red-400/40 bg-red-400/10 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-wider text-red-300">
+              <span className="rounded-full border border-red-500/40 bg-red-500/10 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-wider text-red-700">
                 Emergency
               </span>
-              <span className="rounded-full border border-accent-light/40 bg-accent/10 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-wider text-accent-light">
+              <span className="rounded-full border border-accent/45 bg-accent/15 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-wider text-accent-text">
                 Call Vet
               </span>
-              <span className="rounded-full border border-emerald-300/40 bg-emerald-400/10 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-wider text-emerald-300">
+              <span className="rounded-full border border-emerald-600/40 bg-emerald-500/10 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-wider text-emerald-700">
                 Monitor
               </span>
             </div>
           </article>
 
           {/* SMALL CARD — Recalls */}
-          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#23211e] p-6 transition-colors duration-300 hover:border-accent/40">
-            <div className="flex items-center gap-2 text-accent-light">
+          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)]">
+            <div className="flex items-center gap-2 text-accent-text">
               <AlertTriangleIcon className="h-5 w-5" />
               <span className="font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em]">
                 Recalls
               </span>
             </div>
-            <h3 className="mt-3 font-[var(--font-outfit)] text-lg font-semibold leading-snug text-white">
+            <h3 className="mt-3 font-[var(--font-outfit)] text-lg font-semibold leading-snug text-foreground">
               Real-time food safety.
             </h3>
 
-            <div className="mt-4 rounded-lg border-l-2 border-red-400/70 bg-red-400/10 px-3 py-2.5">
-              <p className="font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-red-300">
+            <div className="mt-4 rounded-lg border-l-2 border-red-500/70 bg-red-500/10 px-3 py-2.5">
+              <p className="font-mono text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-red-700">
                 Severe &middot; Mar 11
               </p>
-              <p className="mt-1 text-xs leading-snug text-white/80">
+              <p className="mt-1 text-xs leading-snug text-foreground/85">
                 Royal Canin Medium Adult, Lot RC8392 — matched to your pantry.
               </p>
             </div>
           </article>
 
           {/* SMALL CARD — Devices */}
-          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#23211e] p-6 transition-colors duration-300 hover:border-accent/40">
-            <div className="flex items-center gap-2 text-accent-light">
+          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)]">
+            <div className="flex items-center gap-2 text-accent-text">
               <DevicesIcon className="h-5 w-5" />
               <span className="font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em]">
                 Devices
               </span>
             </div>
-            <h3 className="mt-3 font-[var(--font-outfit)] text-lg font-semibold leading-snug text-white">
+            <h3 className="mt-3 font-[var(--font-outfit)] text-lg font-semibold leading-snug text-foreground">
               Hardware that listens.
             </h3>
-            <p className="mt-3 text-xs leading-relaxed text-white/55">
+            <p className="mt-3 text-xs leading-relaxed text-muted">
               Smart feeders, pet doors, smart litter, aquariums, cameras —
               each linked to a specific pet.
             </p>
@@ -625,7 +571,7 @@ export default function CleverPetsContent() {
               {["Feeder", "Door", "Litter", "Cam", "Tank"].map((d) => (
                 <span
                   key={d}
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 font-mono text-[0.55rem] uppercase tracking-wider text-white/55"
+                  className="rounded-full border border-card-border bg-section-alt/70 px-2 py-0.5 font-mono text-[0.55rem] uppercase tracking-wider text-muted"
                 >
                   {d}
                 </span>
@@ -634,18 +580,17 @@ export default function CleverPetsContent() {
           </article>
 
           {/* WIDE CARD — Vet records */}
-          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#23211e] p-7 transition-colors duration-300 hover:border-accent/40 md:col-span-2">
-            <div className="flex items-center gap-2 text-accent-light">
+          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)] md:col-span-2">
+            <div className="flex items-center gap-2 text-accent-text">
               <ClipboardIcon className="h-5 w-5" />
               <span className="font-[var(--font-outfit)] text-[0.6rem] font-semibold uppercase tracking-[0.32em]">
                 Vet Records
               </span>
             </div>
-            <h3 className="mt-4 font-[var(--font-outfit)] text-xl font-semibold leading-tight text-white md:text-2xl">
+            <h3 className="mt-4 font-[var(--font-outfit)] text-xl font-semibold leading-tight text-foreground md:text-2xl">
               A clinical history, kept in order.
             </h3>
 
-            {/* Vaccination ledger snippet */}
             <div className="mt-5 grid grid-cols-3 gap-2.5">
               {[
                 { name: "Rabies", date: "Jul 2027", state: "current" },
@@ -654,19 +599,17 @@ export default function CleverPetsContent() {
               ].map((v) => (
                 <div
                   key={v.name}
-                  className="rounded-lg border border-white/10 bg-black/30 px-3 py-2.5"
+                  className="rounded-lg border border-card-border bg-section-alt/70 px-3 py-2.5"
                 >
-                  <p className="font-mono text-[0.55rem] uppercase tracking-wider text-white/40">
+                  <p className="font-mono text-[0.55rem] uppercase tracking-wider text-muted">
                     {v.name}
                   </p>
-                  <p className="mt-1 text-xs font-semibold text-white/90">
+                  <p className="mt-1 text-xs font-semibold text-foreground">
                     {v.date}
                   </p>
                   <p
                     className={`mt-0.5 font-mono text-[0.55rem] tracking-wider ${
-                      v.state === "current"
-                        ? "text-emerald-300/85"
-                        : "text-accent-light"
+                      v.state === "current" ? "text-emerald-700" : "text-accent-text"
                     }`}
                   >
                     {v.state === "current" ? "✓ Current" : "○ Due soon"}
@@ -674,42 +617,41 @@ export default function CleverPetsContent() {
                 </div>
               ))}
             </div>
-            <p className="mt-5 text-xs leading-relaxed text-white/55">
+            <p className="mt-5 text-xs leading-relaxed text-muted">
               OCR-parsed discharge papers, telemedicine providers, and primary
               vet assignment per pet.
             </p>
           </article>
 
           {/* WIDE CARD — Feeding */}
-          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#23211e] p-7 transition-colors duration-300 hover:border-accent/40 md:col-span-2">
-            <div className="flex items-center gap-2 text-accent-light">
+          <article className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)] md:col-span-2">
+            <div className="flex items-center gap-2 text-accent-text">
               <BowlIcon className="h-5 w-5" />
               <span className="font-[var(--font-outfit)] text-[0.6rem] font-semibold uppercase tracking-[0.32em]">
                 Feeding &amp; Nutrition
               </span>
             </div>
-            <h3 className="mt-4 font-[var(--font-outfit)] text-xl font-semibold leading-tight text-white md:text-2xl">
+            <h3 className="mt-4 font-[var(--font-outfit)] text-xl font-semibold leading-tight text-foreground md:text-2xl">
               Meals tracked. Pantry watched.
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-white/60">
+            <p className="mt-3 text-sm leading-relaxed text-muted">
               Manual feeding logs and smart-feeder integration in one ledger.
               Per-meal kcal tracking, AAFCO-grade food database, allergen
               tags, and barcode or photo capture of new food bags.
             </p>
 
-            {/* Mini stat row */}
-            <div className="mt-5 grid grid-cols-3 gap-3 border-t border-white/10 pt-4">
+            <div className="mt-5 grid grid-cols-3 gap-3 border-t border-card-border pt-4">
               {[
                 { v: "318", u: "kcal", l: "Today" },
                 { v: "Royal Canin", u: "", l: "Preferred" },
                 { v: "4 days", u: "", l: "Until reorder" },
               ].map((s, i) => (
                 <div key={i}>
-                  <p className="font-[var(--font-outfit)] text-base font-semibold text-white">
+                  <p className="font-[var(--font-outfit)] text-base font-semibold text-foreground">
                     {s.v}
-                    {s.u && <span className="ml-1 text-xs text-white/45">{s.u}</span>}
+                    {s.u && <span className="ml-1 text-xs text-muted">{s.u}</span>}
                   </p>
-                  <p className="mt-0.5 font-mono text-[0.55rem] uppercase tracking-wider text-white/40">
+                  <p className="mt-0.5 font-mono text-[0.55rem] uppercase tracking-wider text-muted/70">
                     {s.l}
                   </p>
                 </div>
@@ -717,21 +659,21 @@ export default function CleverPetsContent() {
             </div>
           </article>
 
-          {/* Remaining smalls — Sitter, Multi-species */}
+          {/* Remaining smalls */}
           {bentoSmalls.slice(2).map((f) => {
             const Icon = f.icon;
             return (
               <article
                 key={f.title}
-                className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#23211e] p-6 transition-colors duration-300 hover:border-accent/40 md:col-span-2"
+                className="bento-card group relative flex flex-col overflow-hidden rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)] md:col-span-2"
               >
-                <div className="flex items-center gap-2 text-accent-light">
+                <div className="flex items-center gap-2 text-accent-text">
                   <Icon className="h-5 w-5" />
                   <span className="font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em]">
                     {f.title}
                   </span>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-white/65">
+                <p className="mt-4 text-sm leading-relaxed text-muted">
                   {f.body}
                 </p>
               </article>
@@ -740,21 +682,29 @@ export default function CleverPetsContent() {
         </div>
       </section>
 
-      {/* ──────────── § VOICE SHOWCASE ──────────── */}
-      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36">
-        <div className="mx-auto max-w-6xl">
+      {/* ──────────── § VOICE SHOWCASE (DARK) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-50"
+          style={{
+            background:
+              "radial-gradient(ellipse 50% 40% at 50% 40%, rgba(212,168,67,0.14) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-6xl">
           <div className="text-center">
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-light">
               Article IV &middot; In Conversation
             </p>
-            <h2 className="mt-6 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-5xl">
+            <h2 className="mt-6 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
               The way it{" "}
-              <span className="font-serif italic font-light text-accent-text">
+              <span className="font-serif italic font-light text-accent-light">
                 feels
               </span>{" "}
               to use.
             </h2>
-            <p className="mx-auto mt-5 max-w-2xl font-serif text-base italic leading-relaxed text-muted md:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl font-serif text-base italic leading-relaxed text-white/65 md:text-lg">
               Pet care lives inside the same orchestrator that answers
               everything else. No app to open. No menu to find.
             </p>
@@ -767,18 +717,18 @@ export default function CleverPetsContent() {
             {voiceTurns.map((t, i) => (
               <div
                 key={i}
-                className="voice-turn relative flex flex-col gap-3 border-l-2 border-accent/50 pl-6"
+                className="voice-turn relative flex flex-col gap-3 border-l-2 border-accent-light/55 pl-6"
               >
-                <span className="absolute -left-3.5 top-0 flex h-7 w-7 items-center justify-center rounded-full border border-accent/40 bg-section-alt text-accent">
+                <span className="absolute -left-3.5 top-0 flex h-7 w-7 items-center justify-center rounded-full border border-accent-light/40 bg-warm-gray text-accent-light">
                   <MicIcon className="h-3.5 w-3.5" />
                 </span>
-                <div className="rounded-2xl rounded-tl-md border border-card-border bg-card px-5 py-3 shadow-[var(--shadow-card)]">
-                  <p className="font-serif text-base italic leading-snug text-foreground md:text-lg">
+                <div className="rounded-2xl rounded-tl-md border border-white/10 bg-white/[0.04] px-5 py-3 backdrop-blur-sm">
+                  <p className="font-serif text-base italic leading-snug text-white/90 md:text-lg">
                     &ldquo;{t.user}&rdquo;
                   </p>
                 </div>
-                <div className="ml-6 rounded-2xl rounded-tl-md bg-accent/10 px-5 py-3">
-                  <p className="text-sm leading-snug text-foreground/85">
+                <div className="ml-6 rounded-2xl rounded-tl-md bg-accent/15 px-5 py-3">
+                  <p className="text-sm leading-snug text-white/80">
                     {t.assistant}
                   </p>
                 </div>
@@ -788,18 +738,12 @@ export default function CleverPetsContent() {
         </div>
       </section>
 
-      {/* ──────────── § CODA ──────────── */}
-      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-32 text-center md:py-40">
-        {/* Foil rule */}
+      {/* ──────────── § CODA (LIGHT) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-32 text-center md:py-40">
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px" style={DOSSIER_RULE_STYLE} />
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-px"
-          style={DOSSIER_RULE_STYLE}
-        />
-        {/* Atmospheric glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0 opacity-90"
           style={{
             background:
               "radial-gradient(ellipse 50% 40% at 50% 60%, rgba(212,168,67,0.16) 0%, transparent 70%)",
@@ -807,16 +751,16 @@ export default function CleverPetsContent() {
         />
 
         <div ref={codaRef} className="relative mx-auto max-w-3xl">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-accent-light">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-accent-text">
             Coda
           </p>
-          <h2 className="mt-6 font-[var(--font-outfit)] text-5xl font-light leading-[1.05] tracking-tight text-white md:text-7xl">
+          <h2 className="mt-6 font-[var(--font-outfit)] text-5xl font-light leading-[1.05] tracking-tight text-foreground md:text-7xl">
             Add the pets{" "}
-            <span className="font-serif italic font-light text-accent-light">
+            <span className="font-serif italic font-light text-accent-text">
               to the household.
             </span>
           </h2>
-          <p className="mx-auto mt-8 max-w-xl font-serif text-lg italic leading-relaxed text-white/60 md:text-xl">
+          <p className="mx-auto mt-8 max-w-xl font-serif text-lg italic leading-relaxed text-muted md:text-xl">
             We&apos;ll design a CleverPets setup around your family —
             however many paws, fins, feathers, or scales are involved.
           </p>
@@ -835,8 +779,7 @@ export default function CleverPetsContent() {
             </svg>
           </a>
 
-          {/* Species punctuation */}
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-3xl text-white/30 md:text-4xl">
+          <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-3xl text-accent-text/55 md:text-4xl">
             {speciesPictograms.map((s) => (
               <span key={s.label} aria-label={s.label}>
                 {s.glyph}
@@ -845,6 +788,7 @@ export default function CleverPetsContent() {
           </div>
         </div>
       </section>
+
     </>
   );
 }

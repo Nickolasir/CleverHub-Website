@@ -92,49 +92,51 @@ const FOIL_RULE: React.CSSProperties = {
     "linear-gradient(90deg, transparent 0%, rgba(212,168,67,0.55) 20%, rgba(244,210,122,0.85) 50%, rgba(212,168,67,0.55) 80%, transparent 100%)",
 };
 
-/* Move-In Day №1 — the imagined family arriving into a CleverHome.
-   The Reyes family appears across the page as the through-line. */
-function MoveInCard() {
+/* Move-In card — supports a dark tone for the now-light hero. */
+function MoveInCard({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const dark = tone === "dark";
   return (
-    <div className="relative w-full max-w-[420px] rounded-2xl border border-card-border bg-card p-6 shadow-[0_30px_60px_-25px_rgba(120,90,30,0.45),0_4px_12px_rgba(120,90,30,0.08)]">
+    <div
+      className={`relative w-full max-w-[420px] rounded-2xl p-6 shadow-[0_30px_60px_-25px_rgba(120,90,30,0.45),0_4px_12px_rgba(120,90,30,0.08)] ${
+        dark ? "border border-white/10 bg-[#23211e] backdrop-blur-sm" : "border border-card-border bg-card"
+      }`}
+    >
       <div className="absolute right-5 top-5 flex items-center gap-2">
-        <HomeIcon className="h-3.5 w-3.5 text-accent/70" />
-        <span className="font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.32em] text-accent">
+        <HomeIcon className={`h-3.5 w-3.5 ${dark ? "text-accent-light" : "text-accent/70"}`} />
+        <span className={`font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.32em] ${dark ? "text-accent-light" : "text-accent"}`}>
           Move-In Day № 1
         </span>
       </div>
 
-      <p className="mt-1 font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-accent-text">
+      <p className={`mt-1 font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.3em] ${dark ? "text-accent-light" : "text-accent-text"}`}>
         Saturday &middot; Mar 22
       </p>
-      <h3 className="mt-1 font-[var(--font-outfit)] text-[2rem] font-bold leading-none tracking-tight text-foreground md:text-[2.4rem]">
+      <h3 className={`mt-1 font-[var(--font-outfit)] text-[2rem] font-bold leading-none tracking-tight md:text-[2.4rem] ${dark ? "text-white" : "text-foreground"}`}>
         The Reyes Family
       </h3>
-      <p className="mt-2 font-serif text-base italic leading-snug text-muted">
+      <p className={`mt-2 font-serif text-base italic leading-snug ${dark ? "text-white/70" : "text-muted"}`}>
         4 BR + Office &middot; The Heights &middot; Lot 14
       </p>
 
-      {/* Pre-configured */}
-      <div className="mt-6 grid grid-cols-3 gap-3 border-t border-card-border pt-4">
+      <div className={`mt-6 grid grid-cols-3 gap-3 border-t pt-4 ${dark ? "border-white/10" : "border-card-border"}`}>
         {[
           { v: "4", l: "Family agents" },
           { v: "9", l: "Rooms" },
           { v: "23", l: "Devices" },
         ].map((s) => (
           <div key={s.l} className="text-center">
-            <p className="font-[var(--font-outfit)] text-2xl font-semibold text-foreground">
+            <p className={`font-[var(--font-outfit)] text-2xl font-semibold ${dark ? "text-white" : "text-foreground"}`}>
               {s.v}
             </p>
-            <p className="mt-0.5 font-mono text-[0.55rem] uppercase tracking-[0.22em] text-muted/70">
+            <p className={`mt-0.5 font-mono text-[0.55rem] uppercase tracking-[0.22em] ${dark ? "text-white/45" : "text-muted/70"}`}>
               {s.l}
             </p>
           </div>
         ))}
       </div>
 
-      {/* Family tier matrix */}
-      <div className="mt-5 border-t border-card-border pt-4">
-        <p className="font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em] text-accent-text">
+      <div className={`mt-5 border-t pt-4 ${dark ? "border-white/10" : "border-card-border"}`}>
+        <p className={`font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em] ${dark ? "text-accent-light" : "text-accent-text"}`}>
           Family Tier Matrix
         </p>
         <ul className="mt-2.5 space-y-1.5">
@@ -145,16 +147,16 @@ function MoveInCard() {
             { who: "Child", agent: "Buddy", tier: "Child", access: "Own room" },
           ].map((m) => (
             <li key={m.who} className="grid grid-cols-12 items-baseline gap-2 text-xs">
-              <span className="col-span-2 font-mono uppercase tracking-wider text-muted">
+              <span className={`col-span-2 font-mono uppercase tracking-wider ${dark ? "text-white/45" : "text-muted"}`}>
                 {m.who}
               </span>
-              <span className="col-span-3 font-[var(--font-outfit)] font-semibold text-foreground">
+              <span className={`col-span-3 font-[var(--font-outfit)] font-semibold ${dark ? "text-white" : "text-foreground"}`}>
                 {m.agent}
               </span>
-              <span className="col-span-3 font-mono text-[0.6rem] text-accent-text">
+              <span className={`col-span-3 font-mono text-[0.6rem] ${dark ? "text-accent-light" : "text-accent-text"}`}>
                 {m.tier}
               </span>
-              <span className="col-span-4 text-right font-serif italic text-muted">
+              <span className={`col-span-4 text-right font-serif italic ${dark ? "text-white/55" : "text-muted"}`}>
                 {m.access}
               </span>
             </li>
@@ -162,24 +164,23 @@ function MoveInCard() {
         </ul>
       </div>
 
-      {/* Builder ROI */}
-      <div className="mt-5 border-t border-card-border pt-4">
-        <p className="font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em] text-accent-text">
+      <div className={`mt-5 border-t pt-4 ${dark ? "border-white/10" : "border-card-border"}`}>
+        <p className={`font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em] ${dark ? "text-accent-light" : "text-accent-text"}`}>
           Builder Economics
         </p>
         <div className="mt-2 flex items-baseline justify-between">
-          <span className="font-serif text-xs italic text-muted">
+          <span className={`font-serif text-xs italic ${dark ? "text-white/60" : "text-muted"}`}>
             Listing ROI
           </span>
-          <span className="font-[var(--font-outfit)] text-lg font-bold text-emerald-700">
+          <span className={`font-[var(--font-outfit)] text-lg font-bold ${dark ? "text-emerald-300" : "text-emerald-700"}`}>
             3.6× — 13.2×
           </span>
         </div>
         <div className="mt-1 flex items-baseline justify-between">
-          <span className="font-serif text-xs italic text-muted">
+          <span className={`font-serif text-xs italic ${dark ? "text-white/60" : "text-muted"}`}>
             Subscription rev share
           </span>
-          <span className="font-mono text-xs font-semibold text-foreground">
+          <span className={`font-mono text-xs font-semibold ${dark ? "text-white" : "text-foreground"}`}>
             20% ongoing
           </span>
         </div>
@@ -188,7 +189,7 @@ function MoveInCard() {
   );
 }
 
-/* ─────────────────────────── PAGE DATA ─────────────────────────── */
+/* ─────────────────────────── DATA ─────────────────────────── */
 
 const heroStats = [
   { value: "3.6×—13.2×", label: "Builder listing ROI" },
@@ -202,29 +203,25 @@ export default function CleverHomeContent() {
   const heroRef = useFadeIn<HTMLDivElement>({ y: 24, duration: 1.0 });
   const cardRef = useFadeIn<HTMLDivElement>({ y: 30, delay: 0.15 });
   const manifestoRef = useFadeIn<HTMLDivElement>({ y: 16 });
-  const chaptersRef = useStaggerReveal<HTMLElement>(".moveIn-chapter", {
-    stagger: 0.1,
-    y: 28,
-  });
+  const chaptersRef = useStaggerReveal<HTMLElement>(".moveIn-chapter", { stagger: 0.1, y: 28 });
   const economicsRef = useFadeIn<HTMLDivElement>({ y: 22 });
   const codaRef = useFadeIn<HTMLDivElement>({ y: 20 });
 
   return (
     <>
-      {/* ──────────── § COVER ──────────── */}
-      <section className="relative isolate overflow-hidden bg-warm-gray px-6 pb-28 pt-32 md:pt-44">
+      {/* ──────────── § COVER (LIGHT) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-section-alt px-6 pb-28 pt-32 md:pt-44">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0 opacity-90"
           style={{
             background:
               "radial-gradient(ellipse 60% 40% at 30% 35%, rgba(212,168,67,0.18) 0%, transparent 70%)",
           }}
         />
-        {/* Marginalia — blueprint grid behind the right edge */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 top-12 select-none text-accent/[0.05] md:-right-8"
+          className="pointer-events-none absolute -right-20 top-12 select-none text-accent/[0.08] md:-right-8"
         >
           <BlueprintIcon className="h-[460px] w-[460px]" />
         </div>
@@ -233,7 +230,7 @@ export default function CleverHomeContent() {
           <div ref={heroRef} className="md:col-span-7">
             <Link
               href="/"
-              className="mb-8 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent-light"
+              className="mb-8 inline-flex items-center gap-1 text-sm font-medium text-accent-text transition-colors hover:text-accent"
             >
               <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 rotate-180">
                 <path
@@ -245,26 +242,26 @@ export default function CleverHomeContent() {
               Back to Solutions
             </Link>
 
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
               For Homebuilders &middot; Article I
             </p>
-            <h1 className="mt-5 font-[var(--font-outfit)] text-[3.5rem] font-bold leading-[0.95] tracking-tight text-white md:text-[5.5rem]">
-              Clever<span className="font-serif italic font-light text-accent-light">Home</span>
+            <h1 className="mt-5 font-[var(--font-outfit)] text-[3.5rem] font-bold leading-[0.95] tracking-tight text-foreground md:text-[5.5rem]">
+              Clever<span className="font-serif italic font-light text-accent-text">Home</span>
             </h1>
-            <p className="mt-7 max-w-xl font-serif text-xl italic leading-snug text-white/65 md:text-2xl">
+            <p className="mt-7 max-w-xl font-serif text-xl italic leading-snug text-muted md:text-2xl">
               Pre-installed intelligence that sells homes faster.
               Voice in every room, family-aware AI agents, and a
               system that grows with the household — turnkey from
               move-in day, profitable through resale.
             </p>
 
-            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-6">
+            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-card-border pt-6">
               {heroStats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-[var(--font-outfit)] text-2xl font-semibold text-accent-light md:text-3xl">
+                  <dt className="font-[var(--font-outfit)] text-2xl font-semibold text-accent-text md:text-3xl">
                     {s.value}
                   </dt>
-                  <dd className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-white/45">
+                  <dd className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-muted">
                     {s.label}
                   </dd>
                 </div>
@@ -285,27 +282,21 @@ export default function CleverHomeContent() {
                   />
                 </svg>
               </a>
-              <a
-                href="#chapters"
-                className="text-sm font-medium uppercase tracking-[0.2em] text-white/45 transition-colors hover:text-white"
-              >
+              <a href="#chapters" className="text-sm font-medium uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground">
                 Walk through move-in ↓
               </a>
             </div>
           </div>
 
-          <div
-            ref={cardRef}
-            className="relative flex justify-center md:col-span-5 md:justify-end"
-          >
+          <div ref={cardRef} className="relative flex justify-center md:col-span-5 md:justify-end">
             <div className="relative">
-              <MoveInCard />
+              <MoveInCard tone="dark" />
               <div
                 aria-hidden
                 className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl"
                 style={{
                   background:
-                    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,168,67,0.12) 0%, transparent 70%)",
+                    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,168,67,0.18) 0%, transparent 70%)",
                 }}
               />
             </div>
@@ -315,19 +306,27 @@ export default function CleverHomeContent() {
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={FOIL_RULE} />
       </section>
 
-      {/* ──────────── § MANIFESTO ──────────── */}
-      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36">
+      {/* ──────────── § MANIFESTO (DARK) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(212,168,67,0.14) 0%, transparent 70%)",
+          }}
+        />
         <div ref={manifestoRef} className="relative mx-auto max-w-4xl text-center">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-light">
             Article II &middot; The Promise
           </p>
-          <h2 className="mt-6 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-6xl">
+          <h2 className="mt-6 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-white md:text-6xl">
             Sell the home.{" "}
-            <span className="font-serif italic font-light text-accent-text">
+            <span className="font-serif italic font-light text-accent-light">
               Keep the upside.
             </span>
           </h2>
-          <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-muted md:text-xl">
+          <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-white/65 md:text-xl">
             Move-in day is not the end of the relationship — it&apos;s the
             start of an annuity. Builders ship a smarter listing,
             differentiate the lot, capture an install upgrade, and
@@ -345,10 +344,10 @@ export default function CleverHomeContent() {
               const Icon = p.icon;
               return (
                 <div key={p.label} className="flex flex-col items-center gap-3">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent-text">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-accent-light/40 bg-accent/15 text-accent-light">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
+                  <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/55">
                     {p.label}
                   </span>
                 </div>
@@ -358,19 +357,19 @@ export default function CleverHomeContent() {
         </div>
       </section>
 
-      {/* ──────────── § CHAPTERS ──────────── */}
+      {/* ──────────── § CHAPTERS (LIGHT) ──────────── */}
       <section
         id="chapters"
         ref={chaptersRef}
-        className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36"
+        className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36"
       >
         <div className="mx-auto mb-20 max-w-6xl">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
             Article III &middot; From Foundation to Move-In
           </p>
-          <h2 className="mt-5 max-w-3xl font-[var(--font-outfit)] text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-5xl">
+          <h2 className="mt-5 max-w-3xl font-[var(--font-outfit)] text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-5xl">
             Four chapters,{" "}
-            <span className="font-serif italic font-light text-accent-light">
+            <span className="font-serif italic font-light text-accent-text">
               one build cycle.
             </span>
           </h2>
@@ -381,34 +380,34 @@ export default function CleverHomeContent() {
           <article className="moveIn-chapter grid grid-cols-1 items-start gap-x-16 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-5">
               <div className="flex items-end gap-4">
-                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-light/85 md:text-[8rem]">
+                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-text/85 md:text-[8rem]">
                   §I
                 </span>
                 <div className="pb-3">
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-light">
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-text">
                     Plan stage
                   </p>
-                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-foreground md:text-4xl">
                     Pre-Build
                   </h3>
                 </div>
               </div>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
                 CleverHub goes into the plan set. Hub location, satellite
                 node count, conduit, and low-voltage runs are specified
                 at the same time as the rest of the smart-home rough-in.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-accent-light">
+              <div className="mt-6 flex items-center gap-2 text-accent-text">
                 <BlueprintIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/45">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
                   Plan set &middot; Specs &middot; Conduit
                 </span>
               </div>
             </div>
 
             <div className="md:col-span-7">
-              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)]">
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                   Plan specification &middot; Lot 14
                 </p>
                 <div className="mt-4 grid grid-cols-2 gap-3">
@@ -418,14 +417,11 @@ export default function CleverHomeContent() {
                     { l: "Low-voltage runs", v: "9 zones" },
                     { l: "Hardware budget", v: "$2,500" },
                   ].map((s) => (
-                    <div
-                      key={s.l}
-                      className="rounded-xl border border-white/10 bg-black/30 p-3"
-                    >
-                      <p className="font-mono text-[0.55rem] uppercase tracking-wider text-white/40">
+                    <div key={s.l} className="rounded-xl border border-card-border bg-section-alt/70 p-3">
+                      <p className="font-mono text-[0.55rem] uppercase tracking-wider text-muted/70">
                         {s.l}
                       </p>
-                      <p className="mt-0.5 font-[var(--font-outfit)] text-sm font-semibold text-white">
+                      <p className="mt-0.5 font-[var(--font-outfit)] text-sm font-semibold text-foreground">
                         {s.v}
                       </p>
                     </div>
@@ -439,35 +435,35 @@ export default function CleverHomeContent() {
           <article className="moveIn-chapter grid grid-cols-1 items-start gap-x-16 gap-y-10 md:grid-cols-12">
             <div className="md:order-2 md:col-span-5">
               <div className="flex items-end gap-4">
-                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-light/85 md:text-[8rem]">
+                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-text/85 md:text-[8rem]">
                   §II
                 </span>
                 <div className="pb-3">
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-light">
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-text">
                     Framing → trim
                   </p>
-                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-foreground md:text-4xl">
                     Build
                   </h3>
                 </div>
               </div>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
                 Pre-wire during framing. Drop nodes during electrical
                 rough-in. The hub is mounted at trim. By the time the
                 house gets its cert of occupancy, the home is already
                 listening.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-accent-light">
+              <div className="mt-6 flex items-center gap-2 text-accent-text">
                 <HammerIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/45">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
                   Pre-wire &middot; Mount &middot; Commission
                 </span>
               </div>
             </div>
 
             <div className="md:order-1 md:col-span-7">
-              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)]">
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                   Build phases &middot; CleverHub touchpoints
                 </p>
                 <ul className="mt-4 space-y-3">
@@ -481,21 +477,13 @@ export default function CleverHomeContent() {
                     <li
                       key={p.phase}
                       className={`flex items-center gap-4 border-l-2 pl-3 ${
-                        p.state === "active"
-                          ? "border-accent-light/65"
-                          : "border-white/15"
+                        p.state === "active" ? "border-accent/75" : "border-card-border"
                       }`}
                     >
-                      <span
-                        className={`flex-1 text-sm font-medium ${
-                          p.state === "active" ? "text-white/90" : "text-white/45"
-                        }`}
-                      >
+                      <span className={`flex-1 text-sm font-medium ${p.state === "active" ? "text-foreground" : "text-muted/70"}`}>
                         {p.phase}
                       </span>
-                      <span className="font-serif text-xs italic text-white/55">
-                        {p.note}
-                      </span>
+                      <span className="font-serif text-xs italic text-muted">{p.note}</span>
                     </li>
                   ))}
                 </ul>
@@ -507,62 +495,57 @@ export default function CleverHomeContent() {
           <article className="moveIn-chapter grid grid-cols-1 items-start gap-x-16 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-5">
               <div className="flex items-end gap-4">
-                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-light/85 md:text-[8rem]">
+                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-text/85 md:text-[8rem]">
                   §III
                 </span>
                 <div className="pb-3">
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-light">
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-text">
                     Day 0
                   </p>
-                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-foreground md:text-4xl">
                     Move-In Day
                   </h3>
                 </div>
               </div>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
                 The Reyes family walks through the door. Dad says
                 &ldquo;Hey Jarvis,&rdquo; mom says &ldquo;Hey
                 Friday,&rdquo; the teen says &ldquo;Hey Luna&rdquo; —
                 each greeted by their own wake word, with the right
                 permissions, in the right room.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-accent-light">
+              <div className="mt-6 flex items-center gap-2 text-accent-text">
                 <BoxIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/45">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
                   Setup &middot; Greetings &middot; First scenes
                 </span>
               </div>
             </div>
 
             <div className="md:col-span-7">
-              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)]">
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                   First voice events &middot; Sat 11:14
                 </p>
 
-                {/* Conversation */}
                 <div className="mt-4 space-y-2.5 font-serif italic">
-                  <div className="ml-auto max-w-[70%] rounded-2xl rounded-tr-md bg-accent/20 px-4 py-2.5 text-sm text-white/85">
+                  <div className="ml-auto max-w-[70%] rounded-2xl rounded-tr-md bg-accent/20 px-4 py-2.5 text-sm text-foreground">
                     &ldquo;Hey Jarvis, turn on the lights.&rdquo;
                   </div>
-                  <div className="max-w-[80%] rounded-2xl rounded-tl-md bg-white/[0.06] px-4 py-2.5 text-sm text-white/75">
+                  <div className="max-w-[80%] rounded-2xl rounded-tl-md border border-card-border bg-section-alt/70 px-4 py-2.5 text-sm text-muted">
                     Welcome home, Mr. Reyes. Living room lights up.
                   </div>
-                  <div className="ml-auto max-w-[70%] rounded-2xl rounded-tr-md bg-accent/20 px-4 py-2.5 text-sm text-white/85">
+                  <div className="ml-auto max-w-[70%] rounded-2xl rounded-tr-md bg-accent/20 px-4 py-2.5 text-sm text-foreground">
                     &ldquo;Hey Luna, play something upbeat.&rdquo;
                   </div>
-                  <div className="max-w-[80%] rounded-2xl rounded-tl-md bg-white/[0.06] px-4 py-2.5 text-sm text-white/75">
-                    Hi Mia! Queueing your move-in playlist in the
-                    bedroom.
+                  <div className="max-w-[80%] rounded-2xl rounded-tl-md border border-card-border bg-section-alt/70 px-4 py-2.5 text-sm text-muted">
+                    Hi Mia! Queueing your move-in playlist in the bedroom.
                   </div>
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-1.5 border-t border-white/10 pt-3 not-italic">
+                <div className="mt-4 flex flex-wrap gap-1.5 border-t border-card-border pt-3 not-italic">
                   {["Jarvis", "Friday", "Luna", "Buddy"].map((a) => (
-                    <span
-                      key={a}
-                      className="rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 font-mono text-[0.55rem] uppercase tracking-wider text-accent-light"
-                    >
+                    <span key={a} className="rounded-full border border-accent/40 bg-accent/15 px-2 py-0.5 font-mono text-[0.55rem] uppercase tracking-wider text-accent-text">
                       {a}
                     </span>
                   ))}
@@ -575,36 +558,36 @@ export default function CleverHomeContent() {
           <article className="moveIn-chapter grid grid-cols-1 items-start gap-x-16 gap-y-10 md:grid-cols-12">
             <div className="md:order-2 md:col-span-5">
               <div className="flex items-end gap-4">
-                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-light/85 md:text-[8rem]">
+                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-text/85 md:text-[8rem]">
                   §IV
                 </span>
                 <div className="pb-3">
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-light">
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-text">
                     Month 1 → resale
                   </p>
-                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-foreground md:text-4xl">
                     Year One &amp; After
                   </h3>
                 </div>
               </div>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
                 The home grows up with the household. New devices auto-
                 discover. Family agents tune to schedules. When the
                 house lists again, the listing reads &ldquo;already
                 CleverHome&rdquo; — and the builder still earns rev
                 share.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-accent-light">
+              <div className="mt-6 flex items-center gap-2 text-accent-text">
                 <FamilyIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/45">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
                   Grows in &middot; Resale ready
                 </span>
               </div>
             </div>
 
             <div className="md:order-1 md:col-span-7">
-              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)]">
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                   Annuity ledger &middot; Year 1 sample lot
                 </p>
                 <div className="mt-4 grid grid-cols-2 gap-3">
@@ -614,23 +597,20 @@ export default function CleverHomeContent() {
                     { v: "Resale +", l: "Listing premium", at: "Year 5" },
                     { v: "Re-bookable", l: "Refresh visits", at: "Annual" },
                   ].map((s) => (
-                    <div
-                      key={s.l}
-                      className="rounded-xl border border-white/10 bg-black/30 px-3 py-3"
-                    >
-                      <p className="font-mono text-[0.55rem] uppercase tracking-wider text-white/40">
+                    <div key={s.l} className="rounded-xl border border-card-border bg-section-alt/70 px-3 py-3">
+                      <p className="font-mono text-[0.55rem] uppercase tracking-wider text-muted/70">
                         {s.l}
                       </p>
-                      <p className="mt-0.5 font-[var(--font-outfit)] text-base font-semibold text-white">
+                      <p className="mt-0.5 font-[var(--font-outfit)] text-base font-semibold text-foreground">
                         {s.v}
                       </p>
-                      <p className="mt-0.5 font-serif text-[0.65rem] italic text-white/45">
+                      <p className="mt-0.5 font-serif text-[0.65rem] italic text-muted">
                         {s.at}
                       </p>
                     </div>
                   ))}
                 </div>
-                <p className="mt-4 border-t border-white/10 pt-3 text-center font-serif text-xs italic text-white/55">
+                <p className="mt-4 border-t border-card-border pt-3 text-center font-serif text-xs italic text-muted">
                   Compounded across a 12-lot subdivision: a six-figure
                   annuity by year three.
                 </p>
@@ -640,45 +620,53 @@ export default function CleverHomeContent() {
         </div>
       </section>
 
-      {/* ──────────── § BUILDER ECONOMICS ──────────── */}
-      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36">
-        <div className="mx-auto max-w-6xl">
+      {/* ──────────── § BUILDER ECONOMICS (DARK) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-50"
+          style={{
+            background:
+              "radial-gradient(ellipse 50% 40% at 50% 40%, rgba(212,168,67,0.14) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-6xl">
           <div ref={economicsRef} className="grid grid-cols-1 items-start gap-x-16 gap-y-12 md:grid-cols-12">
             <div className="md:col-span-5">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-light">
                 Article IV &middot; The Ledger
               </p>
-              <h2 className="mt-5 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-5xl">
+              <h2 className="mt-5 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
                 The economics,{" "}
-                <span className="font-serif italic font-light text-accent-text">
+                <span className="font-serif italic font-light text-accent-light">
                   in one table.
                 </span>
               </h2>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
                 A modeled lot — what comes in, what goes out, what stays
                 yours after the family moves in. Conservative
                 assumptions, real numbers.
               </p>
-              <div className="mt-8 flex items-center gap-2 text-accent-text">
+              <div className="mt-8 flex items-center gap-2 text-accent-light">
                 <TrendIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/55">
                   Modeled · single lot
                 </span>
               </div>
             </div>
 
             <div className="md:col-span-7">
-              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card-hover)] md:p-8">
-                <div className="flex items-baseline justify-between border-b border-card-border pb-4">
-                  <p className="font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-accent-text">
+              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 backdrop-blur-sm shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)] md:p-8">
+                <div className="flex items-baseline justify-between border-b border-white/10 pb-4">
+                  <p className="font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-accent-light">
                     Builder P&amp;L &middot; Year 1
                   </p>
-                  <p className="font-mono text-[0.6rem] uppercase tracking-wider text-muted">
+                  <p className="font-mono text-[0.6rem] uppercase tracking-wider text-white/55">
                     One lot
                   </p>
                 </div>
 
-                <ul className="mt-4 flex flex-col divide-y divide-card-border">
+                <ul className="mt-4 flex flex-col divide-y divide-white/10">
                   {[
                     { l: "Hardware + install passthrough", v: "$2,500", note: "Captured at close" },
                     { l: "Listing premium estimate", v: "+ $9,000", note: "Conservative · varies by market" },
@@ -689,16 +677,16 @@ export default function CleverHomeContent() {
                   ].map((r) => (
                     <li key={r.l} className="flex items-baseline justify-between gap-4 py-3.5">
                       <div className="flex-1">
-                        <p className="font-[var(--font-outfit)] text-sm font-medium text-foreground">
+                        <p className="font-[var(--font-outfit)] text-sm font-medium text-white/90">
                           {r.l}
                         </p>
-                        <p className="mt-0.5 font-serif text-xs italic text-muted">
+                        <p className="mt-0.5 font-serif text-xs italic text-white/55">
                           {r.note}
                         </p>
                       </div>
                       <span
                         className={`font-[var(--font-outfit)] text-base font-semibold ${
-                          r.highlight ? "text-emerald-700" : "text-foreground"
+                          r.highlight ? "text-emerald-300" : "text-white"
                         }`}
                       >
                         {r.v}
@@ -712,12 +700,12 @@ export default function CleverHomeContent() {
         </div>
       </section>
 
-      {/* ──────────── § CODA ──────────── */}
-      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-32 text-center md:py-40">
+      {/* ──────────── § CODA (LIGHT) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-32 text-center md:py-40">
         <div aria-hidden className="absolute inset-x-0 top-0 h-px" style={FOIL_RULE} />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0 opacity-90"
           style={{
             background:
               "radial-gradient(ellipse 50% 40% at 50% 60%, rgba(212,168,67,0.16) 0%, transparent 70%)",
@@ -725,16 +713,16 @@ export default function CleverHomeContent() {
         />
 
         <div ref={codaRef} className="relative mx-auto max-w-3xl">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-accent-light">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-accent-text">
             Coda
           </p>
-          <h2 className="mt-6 font-[var(--font-outfit)] text-5xl font-light leading-[1.05] tracking-tight text-white md:text-7xl">
+          <h2 className="mt-6 font-[var(--font-outfit)] text-5xl font-light leading-[1.05] tracking-tight text-foreground md:text-7xl">
             Ship a smarter{" "}
-            <span className="font-serif italic font-light text-accent-light">
+            <span className="font-serif italic font-light text-accent-text">
               listing.
             </span>
           </h2>
-          <p className="mx-auto mt-8 max-w-xl font-serif text-lg italic leading-relaxed text-white/60 md:text-xl">
+          <p className="mx-auto mt-8 max-w-xl font-serif text-lg italic leading-relaxed text-muted md:text-xl">
             We&apos;ll design a CleverHome package for your subdivision —
             spec, install, commission, and a long tail of revenue past
             move-in day.
@@ -754,7 +742,7 @@ export default function CleverHomeContent() {
             </svg>
           </a>
 
-          <div className="mt-16 flex items-center justify-center gap-10 text-white/30">
+          <div className="mt-16 flex items-center justify-center gap-10 text-accent-text/55">
             {[BlueprintIcon, HammerIcon, HomeIcon, FamilyIcon, MicIcon].map((Icon, i) => (
               <Icon key={i} className="h-7 w-7" />
             ))}

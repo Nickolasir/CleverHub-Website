@@ -105,106 +105,95 @@ function PhoneIcon({ className = "h-5 w-5" }: { className?: string }) {
 
 /* ─────────────────────────── SHARED ─────────────────────────── */
 
-const DOSSIER_RULE_STYLE: React.CSSProperties = {
+const FOIL_RULE: React.CSSProperties = {
   background:
     "linear-gradient(90deg, transparent 0%, rgba(212,168,67,0.55) 20%, rgba(244,210,122,0.85) 50%, rgba(212,168,67,0.55) 80%, transparent 100%)",
 };
 
-/* Reusable Brief №01 card — the through-line resident, Eleanor.
-   Designed to feel like an attentive caregiver's reference card —
-   identity, conditions, today's plan, and recent wellbeing. */
-function BriefCard() {
+/* Brief №01 for Eleanor — supports a dark tone for the now-light hero. */
+function BriefCard({ tone = "light" }: { tone?: "light" | "dark" }) {
+  const dark = tone === "dark";
   return (
-    <div className="relative w-full max-w-[380px] rounded-2xl border border-card-border bg-card p-6 shadow-[0_30px_60px_-25px_rgba(120,90,30,0.45),0_4px_12px_rgba(120,90,30,0.08)]">
-      {/* Foil corner mark */}
+    <div
+      className={`relative w-full max-w-[380px] rounded-2xl p-6 shadow-[0_30px_60px_-25px_rgba(120,90,30,0.45),0_4px_12px_rgba(120,90,30,0.08)] ${
+        dark ? "border border-white/10 bg-[#23211e] backdrop-blur-sm" : "border border-card-border bg-card"
+      }`}
+    >
       <div className="absolute right-5 top-5 flex items-center gap-2">
-        <HandsIcon className="h-3.5 w-3.5 text-accent/70" />
-        <span className="font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.32em] text-accent">
+        <HandsIcon className={`h-3.5 w-3.5 ${dark ? "text-accent-light" : "text-accent/70"}`} />
+        <span className={`font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.32em] ${dark ? "text-accent-light" : "text-accent"}`}>
           Brief № 01
         </span>
       </div>
 
-      {/* Identity */}
       <div className="mt-1">
-        <h3 className="font-[var(--font-outfit)] text-[2.5rem] font-bold leading-none tracking-tight text-foreground">
+        <h3 className={`font-[var(--font-outfit)] text-[2.5rem] font-bold leading-none tracking-tight ${dark ? "text-white" : "text-foreground"}`}>
           Eleanor M.
         </h3>
-        <p className="mt-2 font-serif text-base italic leading-snug text-muted">
+        <p className={`mt-2 font-serif text-base italic leading-snug ${dark ? "text-white/70" : "text-muted"}`}>
           Age 78 &middot; Bellaire &middot; Independent
         </p>
-        <p className="mt-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-muted/60">
+        <p className={`mt-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] ${dark ? "text-white/35" : "text-muted/60"}`}>
           Care ID 074 &middot; 2A
         </p>
       </div>
 
-      {/* Conditions */}
-      <div className="mt-6 border-t border-card-border pt-4">
-        <p className="font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em] text-accent-text">
+      <div className={`mt-6 border-t pt-4 ${dark ? "border-white/10" : "border-card-border"}`}>
+        <p className={`font-[var(--font-outfit)] text-[0.58rem] font-semibold uppercase tracking-[0.3em] ${dark ? "text-accent-light" : "text-accent-text"}`}>
           Conditions
         </p>
         <ul className="mt-2.5 flex flex-col gap-1.5">
-          {[
-            "Type 2 Diabetes",
-            "Mild Hypertension",
-            "Osteoarthritis (knees)",
-          ].map((c) => (
-            <li
-              key={c}
-              className="flex items-baseline gap-2 text-sm text-foreground"
-            >
-              <span className="text-accent">·</span>
+          {["Type 2 Diabetes", "Mild Hypertension", "Osteoarthritis (knees)"].map((c) => (
+            <li key={c} className={`flex items-baseline gap-2 text-sm ${dark ? "text-white/90" : "text-foreground"}`}>
+              <span className={dark ? "text-accent-light" : "text-accent"}>·</span>
               <span>{c}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Today’s plan summary */}
-      <div className="mt-5 grid grid-cols-3 gap-2 border-t border-card-border pt-4">
+      <div className={`mt-5 grid grid-cols-3 gap-2 border-t pt-4 ${dark ? "border-white/10" : "border-card-border"}`}>
         {[
           { v: "3", l: "Meds" },
           { v: "3", l: "Check-ins" },
           { v: "1", l: "Family" },
         ].map((s) => (
           <div key={s.l} className="text-center">
-            <p className="font-[var(--font-outfit)] text-2xl font-semibold text-foreground">
+            <p className={`font-[var(--font-outfit)] text-2xl font-semibold ${dark ? "text-white" : "text-foreground"}`}>
               {s.v}
             </p>
-            <p className="mt-0.5 font-mono text-[0.55rem] uppercase tracking-[0.22em] text-muted/70">
+            <p className={`mt-0.5 font-mono text-[0.55rem] uppercase tracking-[0.22em] ${dark ? "text-white/45" : "text-muted/70"}`}>
               {s.l}
             </p>
           </div>
         ))}
       </div>
 
-      {/* Wellbeing footer */}
-      <div className="mt-5 grid grid-cols-2 gap-4 border-t border-card-border pt-4">
+      <div className={`mt-5 grid grid-cols-2 gap-4 border-t pt-4 ${dark ? "border-white/10" : "border-card-border"}`}>
         <div>
-          <p className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-muted">
+          <p className={`text-[0.58rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-white/40" : "text-muted"}`}>
             Last fall
           </p>
-          <p className="mt-0.5 font-[var(--font-outfit)] text-base font-semibold text-foreground">
+          <p className={`mt-0.5 font-[var(--font-outfit)] text-base font-semibold ${dark ? "text-white" : "text-foreground"}`}>
             14 days ago
           </p>
-          <p className="text-[0.62rem] text-emerald-700/80">None today</p>
+          <p className={`text-[0.62rem] ${dark ? "text-emerald-300/85" : "text-emerald-700/80"}`}>None today</p>
         </div>
         <div>
-          <p className="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-muted">
+          <p className={`text-[0.58rem] font-semibold uppercase tracking-[0.22em] ${dark ? "text-white/40" : "text-muted"}`}>
             Wellbeing
           </p>
-          <p className="mt-0.5 font-[var(--font-outfit)] text-base font-semibold text-foreground">
+          <p className={`mt-0.5 font-[var(--font-outfit)] text-base font-semibold ${dark ? "text-white" : "text-foreground"}`}>
             4 / 5
           </p>
-          <p className="text-[0.62rem] text-muted">
-            Sarah · Sat visit
-          </p>
+          <p className={`text-[0.62rem] ${dark ? "text-white/50" : "text-muted"}`}>Sarah · Sat visit</p>
         </div>
       </div>
     </div>
   );
 }
 
-/* ─────────────────────────── PAGE DATA ─────────────────────────── */
+/* ─────────────────────────── DATA ─────────────────────────── */
 
 const heroStats = [
   { value: "2,000+", label: "Daily reassurances" },
@@ -213,30 +202,10 @@ const heroStats = [
 ];
 
 const caregiverEvents = [
-  {
-    time: "07:42",
-    severity: "info",
-    title: "Morning meds administered",
-    body: "Metformin & Lisinopril taken on schedule. Mood 4/5.",
-  },
-  {
-    time: "10:15",
-    severity: "info",
-    title: "Mild knee stiffness reported",
-    body: "Eleanor mentioned soreness; suggested PRN Tylenol Arthritis.",
-  },
-  {
-    time: "12:34",
-    severity: "watch",
-    title: "Hydration prompt missed",
-    body: "Eleanor declined second water reminder. Will retry at 13:30.",
-  },
-  {
-    time: "20:00",
-    severity: "info",
-    title: "Daily digest sent",
-    body: "Three check-ins logged. Sleep prep started at 21:30.",
-  },
+  { time: "07:42", severity: "info", title: "Morning meds administered", body: "Metformin & Lisinopril taken on schedule. Mood 4/5." },
+  { time: "10:15", severity: "info", title: "Mild knee stiffness reported", body: "Eleanor mentioned soreness; suggested PRN Tylenol Arthritis." },
+  { time: "12:34", severity: "watch", title: "Hydration prompt missed", body: "Eleanor declined second water reminder. Will retry at 13:30." },
+  { time: "20:00", severity: "info", title: "Daily digest sent", body: "Three check-ins logged. Sleep prep started at 21:30." },
 ];
 
 /* ─────────────────────────── PAGE ─────────────────────────── */
@@ -245,51 +214,42 @@ export default function CleverAideContent() {
   const heroRef = useFadeIn<HTMLDivElement>({ y: 24, duration: 1.0 });
   const briefRef = useFadeIn<HTMLDivElement>({ y: 30, delay: 0.15 });
   const manifestoRef = useFadeIn<HTMLDivElement>({ y: 16 });
-  const dayRef = useStaggerReveal<HTMLElement>(".day-chapter", {
-    stagger: 0.1,
-    y: 30,
-  });
+  const dayRef = useStaggerReveal<HTMLElement>(".day-chapter", { stagger: 0.1, y: 30 });
   const caregiverRef = useFadeIn<HTMLDivElement>({ y: 22 });
-  const eventsRef = useStaggerReveal<HTMLUListElement>(".caregiver-event", {
-    stagger: 0.06,
-    y: 12,
-  });
+  const eventsRef = useStaggerReveal<HTMLUListElement>(".caregiver-event", { stagger: 0.06, y: 12 });
   const codaRef = useFadeIn<HTMLDivElement>({ y: 20 });
 
   return (
     <>
-      {/* ──────────── § COVER ──────────── */}
-      <section className="relative isolate overflow-hidden bg-warm-gray px-6 pb-28 pt-32 md:pt-44">
-        {/* Atmospheric radial */}
+      {/* ──────────── § COVER (LIGHT) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-section-alt px-6 pb-28 pt-32 md:pt-44">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0 opacity-90"
           style={{
             background:
               "radial-gradient(ellipse 60% 40% at 30% 35%, rgba(212,168,67,0.18) 0%, transparent 70%)",
           }}
         />
-        {/* Marginalia — day band text bleeding behind the hero */}
+        {/* Marginalia: day band text bleeding behind the hero */}
         <div
           aria-hidden
           className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none whitespace-nowrap"
           style={{
-            transform:
-              "translateY(-50%) rotate(-90deg) translateX(40%)",
+            transform: "translateY(-50%) rotate(-90deg) translateX(40%)",
             transformOrigin: "right center",
           }}
         >
-          <span className="font-[var(--font-outfit)] text-[6rem] font-black uppercase leading-none tracking-[0.4em] text-accent/[0.04] md:text-[9rem]">
+          <span className="font-[var(--font-outfit)] text-[6rem] font-black uppercase leading-none tracking-[0.4em] text-accent/[0.07] md:text-[9rem]">
             Morning · Midday · Evening · Night
           </span>
         </div>
 
         <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-x-16 gap-y-12 md:grid-cols-12">
-          {/* Left — copy */}
           <div ref={heroRef} className="md:col-span-7">
             <Link
               href="/"
-              className="mb-8 inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent-light"
+              className="mb-8 inline-flex items-center gap-1 text-sm font-medium text-accent-text transition-colors hover:text-accent"
             >
               <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 rotate-180">
                 <path
@@ -301,26 +261,26 @@ export default function CleverAideContent() {
               Back to Solutions
             </Link>
 
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
               For Assisted Living &middot; Article I
             </p>
-            <h1 className="mt-5 font-[var(--font-outfit)] text-[3.5rem] font-bold leading-[0.95] tracking-tight text-white md:text-[5.5rem]">
-              Clever<span className="font-serif italic font-light text-accent-light">Aide</span>
+            <h1 className="mt-5 font-[var(--font-outfit)] text-[3.5rem] font-bold leading-[0.95] tracking-tight text-foreground md:text-[5.5rem]">
+              Clever<span className="font-serif italic font-light text-accent-text">Aide</span>
             </h1>
-            <p className="mt-7 max-w-xl font-serif text-xl italic leading-snug text-white/65 md:text-2xl">
+            <p className="mt-7 max-w-xl font-serif text-xl italic leading-snug text-muted md:text-2xl">
               Independence, with quiet backup. The same voice that runs the
               home walks alongside your loved one — morning meds, midday
               check-ins, evening routines, night-watch — and writes home
               when something matters.
             </p>
 
-            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-white/10 pt-6">
+            <dl className="mt-10 grid max-w-md grid-cols-3 gap-6 border-t border-card-border pt-6">
               {heroStats.map((s) => (
                 <div key={s.label}>
-                  <dt className="font-[var(--font-outfit)] text-2xl font-semibold text-accent-light md:text-3xl">
+                  <dt className="font-[var(--font-outfit)] text-2xl font-semibold text-accent-text md:text-3xl">
                     {s.value}
                   </dt>
-                  <dd className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-white/45">
+                  <dd className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-muted">
                     {s.label}
                   </dd>
                 </div>
@@ -341,62 +301,58 @@ export default function CleverAideContent() {
                   />
                 </svg>
               </a>
-              <a
-                href="#day"
-                className="text-sm font-medium uppercase tracking-[0.2em] text-white/45 transition-colors hover:text-white"
-              >
+              <a href="#day" className="text-sm font-medium uppercase tracking-[0.2em] text-muted transition-colors hover:text-foreground">
                 Walk through the day ↓
               </a>
             </div>
           </div>
 
-          {/* Right — Brief card */}
-          <div
-            ref={briefRef}
-            className="relative flex justify-center md:col-span-5 md:justify-end"
-          >
+          <div ref={briefRef} className="relative flex justify-center md:col-span-5 md:justify-end">
             <div className="relative">
-              <BriefCard />
+              <BriefCard tone="dark" />
               <div
                 aria-hidden
                 className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl"
                 style={{
                   background:
-                    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,168,67,0.12) 0%, transparent 70%)",
+                    "radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,168,67,0.18) 0%, transparent 70%)",
                 }}
               />
             </div>
           </div>
         </div>
 
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 h-px"
-          style={DOSSIER_RULE_STYLE}
-        />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-px" style={FOIL_RULE} />
       </section>
 
-      {/* ──────────── § MANIFESTO ──────────── */}
-      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36">
+      {/* ──────────── § MANIFESTO (DARK) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(212,168,67,0.14) 0%, transparent 70%)",
+          }}
+        />
         <div ref={manifestoRef} className="relative mx-auto max-w-4xl text-center">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-light">
             Article II &middot; The Promise
           </p>
-          <h2 className="mt-6 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-6xl">
+          <h2 className="mt-6 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-white md:text-6xl">
             Two thousand small{" "}
-            <span className="font-serif italic font-light text-accent-text">
+            <span className="font-serif italic font-light text-accent-light">
               reassurances.
             </span>{" "}
             A day at a time.
           </h2>
-          <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-muted md:text-xl">
+          <p className="mx-auto mt-8 max-w-2xl font-serif text-lg italic leading-relaxed text-white/65 md:text-xl">
             The hard part of caring for an aging parent isn&apos;t any
             single moment — it&apos;s the thousand quiet ones in between.
             CleverAide handles the small things on time and writes
             home when the small ones turn large.
           </p>
 
-          {/* Four pillars */}
           <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 md:grid-cols-4">
             {[
               { icon: PillIcon, label: "Meds on time" },
@@ -406,14 +362,11 @@ export default function CleverAideContent() {
             ].map((p) => {
               const Icon = p.icon;
               return (
-                <div
-                  key={p.label}
-                  className="flex flex-col items-center gap-3"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent-text">
+                <div key={p.label} className="flex flex-col items-center gap-3">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-accent-light/40 bg-accent/15 text-accent-light">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
+                  <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/55">
                     {p.label}
                   </span>
                 </div>
@@ -423,88 +376,78 @@ export default function CleverAideContent() {
         </div>
       </section>
 
-      {/* ──────────── § THE DAY ──────────── */}
+      {/* ──────────── § THE DAY (LIGHT) ──────────── */}
       <section
         id="day"
         ref={dayRef}
-        className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36"
+        className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36"
       >
         <div className="mx-auto mb-20 max-w-6xl">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
             Article III &middot; The Day
           </p>
-          <h2 className="mt-5 max-w-3xl font-[var(--font-outfit)] text-4xl font-semibold leading-[1.05] tracking-tight text-white md:text-5xl">
+          <h2 className="mt-5 max-w-3xl font-[var(--font-outfit)] text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-5xl">
             One day,{" "}
-            <span className="font-serif italic font-light text-accent-light">
+            <span className="font-serif italic font-light text-accent-text">
               chapter by chapter.
             </span>
           </h2>
         </div>
 
         <div className="mx-auto flex max-w-6xl flex-col gap-24">
-          {/* ── § I MORNING ── */}
+          {/* §I MORNING */}
           <article className="day-chapter relative grid grid-cols-1 items-start gap-x-16 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-5">
               <div className="flex items-end gap-4">
-                <span
-                  aria-hidden
-                  className="font-serif text-[6rem] font-light italic leading-none text-accent-light/85 md:text-[8rem]"
-                >
+                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-text/85 md:text-[8rem]">
                   §I
                 </span>
                 <div className="pb-3">
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-light">
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-text">
                     07:00 — 11:00
                   </p>
-                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-foreground md:text-4xl">
                     Morning
                   </h3>
                 </div>
               </div>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
                 The day starts with a soft &ldquo;Good morning, Eleanor.
                 How was the night?&rdquo; — then meds, then a check-in.
                 Stiffness, pain, dizziness, mood. Logged. Shared.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-accent-light">
+              <div className="mt-6 flex items-center gap-2 text-accent-text">
                 <SunriseIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/45">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
                   Wake &middot; Meds &middot; Wellness check-in
                 </span>
               </div>
             </div>
 
             <div className="md:col-span-7">
-              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)]">
+              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
                 <div className="mb-4 flex items-baseline justify-between">
-                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                     Today's Morning &middot; Mar 14
                   </p>
-                  <p className="font-mono text-[0.6rem] tracking-wide text-white/40">
+                  <p className="font-mono text-[0.6rem] tracking-wide text-muted">
                     3 / 3 completed
                   </p>
                 </div>
                 <ul className="space-y-3">
                   {[
-                    { time: "07:00", title: "Wake greeting", note: "Good morning, Eleanor.", state: "done" },
-                    { time: "07:30", title: "Metformin 500 mg", note: "Administered · Sarah confirmed", state: "done" },
-                    { time: "07:45", title: "Lisinopril 10 mg", note: "Administered · self-confirmed", state: "done" },
-                    { time: "08:30", title: "Mood & body check", note: "4/5 — \"Bit stiff in the knees today\"", state: "done" },
+                    { time: "07:00", title: "Wake greeting", note: "Good morning, Eleanor." },
+                    { time: "07:30", title: "Metformin 500 mg", note: "Administered · Sarah confirmed" },
+                    { time: "07:45", title: "Lisinopril 10 mg", note: "Administered · self-confirmed" },
+                    { time: "08:30", title: "Mood & body check", note: "4/5 — \"Bit stiff in the knees today\"" },
                   ].map((d) => (
-                    <li
-                      key={d.time}
-                      className="flex items-start gap-4 border-l-2 border-emerald-300/60 pl-4"
-                    >
-                      <span className="mt-0.5 font-mono text-xs text-white/45">
-                        {d.time}
-                      </span>
+                    <li key={d.time} className="flex items-start gap-4 border-l-2 border-emerald-600/55 pl-4">
+                      <span className="mt-0.5 font-mono text-xs text-muted">{d.time}</span>
                       <div className="flex-1">
-                        <p className="text-sm font-medium text-white/90">{d.title}</p>
-                        <p className="mt-0.5 font-serif text-xs italic text-white/55">
-                          {d.note}
-                        </p>
+                        <p className="text-sm font-medium text-foreground">{d.title}</p>
+                        <p className="mt-0.5 font-serif text-xs italic text-muted">{d.note}</p>
                       </div>
-                      <span className="mt-1 font-mono text-[0.6rem] uppercase tracking-wider text-emerald-300/85">
+                      <span className="mt-1 font-mono text-[0.6rem] uppercase tracking-wider text-emerald-700">
                         ✓
                       </span>
                     </li>
@@ -514,42 +457,38 @@ export default function CleverAideContent() {
             </div>
           </article>
 
-          {/* ── § II MIDDAY ── */}
+          {/* §II MIDDAY */}
           <article className="day-chapter relative grid grid-cols-1 items-start gap-x-16 gap-y-10 md:grid-cols-12">
-            {/* Order reversed on desktop: text right, mockup left */}
             <div className="md:order-2 md:col-span-5">
               <div className="flex items-end gap-4">
-                <span
-                  aria-hidden
-                  className="font-serif text-[6rem] font-light italic leading-none text-accent-light/85 md:text-[8rem]"
-                >
+                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-text/85 md:text-[8rem]">
                   §II
                 </span>
                 <div className="pb-3">
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-light">
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-text">
                     11:00 — 16:00
                   </p>
-                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-foreground md:text-4xl">
                     Midday
                   </h3>
                 </div>
               </div>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
                 Lunch reminder if the kitchen has been quiet. Hydration
                 prompts. A check-in with no pressure — voice-first, no
                 phone to pick up, no app to open.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-accent-light">
+              <div className="mt-6 flex items-center gap-2 text-accent-text">
                 <SunIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/45">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
                   Hydration &middot; Activity &middot; Lunch
                 </span>
               </div>
             </div>
 
             <div className="md:order-1 md:col-span-7">
-              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)]">
-                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                   Activity &middot; 11:00 — 16:00
                 </p>
                 <div className="mt-4 grid grid-cols-3 gap-3">
@@ -558,32 +497,24 @@ export default function CleverAideContent() {
                     { v: "4", u: "rooms", l: "Kitchen → garden" },
                     { v: "2 / 3", u: "", l: "Hydration prompts" },
                   ].map((s, i) => (
-                    <div
-                      key={i}
-                      className="rounded-lg border border-white/10 bg-black/30 p-3"
-                    >
-                      <p className="font-[var(--font-outfit)] text-xl font-semibold text-white">
+                    <div key={i} className="rounded-lg border border-card-border bg-section-alt/70 p-3">
+                      <p className="font-[var(--font-outfit)] text-xl font-semibold text-foreground">
                         {s.v}
-                        {s.u && (
-                          <span className="ml-1 text-xs font-normal text-white/45">
-                            {s.u}
-                          </span>
-                        )}
+                        {s.u && <span className="ml-1 text-xs font-normal text-muted">{s.u}</span>}
                       </p>
-                      <p className="mt-1 font-mono text-[0.55rem] uppercase tracking-wider text-white/40">
+                      <p className="mt-1 font-mono text-[0.55rem] uppercase tracking-wider text-muted/70">
                         {s.l}
                       </p>
                     </div>
                   ))}
                 </div>
 
-                {/* Mid-day conversation snippet */}
                 <div className="mt-5 space-y-2.5 font-serif italic">
-                  <div className="max-w-[80%] rounded-2xl rounded-tl-md bg-white/[0.06] px-4 py-2.5 text-sm text-white/75">
+                  <div className="max-w-[80%] rounded-2xl rounded-tl-md border border-card-border bg-section-alt/70 px-4 py-2.5 text-sm text-muted">
                     Time for a glass of water, Eleanor. Want me to start
                     the kettle for some tea instead?
                   </div>
-                  <div className="ml-auto max-w-[60%] rounded-2xl rounded-tr-md bg-accent/20 px-4 py-2.5 text-sm text-white/85">
+                  <div className="ml-auto max-w-[60%] rounded-2xl rounded-tr-md bg-accent/20 px-4 py-2.5 text-sm text-foreground">
                     &ldquo;Tea, please. Earl Grey.&rdquo;
                   </div>
                 </div>
@@ -591,45 +522,42 @@ export default function CleverAideContent() {
             </div>
           </article>
 
-          {/* ── § III EVENING ── */}
+          {/* §III EVENING */}
           <article className="day-chapter relative grid grid-cols-1 items-start gap-x-16 gap-y-10 md:grid-cols-12">
             <div className="md:col-span-5">
               <div className="flex items-end gap-4">
-                <span
-                  aria-hidden
-                  className="font-serif text-[6rem] font-light italic leading-none text-accent-light/85 md:text-[8rem]"
-                >
+                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-text/85 md:text-[8rem]">
                   §III
                 </span>
                 <div className="pb-3">
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-light">
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-text">
                     16:00 — 21:00
                   </p>
-                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-foreground md:text-4xl">
                     Evening
                   </h3>
                 </div>
               </div>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
                 Dinner medication. The day&apos;s digest written for the
                 family. Lights warm, ambient music low, the room
                 ready to wind down. Sundown is softened, not endured.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-accent-light">
+              <div className="mt-6 flex items-center gap-2 text-accent-text">
                 <SunsetIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/45">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
                   Dinner meds &middot; Family digest &middot; Wind-down
                 </span>
               </div>
             </div>
 
             <div className="md:col-span-7">
-              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)]">
+              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
                 <div className="mb-4 flex items-baseline justify-between">
-                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                     Evening &middot; In progress
                   </p>
-                  <p className="font-mono text-[0.6rem] tracking-wide text-white/40">
+                  <p className="font-mono text-[0.6rem] tracking-wide text-muted">
                     2 / 4 completed
                   </p>
                 </div>
@@ -643,25 +571,17 @@ export default function CleverAideContent() {
                     <li
                       key={d.time}
                       className={`flex items-start gap-4 border-l-2 pl-4 ${
-                        d.state === "done"
-                          ? "border-emerald-300/60"
-                          : "border-accent-light/55"
+                        d.state === "done" ? "border-emerald-600/55" : "border-accent/65"
                       }`}
                     >
-                      <span className="mt-0.5 font-mono text-xs text-white/45">
-                        {d.time}
-                      </span>
+                      <span className="mt-0.5 font-mono text-xs text-muted">{d.time}</span>
                       <div className="flex-1">
-                        <p className="text-sm font-medium text-white/90">{d.title}</p>
-                        <p className="mt-0.5 font-serif text-xs italic text-white/55">
-                          {d.note}
-                        </p>
+                        <p className="text-sm font-medium text-foreground">{d.title}</p>
+                        <p className="mt-0.5 font-serif text-xs italic text-muted">{d.note}</p>
                       </div>
                       <span
                         className={`mt-1 font-mono text-[0.6rem] uppercase tracking-wider ${
-                          d.state === "done"
-                            ? "text-emerald-300/85"
-                            : "text-accent-light"
+                          d.state === "done" ? "text-emerald-700" : "text-accent-text"
                         }`}
                       >
                         {d.state === "done" ? "✓" : "○"}
@@ -673,46 +593,43 @@ export default function CleverAideContent() {
             </div>
           </article>
 
-          {/* ── § IV NIGHT ── */}
+          {/* §IV NIGHT */}
           <article className="day-chapter relative grid grid-cols-1 items-start gap-x-16 gap-y-10 md:grid-cols-12">
             <div className="md:order-2 md:col-span-5">
               <div className="flex items-end gap-4">
-                <span
-                  aria-hidden
-                  className="font-serif text-[6rem] font-light italic leading-none text-accent-light/85 md:text-[8rem]"
-                >
+                <span aria-hidden className="font-serif text-[6rem] font-light italic leading-none text-accent-text/85 md:text-[8rem]">
                   §IV
                 </span>
                 <div className="pb-3">
-                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-light">
+                  <p className="font-mono text-[0.62rem] uppercase tracking-[0.32em] text-accent-text">
                     21:00 — 07:00
                   </p>
-                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-white md:text-4xl">
+                  <h3 className="mt-2 font-[var(--font-outfit)] text-3xl font-semibold leading-tight text-foreground md:text-4xl">
                     Night
                   </h3>
                 </div>
               </div>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
                 Sleep monitored without cameras. Falls and prolonged
                 inactivity escalate gracefully — verbal check-in first,
                 then caregiver, then emergency. &ldquo;Help&rdquo; is
                 always heard.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-accent-light">
+              <div className="mt-6 flex items-center gap-2 text-accent-text">
                 <MoonIcon className="h-5 w-5" />
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-white/45">
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.22em] text-muted">
                   Sleep &middot; Fall watch &middot; Emergency
                 </span>
               </div>
             </div>
 
             <div className="md:order-1 md:col-span-7">
-              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)]">
+              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card)]">
                 <div className="mb-4 flex items-baseline justify-between">
-                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-light">
+                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.22em] text-accent-text">
                     Night Watch &middot; Last 24h
                   </p>
-                  <span className="rounded-full border border-emerald-300/40 bg-emerald-400/10 px-2.5 py-0.5 font-mono text-[0.55rem] uppercase tracking-wider text-emerald-300">
+                  <span className="rounded-full border border-emerald-600/40 bg-emerald-500/10 px-2.5 py-0.5 font-mono text-[0.55rem] uppercase tracking-wider text-emerald-700">
                     All clear
                   </span>
                 </div>
@@ -724,17 +641,14 @@ export default function CleverAideContent() {
                     { v: "Armed", l: "Fall detection", sub: "Graduated response" },
                     { v: "Listening", l: "Emergency phrases", sub: '"Help" · "I fell"' },
                   ].map((s, i) => (
-                    <div
-                      key={i}
-                      className="rounded-lg border border-white/10 bg-black/30 px-3 py-3"
-                    >
-                      <p className="font-mono text-[0.55rem] uppercase tracking-wider text-white/40">
+                    <div key={i} className="rounded-lg border border-card-border bg-section-alt/70 px-3 py-3">
+                      <p className="font-mono text-[0.55rem] uppercase tracking-wider text-muted">
                         {s.l}
                       </p>
-                      <p className="mt-1 font-[var(--font-outfit)] text-base font-semibold text-white">
+                      <p className="mt-1 font-[var(--font-outfit)] text-base font-semibold text-foreground">
                         {s.v}
                       </p>
-                      <p className="mt-0.5 font-serif text-[0.65rem] italic text-white/45">
+                      <p className="mt-0.5 font-serif text-[0.65rem] italic text-muted">
                         {s.sub}
                       </p>
                     </div>
@@ -746,22 +660,30 @@ export default function CleverAideContent() {
         </div>
       </section>
 
-      {/* ──────────── § CAREGIVER BRIEF ──────────── */}
-      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-28 md:py-36">
-        <div className="mx-auto max-w-6xl">
+      {/* ──────────── § CAREGIVER BRIEF (DARK) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-28 md:py-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-50"
+          style={{
+            background:
+              "radial-gradient(ellipse 50% 40% at 50% 40%, rgba(212,168,67,0.14) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-6xl">
           <div ref={caregiverRef} className="grid grid-cols-1 items-start gap-x-16 gap-y-12 md:grid-cols-12">
             <div className="md:col-span-5">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-text">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.36em] text-accent-light">
                 Article IV &middot; The Family View
               </p>
-              <h2 className="mt-5 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-foreground md:text-5xl">
+              <h2 className="mt-5 font-[var(--font-outfit)] text-4xl font-light leading-[1.05] tracking-tight text-white md:text-5xl">
                 What the{" "}
-                <span className="font-serif italic font-light text-accent-text">
+                <span className="font-serif italic font-light text-accent-light">
                   family
                 </span>{" "}
                 sees.
               </h2>
-              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-muted">
+              <p className="mt-6 max-w-md font-serif text-lg italic leading-relaxed text-white/65">
                 A daily digest at 8 p.m. The routine things stay
                 routine — only what matters interrupts. Severity-based
                 escalation routes alerts through push, Telegram, or
@@ -779,39 +701,37 @@ export default function CleverAideContent() {
                     <span
                       className={`inline-flex w-20 justify-center rounded-full px-3 py-1 font-mono text-[0.55rem] font-semibold uppercase tracking-wider ${
                         t.tag === "INFO"
-                          ? "bg-emerald-600/10 text-emerald-700"
+                          ? "bg-emerald-500/15 text-emerald-300"
                           : t.tag === "WATCH"
-                          ? "bg-accent/15 text-accent-text"
+                          ? "bg-accent/20 text-accent-light"
                           : t.tag === "CALL"
-                          ? "bg-orange-500/15 text-orange-700"
-                          : "bg-red-500/15 text-red-700"
+                          ? "bg-orange-500/20 text-orange-300"
+                          : "bg-red-500/20 text-red-300"
                       }`}
                     >
                       {t.tag}
                     </span>
-                    <span className="text-sm text-muted">{t.body}</span>
+                    <span className="text-sm text-white/70">{t.body}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Caregiver dashboard mockup */}
+            {/* Caregiver dashboard (dark variant) */}
             <div className="md:col-span-7">
-              <div className="rounded-2xl border border-card-border bg-card p-6 shadow-[var(--shadow-card-hover)] md:p-8">
-                <div className="flex items-baseline justify-between border-b border-card-border pb-4">
+              <div className="rounded-2xl border border-white/10 bg-[#23211e] p-6 backdrop-blur-sm shadow-[0_30px_60px_-25px_rgba(0,0,0,0.55)] md:p-8">
+                <div className="flex items-baseline justify-between border-b border-white/10 pb-4">
                   <div>
-                    <p className="font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-accent-text">
+                    <p className="font-[var(--font-outfit)] text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-accent-light">
                       Daily Digest &middot; Mar 14
                     </p>
-                    <h3 className="mt-1 font-[var(--font-outfit)] text-xl font-bold text-foreground md:text-2xl">
+                    <h3 className="mt-1 font-[var(--font-outfit)] text-xl font-bold text-white md:text-2xl">
                       Eleanor M.
                     </h3>
                   </div>
                   <div className="text-right">
-                    <p className="text-[0.55rem] uppercase tracking-[0.22em] text-muted">
-                      To
-                    </p>
-                    <p className="mt-0.5 font-[var(--font-outfit)] text-sm font-semibold text-foreground">
+                    <p className="text-[0.55rem] uppercase tracking-[0.22em] text-white/40">To</p>
+                    <p className="mt-0.5 font-[var(--font-outfit)] text-sm font-semibold text-white">
                       Sarah &middot; Marcus
                     </p>
                   </div>
@@ -821,9 +741,9 @@ export default function CleverAideContent() {
                   {caregiverEvents.map((e, i) => (
                     <li
                       key={i}
-                      className="caregiver-event flex items-start gap-4 rounded-xl border border-card-border bg-section-alt/50 px-4 py-3"
+                      className="caregiver-event flex items-start gap-4 rounded-xl border border-white/10 bg-black/30 px-4 py-3"
                     >
-                      <span className="mt-0.5 font-mono text-[0.65rem] tracking-wider text-muted">
+                      <span className="mt-0.5 font-mono text-[0.65rem] tracking-wider text-white/50">
                         {e.time}
                       </span>
                       <div className="flex-1">
@@ -831,17 +751,17 @@ export default function CleverAideContent() {
                           <span
                             className={`rounded-full px-2 py-0.5 font-mono text-[0.5rem] font-semibold uppercase tracking-wider ${
                               e.severity === "info"
-                                ? "bg-emerald-600/10 text-emerald-700"
-                                : "bg-accent/15 text-accent-text"
+                                ? "bg-emerald-500/15 text-emerald-300"
+                                : "bg-accent/20 text-accent-light"
                             }`}
                           >
                             {e.severity}
                           </span>
-                          <p className="font-[var(--font-outfit)] text-sm font-semibold text-foreground">
+                          <p className="font-[var(--font-outfit)] text-sm font-semibold text-white/90">
                             {e.title}
                           </p>
                         </div>
-                        <p className="mt-1 font-serif text-xs italic leading-relaxed text-muted">
+                        <p className="mt-1 font-serif text-xs italic leading-relaxed text-white/55">
                           {e.body}
                         </p>
                       </div>
@@ -849,11 +769,11 @@ export default function CleverAideContent() {
                   ))}
                 </ul>
 
-                <div className="mt-5 flex items-center justify-between border-t border-card-border pt-4">
-                  <p className="font-serif text-xs italic text-muted">
+                <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
+                  <p className="font-serif text-xs italic text-white/55">
                     Sent via WhatsApp · email · portal
                   </p>
-                  <span className="inline-flex items-center gap-1 font-mono text-[0.55rem] uppercase tracking-wider text-accent-text">
+                  <span className="inline-flex items-center gap-1 font-mono text-[0.55rem] uppercase tracking-wider text-accent-light">
                     <PhoneIcon className="h-3 w-3" />
                     7 / 30 days
                   </span>
@@ -864,16 +784,12 @@ export default function CleverAideContent() {
         </div>
       </section>
 
-      {/* ──────────── § CODA ──────────── */}
-      <section className="relative isolate overflow-hidden bg-warm-gray px-6 py-32 text-center md:py-40">
+      {/* ──────────── § CODA (LIGHT) ──────────── */}
+      <section className="relative isolate overflow-hidden bg-section-alt px-6 py-32 text-center md:py-40">
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px" style={FOIL_RULE} />
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-px"
-          style={DOSSIER_RULE_STYLE}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0 opacity-90"
           style={{
             background:
               "radial-gradient(ellipse 50% 40% at 50% 60%, rgba(212,168,67,0.16) 0%, transparent 70%)",
@@ -881,16 +797,16 @@ export default function CleverAideContent() {
         />
 
         <div ref={codaRef} className="relative mx-auto max-w-3xl">
-          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-accent-light">
+          <p className="text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-accent-text">
             Coda
           </p>
-          <h2 className="mt-6 font-[var(--font-outfit)] text-5xl font-light leading-[1.05] tracking-tight text-white md:text-7xl">
+          <h2 className="mt-6 font-[var(--font-outfit)] text-5xl font-light leading-[1.05] tracking-tight text-foreground md:text-7xl">
             Care that{" "}
-            <span className="font-serif italic font-light text-accent-light">
+            <span className="font-serif italic font-light text-accent-text">
               doesn&apos;t sleep.
             </span>
           </h2>
-          <p className="mx-auto mt-8 max-w-xl font-serif text-lg italic leading-relaxed text-white/60 md:text-xl">
+          <p className="mx-auto mt-8 max-w-xl font-serif text-lg italic leading-relaxed text-muted md:text-xl">
             We&apos;ll design a CleverAide setup around your loved one&apos;s
             day — their conditions, their routines, their family.
             Independence, with backup.
@@ -910,15 +826,13 @@ export default function CleverAideContent() {
             </svg>
           </a>
 
-          {/* Time-of-day punctuation */}
-          <div className="mt-16 flex items-center justify-center gap-10 text-white/30">
+          <div className="mt-16 flex items-center justify-center gap-10 text-accent-text/55">
             {[SunriseIcon, SunIcon, SunsetIcon, MoonIcon].map((Icon, i) => (
               <Icon key={i} className="h-7 w-7" />
             ))}
           </div>
         </div>
       </section>
-
     </>
   );
 }
